@@ -1,4 +1,4 @@
-﻿import pytest
+import pytest
 import os
 from app.services.pdf_processor import PDFProcessor
 from app.services.vector_store import vector_store

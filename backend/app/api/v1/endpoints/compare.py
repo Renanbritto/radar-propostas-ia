@@ -1,4 +1,4 @@
-﻿import json
+import json
 import os
 from fastapi import APIRouter, HTTPException
 from app.models.schemas import CompareRequest, CompareResponse

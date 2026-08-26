@@ -1,4 +1,4 @@
-﻿# 🤖 Radar de Propostas IA (RAG + NLP)
+# 🤖 Radar de Propostas IA (RAG + NLP)
 
 > **Plataforma Cívica Inteligente de Análise, Comparação e Consulta Semântica com RAG sobre Planos de Governo Oficiais.**
 

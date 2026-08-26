@@ -1,4 +1,4 @@
-﻿import os
+import os
 from typing import List, Optional
 from app.models.schemas import ChatRequest, ChatResponse, Citation, ProposalChunk
 from app.services.vector_store import vector_store
