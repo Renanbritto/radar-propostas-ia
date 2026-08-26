@@ -1,237 +1,349 @@
 {
   "candidates": [
     {
-      "id": "cand_pres_1",
-      "name": "Luiz Fernando Valente",
-      "ballot_name": "Fernando Valente",
+      "id": "cand_lula",
+      "name": "Luiz Inácio Lula da Silva",
+      "ballot_name": "Lula",
       "ballot_number": 13,
-      "party": "Partido da Cidadania e Desenvolvimento",
-      "party_acronym": "PCD",
-      "coalition": "Brasil da Esperanca e Soberania Nacional",
-      "role": "Presidente da Republica",
+      "party": "Partido dos Trabalhadores",
+      "party_acronym": "PT",
+      "coalition": "Federação Brasil da Esperança (PT/PCdoB/PV) / PSB / Solidariedade / Federação PSOL-Rede / Avante / Agir / PROS",
+      "role": "Presidente da República",
       "color": "#EF4444",
-      "summary": "Plano presidencial com enfase em reindustrializacao sustentavel, transicao energetica com a Petrobras, aumento real do salario minimo, ampliacao de universidades publicas e fortalecimento do SUS.",
-      "total_pages": 72,
-      "total_proposals": 184,
-      "plan_pdf_url": "/data/raw_plans/plano_presidencial_valente.pdf",
+      "summary": "Plano centrado em reconstrução social, fortalecimento do SUS, reindustrialização nacional verde, aumento real do salário mínimo, ampliação de universidades públicas e transição ecológica com a Petrobras.",
+      "total_pages": 74,
+      "total_proposals": 192,
+      "plan_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001607829",
+      "theme_distribution": {
+        "saude": 35,
+        "educacao": 38,
+        "economia": 32,
+        "seguranca": 20,
+        "meio_ambiente": 28,
+        "tecnologia": 19,
+        "social": 45,
+        "infraestrutura": 36
+      },
+      "key_highlights": [
+        "Fortalecimento do SUS 100% público com o Complexo Econômico e Industrial da Saúde",
+        "Isenção do Imposto de Renda para salários de até R$ 5.000,00 e reforma tributária progressiva",
+        "Meta de Desmatamento Zero na Amazônia e transição para matriz energética de baixo carbono",
+        "Novo Plano de Aceleração do Crescimento (PAC) para ferrovias, saneamento e habitação (Minha Casa Minha Vida)"
+      ]
+    },
+    {
+      "id": "cand_bolsonaro",
+      "name": "Jair Messias Bolsonaro",
+      "ballot_name": "Jair Bolsonaro",
+      "ballot_number": 22,
+      "party": "Partido Liberal",
+      "party_acronym": "PL",
+      "coalition": "Pelo Bem do Brasil (PL / PP / Republicanos)",
+      "role": "Presidente da República",
+      "color": "#3B82F6",
+      "summary": "Plano focado em liberdade econômica, desregulamentação, privatizações de estatais, fortalecimento do agronegócio exportador, endurecimento penal e defesa das fronteiras nacionais.",
+      "total_pages": 68,
+      "total_proposals": 174,
+      "plan_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001618036",
+      "theme_distribution": {
+        "saude": 24,
+        "educacao": 22,
+        "economia": 48,
+        "seguranca": 42,
+        "meio_ambiente": 16,
+        "tecnologia": 22,
+        "social": 18,
+        "infraestrutura": 35
+      },
+      "key_highlights": [
+        "Desregulamentação ampla, corte de impostos federais (IPI, PIS/Cofins) e estímulo ao livre mercado",
+        "Concessões e privatizações de ferrovias, rodovias, portos e estatais estratégicas",
+        "Endurecimento do Código Penal com foco no combate ao crime organizado e segurança nas fronteiras",
+        "Programa Conta-Saúde e apoio a Parcerias Público-Privadas para eficiência hospitalar"
+      ]
+    },
+    {
+      "id": "cand_tebet",
+      "name": "Simone Nassar Tebet",
+      "ballot_name": "Simone Tebet",
+      "ballot_number": 15,
+      "party": "Movimento Democrático Brasileiro",
+      "party_acronym": "MDB",
+      "coalition": "Brasil Para Todos (MDB / Federação PSDB-Cidadania / Podemos)",
+      "role": "Presidente da República",
+      "color": "#F59E0B",
+      "summary": "Plano com ênfase em responsabilidade fiscal aliada ao investimento social, revolução no ensino básico e técnico, governo digital e transformação do Brasil em polo global de sustentabilidade e bioeconomia.",
+      "total_pages": 62,
+      "total_proposals": 165,
+      "plan_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001607833",
+      "theme_distribution": {
+        "saude": 30,
+        "educacao": 36,
+        "economia": 34,
+        "seguranca": 25,
+        "meio_ambiente": 35,
+        "tecnologia": 28,
+        "social": 26,
+        "infraestrutura": 30
+      },
+      "key_highlights": [
+        "Poupança Jovem para incentivar conclusão do Ensino Médio Técnico em tempo integral",
+        "Reforma Tributária com simplificação de impostos e tributação neutra sobre consumo",
+        "Prontuário Eletrônico Nacional Único e telemedicina integrada em todo o SUS",
+        "Foco em descarbonização da indústria e mercado nacional de créditos de carbono"
+      ]
+    },
+    {
+      "id": "cand_ciro",
+      "name": "Ciro Ferreira Gomes",
+      "ballot_name": "Ciro Gomes",
+      "ballot_number": 12,
+      "party": "Partido Democrático Trabalhista",
+      "party_acronym": "PDT",
+      "coalition": "Partido Democrático Trabalhista (PDT)",
+      "role": "Presidente da República",
+      "color": "#10B981",
+      "summary": "Projeto Nacional de Desenvolvimento (PND) com ênfase na taxação de grandes fortunas, refinanciamento das dívidas de famílias no SPC/Serasa, industrialização de alta tecnologia e escola pública integral no modelo cearense.",
+      "total_pages": 80,
+      "total_proposals": 204,
+      "plan_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001607830",
       "theme_distribution": {
         "saude": 32,
-        "educacao": 36,
-        "economia": 30,
-        "seguranca": 20,
-        "meio_ambiente": 26,
-        "tecnologia": 18,
-        "social": 42,
-        "infraestrutura": 34
+        "educacao": 44,
+        "economia": 46,
+        "seguranca": 26,
+        "meio_ambiente": 30,
+        "tecnologia": 32,
+        "social": 38,
+        "infraestrutura": 36
       },
       "key_highlights": [
-        "Programa Nacional de Reindustrializacao Verde e Inteligencia Artificial Soberana",
-        "Isencao do Imposto de Renda (IRPF) para salarios de ate R$ 5.000,00",
-        "Meta de Desmatamento Zero em todos os biomas ate 2030 com Fundo Clima",
-        "Criacao de 20 novos Institutos Federais e ampliacao das bolsas de pos-graduacao"
-      ]
-    },
-    {
-      "id": "cand_pres_2",
-      "name": "Rodrigo Albuquerque Barreto",
-      "ballot_name": "Rodrigo Barreto",
-      "ballot_number": 22,
-      "party": "Partido da Liberdade e Ordem",
-      "party_acronym": "PLO",
-      "coalition": "Alianca pelo Progresso, Agro e Liberdade",
-      "role": "Presidente da Republica",
-      "color": "#3B82F6",
-      "summary": "Plano focado em privatizacoes estrategicas, corte de gastos publicos federais, incentivo ao agronegocio exportador, endurecimento penal e seguranca na fronteira com as Forcas Armadas.",
-      "total_pages": 64,
-      "total_proposals": 162,
-      "plan_pdf_url": "/data/raw_plans/plano_presidencial_barreto.pdf",
-      "theme_distribution": {
-        "saude": 22,
-        "educacao": 20,
-        "economia": 45,
-        "seguranca": 38,
-        "meio_ambiente": 15,
-        "tecnologia": 20,
-        "social": 16,
-        "infraestrutura": 32
-      },
-      "key_highlights": [
-        "Reforma Administrativa ampla com reducao de 38 para 15 Ministerios",
-        "Privatizacao de estatais e concessao de ferrovias e portos federais a iniciativa privada",
-        "Blindagem das fronteiras nacionais com VANTs (drones militares) e apoio do Exercito",
-        "Reducao de impostos federais (IPI, PIS/Cofins) para o setor produtivo e agronegocio"
-      ]
-    },
-    {
-      "id": "cand_pres_3",
-      "name": "Mariana Campos Guimaraes",
-      "ballot_name": "Mariana Campos",
-      "ballot_number": 44,
-      "party": "Uniao Democratica Sustentavel",
-      "party_acronym": "UDS",
-      "coalition": "Frente pelo Equilibrio e Inovacao Nacional",
-      "role": "Presidente da Republica",
-      "color": "#10B981",
-      "summary": "Plano de centro focado em modernizacao do Estado, responsabilidade fiscal aliada a investimentos em inovacao e transicao ecologica, revolucao no ensino fundamental e descarbonizacao da matriz produtiva.",
-      "total_pages": 68,
-      "total_proposals": 170,
-      "plan_pdf_url": "/data/raw_plans/plano_presidencial_mariana.pdf",
-      "theme_distribution": {
-        "saude": 28,
-        "educacao": 32,
-        "economia": 35,
-        "seguranca": 24,
-        "meio_ambiente": 38,
-        "tecnologia": 30,
-        "social": 22,
-        "infraestrutura": 28
-      },
-      "key_highlights": [
-        "Transformacao do Brasil em potencia global de Hidrogenio Verde e Creditos de Carbono",
-        "Ensino Medio Tecnico Integrado em tempo integral para 100% das escolas publicas",
-        "Digitalizacao de 100% dos servicos federais com prontuario nacional integrado no SUS",
-        "Reforma Tributaria com Tributacao Neutra sobre Consumo e incentivos a Startups"
+        "Projeto Nacional de Desenvolvimento (PND) com 4 complexos industriais estratégicos (Saúde, Defesa, TI, Petróleo)",
+        "Programa 'Nome Limpo' com refinanciamento pelo Banco do Brasil e Caixa das dívidas de 66 milhões de brasileiros",
+        "Universalização do Ensino Fundamental e Médio em Tempo Integral baseado na experiência pedagógica do Ceará",
+        "Criação do Imposto sobre Grandes Fortunas (alíquota de 0,5% a 1%) para financiar renda mínima básica"
       ]
     }
   ],
   "proposals": [
     {
-      "id": "prop_p1_saude",
-      "candidate_id": "cand_pres_1",
-      "candidate_name": "Fernando Valente",
-      "party_acronym": "PCD",
+      "id": "prop_lula_saude",
+      "candidate_id": "cand_lula",
+      "candidate_name": "Lula",
+      "party_acronym": "PT",
       "topic_id": "saude",
-      "topic_name": "Saude Publica",
-      "page_number": 18,
-      "text": "Investimento federal de R$ 30 bilhoes no Complexo Economico e Industrial da Saude para producao nacional de 80% dos medicamentos e vacinas do SUS, zerando filas de cirurgias eletivas.",
-      "section_title": "Capitulo 2: SUS Soberano e Acesso Universal"
-    },
-    {
-      "id": "prop_p2_saude",
-      "candidate_id": "cand_pres_2",
-      "candidate_name": "Rodrigo Barreto",
-      "party_acronym": "PLO",
-      "topic_id": "saude",
-      "topic_name": "Saude Publica",
+      "topic_name": "Saúde Pública",
       "page_number": 21,
-      "text": "Criacao do Programa Conta-Saude Brasil com deducao integral no IR para planos de saude e vouchers para consultas e cirurgias na rede privada conveniada.",
-      "section_title": "Capitulo 3: Liberdade de Escolha e Eficiencia na Saude"
+      "text": "Fortalecimento do Sistema Único de Saúde (SUS) público, gratuito e universal, retomando o programa 'Mais Médicos', ampliando a rede de Farmácia Popular e investindo na produção nacional de insumos, vacinas e equipamentos através do Complexo Industrial da Saúde para garantir soberania sanitária.",
+      "section_title": "Diretriz 3: Direito à Saúde Integral e Defesa do SUS"
     },
     {
-      "id": "prop_p3_saude",
-      "candidate_id": "cand_pres_3",
-      "candidate_name": "Mariana Campos",
-      "party_acronym": "UDS",
+      "id": "prop_bolsonaro_saude",
+      "candidate_id": "cand_bolsonaro",
+      "candidate_name": "Jair Bolsonaro",
+      "party_acronym": "PL",
       "topic_id": "saude",
-      "topic_name": "Saude Publica",
-      "page_number": 19,
-      "text": "Implementacao da Rede Nacional de Dados em Saude 2.0 com IA para diagnostico precoce no SUS e criacao de 50 Hospitais Regionais de Alta Complexidade.",
-      "section_title": "Eixo 2: Saude Digital e Regionalizacao"
-    },
-    {
-      "id": "prop_p1_economia",
-      "candidate_id": "cand_pres_1",
-      "candidate_name": "Fernando Valente",
-      "party_acronym": "PCD",
-      "topic_id": "economia",
-      "topic_name": "Economia e Emprego",
-      "page_number": 28,
-      "text": "Plano Nacional de Investimentos Publicos em ferrovias, gasodutos e industria naval, gerando 2 milhoes de empregos formais nos primeiros 2 anos.",
-      "section_title": "Capitulo 4: Desenvolvimento e Reindustrializacao"
-    },
-    {
-      "id": "prop_p2_economia",
-      "candidate_id": "cand_pres_2",
-      "candidate_name": "Rodrigo Barreto",
-      "party_acronym": "PLO",
-      "topic_id": "economia",
-      "topic_name": "Economia e Emprego",
-      "page_number": 33,
-      "text": "Extincao de tarifas de importacao de bens de capital, privatizacao de estatais e teto constitucional para a carga tributaria em 28% do PIB.",
-      "section_title": "Capitulo 5: Livre Mercado e Menos Estado"
-    },
-    {
-      "id": "prop_p3_economia",
-      "candidate_id": "cand_pres_3",
-      "candidate_name": "Mariana Campos",
-      "party_acronym": "UDS",
-      "topic_id": "economia",
-      "topic_name": "Economia e Emprego",
+      "topic_name": "Saúde Pública",
       "page_number": 26,
-      "text": "Criacao do Fundo Soberano Verde com recursos da exploracao sustentavel de minerais criticos para financiar a industria 4.0 e bioeconomia.",
-      "section_title": "Eixo 3: Nova Economia e Sustentabilidade Competitiva"
+      "text": "Incentivo a Parcerias Público-Privadas (PPPs) e Organizações Sociais de Saúde para gestão hospitalar com foco em metas de produtividade, ampliação do programa Médicos pelo Brasil e desregulamentação para atração de investimentos privados em biotecnologia e telessaúde.",
+      "section_title": "Capítulo 4: Eficiência e Gestão por Resultados na Saúde"
+    },
+    {
+      "id": "prop_tebet_saude",
+      "candidate_id": "cand_tebet",
+      "candidate_name": "Simone Tebet",
+      "party_acronym": "MDB",
+      "topic_id": "saude",
+      "topic_name": "Saúde Pública",
+      "page_number": 19,
+      "text": "Implantação do Prontuário Eletrônico do Cidadão integrado em 100% da rede básica do SUS, criação de centros de diagnóstico rápido para zerar a fila de consultas especializadas e reajuste anual automático da tabela do SUS para entidades filantrópicas e Santas Casas.",
+      "section_title": "Eixo 2: Saúde Digital e Fortalecimento das Santas Casas"
+    },
+    {
+      "id": "prop_ciro_saude",
+      "candidate_id": "cand_ciro",
+      "candidate_name": "Ciro Gomes",
+      "party_acronym": "PDT",
+      "topic_id": "saude",
+      "topic_name": "Saúde Pública",
+      "page_number": 34,
+      "text": "Criação do Complexo Industrial da Saúde com R$ 20 bilhões do BNDES para fabricação nacional de princípios ativos e hemoderivados, associado a um plano de carreira federal para médicos e enfermeiros do SUS com lotação prioritária no interior e periferias.",
+      "section_title": "Pilar 2: Complexo Industrial da Saúde e Carreira de Estado"
+    },
+    {
+      "id": "prop_lula_economia",
+      "candidate_id": "cand_lula",
+      "candidate_name": "Lula",
+      "party_acronym": "PT",
+      "topic_id": "economia",
+      "topic_name": "Economia & Emprego",
+      "page_number": 31,
+      "text": "Revogação do Teto de Gastos com estabelecimento de uma nova âncora fiscal crível e anticíclica, isenção do IRPF até R$ 5.000,00, política de valorização real do salário mínimo acima da inflação e retomada das obras públicas federais de infraestrutura pelo Novo PAC.",
+      "section_title": "Diretriz 4: Reindustrialização, Novo PAC e Emprego Digno"
+    },
+    {
+      "id": "prop_bolsonaro_economia",
+      "candidate_id": "cand_bolsonaro",
+      "candidate_name": "Jair Bolsonaro",
+      "party_acronym": "PL",
+      "topic_id": "economia",
+      "topic_name": "Economia & Emprego",
+      "page_number": 38,
+      "text": "Continuidade das reformas liberais com privatização de empresas estatais, consolidação da Lei de Liberdade Econômica, redução do Custo Brasil e desoneração permanente de combustíveis e folha de pagamento de setores intensivos em mão de obra.",
+      "section_title": "Capítulo 5: Liberdade Econômica, Privatizações e Competitividade"
+    },
+    {
+      "id": "prop_tebet_economia",
+      "candidate_id": "cand_tebet",
+      "candidate_name": "Simone Tebet",
+      "party_acronym": "MDB",
+      "topic_id": "economia",
+      "topic_name": "Economia & Emprego",
+      "page_number": 27,
+      "text": "Aprovação prioritária da Reforma Tributária com imposto sobre valor agregado (IVA) dual, respeito rígido ao equilíbrio fiscal, segurança jurídica para contratos de longo prazo e criação da Agência Nacional de Concessões e Parcerias.",
+      "section_title": "Eixo 3: Reforma Tributária, Responsabilidade Fiscal e Produtividade"
+    },
+    {
+      "id": "prop_ciro_economia",
+      "candidate_id": "cand_ciro",
+      "candidate_name": "Ciro Gomes",
+      "party_acronym": "PDT",
+      "topic_id": "economia",
+      "topic_name": "Economia & Emprego",
+      "page_number": 15,
+      "text": "Implementação do Projeto Nacional de Desenvolvimento (PND) com redução da taxa básica de juros (Selic), corte de 20% nas renúncias fiscais concedidas a oligopólios, tributação progressiva de lucros e dividendos e criação de Renda Básica Universal (Programa Eduardo Suplicy).",
+      "section_title": "Pilar 1: Projeto Nacional de Desenvolvimento (PND) e Reforma Fiscal"
+    },
+    {
+      "id": "prop_lula_seguranca",
+      "candidate_id": "cand_lula",
+      "candidate_name": "Lula",
+      "party_acronym": "PT",
+      "topic_id": "seguranca",
+      "topic_name": "Segurança Pública",
+      "page_number": 42,
+      "text": "Reativação do Sistema Único de Segurança Pública (SUSP) com investimento no Fundo Nacional de Segurança Pública, valorização salarial e psicológica dos policiais, asfixia do crime organizado por inteligência e controle rigoroso da circulação de armas de fogo no país.",
+      "section_title": "Diretriz 6: Segurança Pública Cidadã, Inteligência e Desarmamento"
+    },
+    {
+      "id": "prop_bolsonaro_seguranca",
+      "candidate_id": "cand_bolsonaro",
+      "candidate_name": "Jair Bolsonaro",
+      "party_acronym": "PL",
+      "topic_id": "seguranca",
+      "topic_name": "Segurança Pública",
+      "page_number": 46,
+      "text": "Garantia do direito do cidadão à legítima defesa e porte de armas de fogo, redução da maioridade penal para crimes hediondos, excludente de ilicitude para policiais em serviço e reforço do controle das fronteiras terrestres e marítimas com as Forças Armadas.",
+      "section_title": "Capítulo 6: Lei e Ordem, Excludente de Ilicitude e Porte de Armas"
+    },
+    {
+      "id": "prop_tebet_seguranca",
+      "candidate_id": "cand_tebet",
+      "candidate_name": "Simone Tebet",
+      "party_acronym": "MDB",
+      "topic_id": "seguranca",
+      "topic_name": "Segurança Pública",
+      "page_number": 33,
+      "text": "Criação do Ministério da Segurança Pública dedicado exclusivamente à integração entre Polícia Federal, Rodoviária e Polícias Estaduais, foco em combate à lavagem de dinheiro das facções e programa nacional de combate à violência contra a mulher.",
+      "section_title": "Eixo 4: Ministério da Segurança Pública e Proteção da Mulher"
+    },
+    {
+      "id": "prop_ciro_seguranca",
+      "candidate_id": "cand_ciro",
+      "candidate_name": "Ciro Gomes",
+      "party_acronym": "PDT",
+      "topic_id": "seguranca",
+      "topic_name": "Segurança Pública",
+      "page_number": 48,
+      "text": "Federalização das investigações sobre milícias e grandes facções do narcotráfico, criação da Polícia Federal de Fronteiras com inteligência satelital e drones de longo alcance, e programa de prevenção da juventude em áreas dominadas pelo crime.",
+      "section_title": "Pilar 4: Combate às Milícias e Inteligência de Fronteiras"
     }
   ],
   "quiz_questions": [
     {
       "id": "qp_1",
       "topic_id": "economia",
-      "topic_name": "Economia e Industria",
-      "question": "Qual deve ser o principal motor para o crescimento da economia e geracao de empregos no Brasil?",
-      "description": "Escolha a visao que melhor reflete seu posicionamento sobre o papel do Estado.",
+      "topic_name": "Economia & Indústria",
+      "question": "Qual deve ser o principal motor para o crescimento da economia e geração de empregos no Brasil?",
+      "description": "Escolha a visão que melhor reflete seu posicionamento sobre o papel do Estado na economia nacional.",
       "options": [
         {
           "id": "qp1_opt_a",
-          "text": "Grandes investimentos publicos e reindustrializacao com apoio de bancos e estatais.",
-          "bias_scores": {
-            "cand_pres_1": 0.96,
-            "cand_pres_2": 0.1,
-            "cand_pres_3": 0.35
-          }
+          "text": "Investimento público em infraestrutura (Novo PAC), aumento real do salário mínimo e fortalecimento das estatais.",
+          "bias_scores": { "cand_lula": 0.98, "cand_bolsonaro": 0.10, "cand_tebet": 0.35, "cand_ciro": 0.70 }
         },
         {
           "id": "qp1_opt_b",
-          "text": "Privatizacoes amplas, desregulamentacao, corte drastico de ministerios e livre mercado.",
-          "bias_scores": {
-            "cand_pres_1": 0.1,
-            "cand_pres_2": 0.98,
-            "cand_pres_3": 0.4
-          }
+          "text": "Privatizações amplas, desregulamentação, corte de ministérios e liberdade de mercado.",
+          "bias_scores": { "cand_lula": 0.10, "cand_bolsonaro": 0.98, "cand_tebet": 0.45, "cand_ciro": 0.15 }
         },
         {
           "id": "qp1_opt_c",
-          "text": "Transicao ecologica, hidrogenio verde, equilibrio fiscal e estimulo a tecnologia e startups.",
-          "bias_scores": {
-            "cand_pres_1": 0.4,
-            "cand_pres_2": 0.3,
-            "cand_pres_3": 0.98
-          }
+          "text": "Reforma Tributária com imposto dual (IVA), responsabilidade fiscal, incentivo a concessões privadas e bioeconomia.",
+          "bias_scores": { "cand_lula": 0.40, "cand_bolsonaro": 0.35, "cand_tebet": 0.98, "cand_ciro": 0.45 }
+        },
+        {
+          "id": "qp1_opt_d",
+          "text": "Projeto Nacional de Desenvolvimento (PND), taxação de grandes fortunas e refinanciamento de dívidas das famílias.",
+          "bias_scores": { "cand_lula": 0.65, "cand_bolsonaro": 0.10, "cand_tebet": 0.30, "cand_ciro": 0.98 }
         }
       ]
     },
     {
       "id": "qp_2",
       "topic_id": "saude",
-      "topic_name": "Saude Publica (SUS)",
-      "question": "Como o governo federal deve agir para melhorar o atendimento de saude da populacao?",
-      "description": "Selecione o modelo prioritario para a saude publica nacional.",
+      "topic_name": "Saúde Pública (SUS)",
+      "question": "Como o governo federal deve agir para melhorar o atendimento de saúde da população?",
+      "description": "Selecione o modelo prioritário para a saúde pública nacional.",
       "options": [
         {
           "id": "qp2_opt_a",
-          "text": "Producao nacional de medicamentos e vacinas pelo Estado e expansao macica do SUS.",
-          "bias_scores": {
-            "cand_pres_1": 0.98,
-            "cand_pres_2": 0.15,
-            "cand_pres_3": 0.45
-          }
+          "text": "Fortalecer o SUS 100% público, retomar Mais Médicos e produzir remédios e vacinas via estatais e laboratórios públicos.",
+          "bias_scores": { "cand_lula": 0.98, "cand_bolsonaro": 0.15, "cand_tebet": 0.45, "cand_ciro": 0.75 }
         },
         {
           "id": "qp2_opt_b",
-          "text": "Deducao integral de planos privados no IR e vouchers para consultas na rede privada.",
-          "bias_scores": {
-            "cand_pres_1": 0.1,
-            "cand_pres_2": 0.96,
-            "cand_pres_3": 0.25
-          }
+          "text": "Incentivar Parcerias Público-Privadas (PPPs), gestão por Organizações Sociais e liberdade para planos de saúde.",
+          "bias_scores": { "cand_lula": 0.10, "cand_bolsonaro": 0.98, "cand_tebet": 0.40, "cand_ciro": 0.15 }
         },
         {
           "id": "qp2_opt_c",
-          "text": "Prontuario digital unico com IA e hospitais regionais de referencia consorciados.",
-          "bias_scores": {
-            "cand_pres_1": 0.45,
-            "cand_pres_2": 0.35,
-            "cand_pres_3": 0.98
-          }
+          "text": "Prontuário eletrônico unificado em 100% dos municípios e reajuste da tabela do SUS para Santas Casas e hospitais filantrópicos.",
+          "bias_scores": { "cand_lula": 0.45, "cand_bolsonaro": 0.35, "cand_tebet": 0.98, "cand_ciro": 0.40 }
+        },
+        {
+          "id": "qp2_opt_d",
+          "text": "Investir R$ 20 bilhões via BNDES no Complexo Industrial da Saúde e criar carreira de Estado federal para médicos.",
+          "bias_scores": { "cand_lula": 0.60, "cand_bolsonaro": 0.10, "cand_tebet": 0.35, "cand_ciro": 0.98 }
+        }
+      ]
+    },
+    {
+      "id": "qp_3",
+      "topic_id": "seguranca",
+      "topic_name": "Segurança Pública & Armas",
+      "question": "Qual a postura prioritária da segurança pública federal?",
+      "description": "Defina o modelo de combate ao crime e controle de armamentos.",
+      "options": [
+        {
+          "id": "qp3_opt_a",
+          "text": "Controle rigoroso e desarmamento civil, inteligência policial contra lavagem de dinheiro e prevenção nas periferias.",
+          "bias_scores": { "cand_lula": 0.98, "cand_bolsonaro": 0.10, "cand_tebet": 0.50, "cand_ciro": 0.60 }
+        },
+        {
+          "id": "qp3_opt_b",
+          "text": "Garantia do direito ao porte e posse de armas pelo cidadão, redução da maioridade penal e excludente de ilicitude.",
+          "bias_scores": { "cand_lula": 0.10, "cand_bolsonaro": 0.98, "cand_tebet": 0.20, "cand_ciro": 0.10 }
+        },
+        {
+          "id": "qp3_opt_c",
+          "text": "Criação de Ministério da Segurança Pública dedicado e combate especializado à violência contra a mulher.",
+          "bias_scores": { "cand_lula": 0.40, "cand_bolsonaro": 0.25, "cand_tebet": 0.98, "cand_ciro": 0.35 }
+        },
+        {
+          "id": "qp3_opt_d",
+          "text": "Federalização do combate às milícias, vigilância satelital em tempo real e Polícia de Fronteiras.",
+          "bias_scores": { "cand_lula": 0.55, "cand_bolsonaro": 0.20, "cand_tebet": 0.40, "cand_ciro": 0.98 }
         }
       ]
     }

@@ -24,8 +24,11 @@ def test_get_candidates():
     response = client.get("/api/v1/candidates")
     assert response.status_code == 200
     candidates = response.json()
-    assert len(candidates) >= 3
-    assert any(c["ballot_name"] == "Fernando Valente" for c in candidates)
+    assert len(candidates) >= 4
+    assert any(c["ballot_name"] == "Lula" for c in candidates)
+    assert any(c["ballot_name"] == "Jair Bolsonaro" for c in candidates)
+    assert any(c["ballot_name"] == "Simone Tebet" for c in candidates)
+    assert any(c["ballot_name"] == "Ciro Gomes" for c in candidates)
 
 def test_get_topics():
     response = client.get("/api/v1/candidates/topics")
@@ -38,7 +41,7 @@ def test_get_topics():
 
 def test_compare_endpoint():
     payload = {
-        "candidate_ids": ["cand_pres_1", "cand_pres_2"],
+        "candidate_ids": ["cand_lula", "cand_bolsonaro"],
         "topic_id": "saude"
     }
     response = client.post("/api/v1/compare", json=payload)
@@ -50,7 +53,7 @@ def test_compare_endpoint():
 
 def test_chat_rag_endpoint():
     payload = {
-        "query": "Como os candidatos pretendem investir no SUS e produção de medicamentos?"
+        "query": "Como os candidatos pretendem fortalecer o SUS e o Complexo Industrial da Saúde?"
     }
     response = client.post("/api/v1/chat", json=payload)
     assert response.status_code == 200
