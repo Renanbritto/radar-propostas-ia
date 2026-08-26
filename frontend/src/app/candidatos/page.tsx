@@ -45,7 +45,7 @@ export default async function CandidatosPage() {
                   <div>
                     <h2 className="text-xl font-bold text-white">{cand.ballot_name}</h2>
                     <p className="text-xs text-slate-400 font-mono font-medium">
-                      {cand.party_acronym} · {cand.role}
+                      {cand.party_acronym} • {cand.role}
                     </p>
                     {cand.coalition && (
                       <p className="text-[11px] text-slate-500 mt-0.5">{cand.coalition}</p>
@@ -62,7 +62,7 @@ export default async function CandidatosPage() {
                     📄 {cand.total_pages} Páginas no PDF
                   </span>
                   <span className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-slate-300">
-                    💡 {cand.total_proposals} Propostas Totais
+                    🎯 {cand.total_proposals} Propostas Totais
                   </span>
                 </div>
 

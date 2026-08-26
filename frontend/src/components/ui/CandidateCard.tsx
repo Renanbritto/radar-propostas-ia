@@ -24,7 +24,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                 {candidate.ballot_name}
               </h3>
               <p className="text-xs text-slate-400 font-medium">
-                {candidate.party_acronym} · {candidate.role}
+                {candidate.party_acronym} • {candidate.role}
               </p>
             </div>
           </div>

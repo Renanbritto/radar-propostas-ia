@@ -52,13 +52,13 @@ export default async function HomePage() {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-4">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>TransparÃªncia CÃ­vica com IA</span>
+              <span>Transparência Cívica com IA</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
-              Como funciona o Motor RAG com CitaÃ§Ãµes AuditÃ¡veis?
+              Como funciona o Motor RAG com Citações Auditáveis?
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
-              Diferente de IAs generativas convencionais que podem alucinar, o <strong>Radar de Propostas</strong> utiliza uma arquitetura RAG (Retrieval-Augmented Generation) estrita: cada resposta Ã© ancorada em trechos reais extraÃ­dos dos PDFs submetidos ao TSE, trazendo o nÃºmero da pÃ¡gina correspondente.
+              Diferente de IAs generativas convencionais que podem alucinar, o <strong>Radar de Propostas</strong> utiliza uma arquitetura RAG (Retrieval-Augmented Generation) estrita: cada resposta é ancorada em trechos reais extraídos dos PDFs submetidos ao TSE, trazendo o número da página correspondente.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -80,23 +80,23 @@ export default async function HomePage() {
           <div className="space-y-3">
             <div className="liquid-glass-card rounded-2xl p-4 border border-white/[0.06] bg-black/40">
               <span className="text-[10px] font-mono text-sky-400">PASSO 1</span>
-              <h4 className="text-sm font-bold text-white mt-1">ExtraÃ§Ã£o e Chunking Estruturado</h4>
+              <h4 className="text-sm font-bold text-white mt-1">Extração e Chunking Estruturado</h4>
               <p className="text-xs text-slate-400 mt-1">
-                Os PDFs do DivulgaCandContas sÃ£o processados e divididos em blocos semÃ¢nticos com metadados de eixo temÃ¡tico e pÃ¡gina oficial.
+                Os PDFs do DivulgaCandContas são processados e divididos em blocos semânticos com metadados de eixo temático e página oficial.
               </p>
             </div>
             <div className="liquid-glass-card rounded-2xl p-4 border border-white/[0.06] bg-black/40">
               <span className="text-[10px] font-mono text-emerald-400">PASSO 2</span>
-              <h4 className="text-sm font-bold text-white mt-1">IndexaÃ§Ã£o Vetorial SemÃ¢ntica</h4>
+              <h4 className="text-sm font-bold text-white mt-1">Indexação Vetorial Semântica</h4>
               <p className="text-xs text-slate-400 mt-1">
-                GeraÃ§Ã£o de vetores para busca semÃ¢ntica por similaridade de cosseno, permitindo encontrar propostas mesmo com termos sinÃ´nimos.
+                Geração de vetores para busca semântica por similaridade de cosseno, permitindo encontrar propostas mesmo com termos sinônimos.
               </p>
             </div>
             <div className="liquid-glass-card rounded-2xl p-4 border border-white/[0.06] bg-black/40">
               <span className="text-[10px] font-mono text-indigo-400">PASSO 3</span>
-              <h4 className="text-sm font-bold text-white mt-1">SÃ­ntese Fundamentada com CitaÃ§Ãµes</h4>
+              <h4 className="text-sm font-bold text-white mt-1">Síntese Fundamentada com Citações</h4>
               <p className="text-xs text-slate-400 mt-1">
-                A resposta Ã© gerada combinando os trechos mais relevantes com indicaÃ§Ã£o de pÃ¡gina para auditoria imediata pelo cidadÃ£o.
+                A resposta é gerada combinando os trechos mais relevantes com indicação de página para auditoria imediata pelo cidadão.
               </p>
             </div>
           </div>

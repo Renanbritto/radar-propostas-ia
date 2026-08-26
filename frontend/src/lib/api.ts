@@ -325,7 +325,7 @@ export async function fetchFinanceOverview(): Promise<FinanceOverviewResponse> {
     return {
       total_campaign_funds: 858000000.0,
       total_campaign_expenses: 568000000.0,
-      total_anomalies_flagged: 0,
+      total_anomalies_flagged: 2,
       transparency_index_score: 8.6,
       system_wide_anomalies: [],
       candidates_financials: []

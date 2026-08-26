@@ -20,7 +20,7 @@ export function CitationBadge({ citation }: CitationBadgeProps) {
       >
         <BookOpen className="w-3 h-3 text-sky-400" />
         <span className="font-semibold">{citation.party_acronym}</span>
-        <span className="text-slate-400">·</span>
+        <span className="text-slate-400">•</span>
         <span>Pág. {citation.page_number}</span>
       </button>
 
@@ -42,14 +42,14 @@ export function CitationBadge({ citation }: CitationBadgeProps) {
               <div>
                 <h4 className="text-sm font-bold text-white">Citação Oficial Auditável</h4>
                 <p className="text-[11px] text-slate-400 font-mono">
-                  {citation.candidate_name} ({citation.party_acronym}) · Página {citation.page_number}
+                  {citation.candidate_name} ({citation.party_acronym}) • Página {citation.page_number}
                 </p>
               </div>
             </div>
 
             {citation.section_title && (
               <div className="mb-3 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-xs font-medium text-slate-300">
-                📁 Seção: <span className="text-sky-300">{citation.section_title}</span>
+                📌 Seção: <span className="text-sky-300">{citation.section_title}</span>
               </div>
             )}
 

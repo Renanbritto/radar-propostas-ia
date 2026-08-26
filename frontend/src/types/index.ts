@@ -129,7 +129,7 @@ export interface SupplierItem {
   percentage_of_candidate_budget: number;
   creation_date: string;
   is_recently_created: boolean;
-  risk_level: "Normal" | "Médio" | "Alto";
+  risk_level: "Normal" | "Média" | "Alto";
   notes?: string;
 }
 

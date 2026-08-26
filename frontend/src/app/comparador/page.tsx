@@ -1,63 +1,65 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { fetchCandidates, fetchTopics, compareCandidates } from "@/lib/api";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { Candidate, Topic, CompareResponse } from "@/types";
+import { fetchCandidates, fetchTopics, compareCandidates } from "@/lib/api";
 import { CitationBadge } from "@/components/ui/CitationBadge";
-import { GitCompare, CheckCircle2, AlertTriangle, Sparkles, Filter, Check } from "lucide-react";
+import { GitCompare, Sparkles, Check, AlertTriangle, CheckCircle2, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export default function ComparadorPage() {
+function ComparadorContent() {
+  const searchParams = useSearchParams();
+  const initialTopic = searchParams.get("tema") || "saude";
+  const initialCands = searchParams.get("candidatos")?.split(",") || [];
+
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [topics, setTopics] = useState<Topic[]>([]);
-  const [selectedTopicId, setSelectedTopicId] = useState<string>("saude");
-  const [selectedCandIds, setSelectedCandIds] = useState<string[]>([]);
+  const [selectedCandIds, setSelectedCandIds] = useState<string[]>(initialCands);
+  const [selectedTopicId, setSelectedTopicId] = useState<string>(initialTopic);
   const [comparison, setComparison] = useState<CompareResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  // Carregar candidatos e tópicos iniciais
   useEffect(() => {
-    async function init() {
+    async function loadMeta() {
       const [cands, topcs] = await Promise.all([fetchCandidates(), fetchTopics()]);
       setCandidates(cands);
       setTopics(topcs);
-      if (cands.length >= 2) {
+
+      if (selectedCandIds.length === 0 && cands.length >= 2) {
         setSelectedCandIds([cands[0].id, cands[1].id]);
-      } else if (cands.length > 0) {
-        setSelectedCandIds([cands[0].id]);
       }
     }
-    init();
+    loadMeta();
   }, []);
 
-  // Recalcular comparação sempre que mudar tópico ou candidatos
   useEffect(() => {
-    if (selectedCandIds.length === 0 || !selectedTopicId) return;
-
-    async function runCompare() {
-      setLoading(true);
-      try {
-        const res = await compareCandidates(selectedCandIds, selectedTopicId);
-        setComparison(res);
-      } catch (err) {
-        console.error("Erro na comparação:", err);
-      } finally {
-        setLoading(false);
-      }
+    if (selectedCandIds.length > 0 && selectedTopicId) {
+      handleCompare();
     }
+  }, [selectedCandIds, selectedTopicId]);
 
-    runCompare();
-  }, [selectedTopicId, selectedCandIds]);
+  async function handleCompare() {
+    setLoading(true);
+    try {
+      const result = await compareCandidates(selectedCandIds, selectedTopicId);
+      setComparison(result);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }
 
-  const toggleCandidate = (id: string) => {
-    setSelectedCandIds((prev) => {
-      if (prev.includes(id)) {
-        if (prev.length === 1) return prev; // Manter ao menos 1
-        return prev.filter((item) => item !== id);
+  function toggleCandidate(candId: string) {
+    if (selectedCandIds.includes(candId)) {
+      if (selectedCandIds.length > 1) {
+        setSelectedCandIds(selectedCandIds.filter(id => id !== candId));
       }
-      return [...prev, id];
-    });
-  };
+    } else {
+      setSelectedCandIds([...selectedCandIds, candId]);
+    }
+  }
 
   return (
     <div className="py-8 space-y-8">
@@ -65,13 +67,13 @@ export default function ComparadorPage() {
       <div>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-3">
           <GitCompare className="w-3.5 h-3.5" />
-          <span>Comparador Semântico Lado a Lado</span>
+          <span>Matriz Temática Cruzada</span>
         </div>
         <h1 className="text-3xl font-extrabold text-white tracking-tight">
-          Comparação de Propostas Oficiais por Tema
+          Comparador Lado a Lado de Propostas
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
-          Contraste diretamente as abordagens, modelo de governança, estratégia de financiamento e citações oficiais de cada plano.
+          Contraste as diretrizes e propostas oficiais dos candidatos por eixo temático, identificando convergências, divergências e citações com página oficial do TSE.
         </p>
       </div>
 
@@ -248,5 +250,17 @@ export default function ComparadorPage() {
         </div>
       ) : null}
     </div>
+  );
+}
+
+export default function ComparadorPage() {
+  return (
+    <Suspense fallback={
+      <div className="py-12 text-center text-slate-400 text-xs">
+        Carregando comparador de propostas...
+      </div>
+    }>
+      <ComparadorContent />
+    </Suspense>
   );
 }

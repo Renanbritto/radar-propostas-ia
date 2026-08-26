@@ -1,109 +1,77 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { askRAGChat, fetchCandidates } from "@/lib/api";
-import { ChatMessage, Candidate, Citation } from "@/types";
+import { ChatMessage, Candidate, Topic } from "@/types";
+import { askRAGChat, fetchCandidates, fetchTopics } from "@/lib/api";
 import { CitationBadge } from "@/components/ui/CitationBadge";
-import { Bot, Send, User, Sparkles, CornerDownLeft, RotateCcw } from "lucide-react";
+import { Bot, User, Send, Sparkles, BookOpen, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const DEFAULT_SUGGESTIONS = [
-  "Como os candidatos pretendem investir em telemedicina e postos de saúde?",
-  "Qual a proposta para zerar a fila de creches municipais?",
-  "O que cada plano diz sobre armamento e tecnologia na Guarda Municipal?",
-  "Quais são os incentivos fiscais para pequenas empresas e geração de empregos?",
-  "Quais as metas para o meio ambiente, energia limpa e prevenção de enchentes?"
+const INITIAL_SUGGESTIONS = [
+  "Como os candidatos pretendem fortalecer o SUS e a produção de vacinas?",
+  "Quais são as propostas para a isenção do Imposto de Renda e Reforma Tributária?",
+  "Como cada candidato aborda o combate ao desmatamento na Amazônia?",
+  "Quais os planos para segurança pública e controle de armas?"
 ];
 
-export default function ChatRAGPage() {
-  const [candidates, setCandidates] = useState<Candidate[]>([]);
-  const [selectedCandId, setSelectedCandId] = useState<string>("all");
+export default function ChatPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      id: "welcome",
+      id: "msg_welcome",
       role: "assistant",
-      content: "Olá! Sou o assistente cívico de IA do Radar de Propostas. Pergunte qualquer dúvida sobre as propostas dos candidatos e eu responderei com base estrita nos planos oficiais registrados no TSE, citando a página de cada trecho.",
-      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-      suggested_followups: DEFAULT_SUGGESTIONS.slice(0, 3)
+      content: "Olá! Sou o assistente cívico de IA do **Radar de Propostas**.\n\nPosso responder qualquer dúvida sobre os **Planos de Governo Oficiais** registrados no TSE para a Eleição Presidencial de 2026. Todas as respostas trazem **citações auditáveis com o número exato da página** no documento oficial.",
+      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
     }
   ]);
-  const [inputQuery, setInputQuery] = useState("");
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [candidates, setCandidates] = useState<Candidate[]>([]);
+  const [selectedCandidate, setSelectedCandidate] = useState<string>("all");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    async function load() {
-      const cands = await fetchCandidates();
-      setCandidates(cands);
-    }
-    load();
+    fetchCandidates().then(setCandidates);
   }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+  }, [messages]);
 
-  const handleSend = async (textToSend?: string) => {
-    const query = (textToSend || inputQuery).trim();
-    if (!query || loading) return;
+  async function handleSend(textToSend?: string) {
+    const query = textToSend || input;
+    if (!query.trim() || loading) return;
 
     const userMsg: ChatMessage = {
-      id: `user-${Date.now()}`,
+      id: `usr_${Date.now()}`,
       role: "user",
       content: query,
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
     };
 
     setMessages((prev) => [...prev, userMsg]);
-    setInputQuery("");
+    if (!textToSend) setInput("");
     setLoading(true);
 
     try {
-      const candFilter = selectedCandId === "all" ? undefined : selectedCandId;
-      const res = await askRAGChat(query, candFilter);
+      const candFilter = selectedCandidate === "all" ? undefined : selectedCandidate;
+      const resp = await askRAGChat(query, candFilter);
 
-      const assistantMsg: ChatMessage = {
-        id: `assistant-${Date.now()}`,
+      const botMsg: ChatMessage = {
+        id: `bot_${Date.now()}`,
         role: "assistant",
-        content: res.answer,
-        citations: res.citations,
-        suggested_followups: res.suggested_followups,
+        content: resp.answer,
+        citations: resp.citations,
+        suggested_followups: resp.suggested_followups,
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       };
 
-      setMessages((prev) => [...prev, assistantMsg]);
+      setMessages((prev) => [...prev, botMsg]);
     } catch (err) {
-      console.error("Erro no chat:", err);
-      const errorMsg: ChatMessage = {
-        id: `error-${Date.now()}`,
-        role: "assistant",
-        content: "Desculpe, ocorreu uma instabilidade momentânea ao consultar a base de dados dos planos. Por favor, tente novamente.",
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-      };
-      setMessages((prev) => [...prev, errorMsg]);
+      console.error(err);
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
-
-  const resetChat = () => {
-    setMessages([
-      {
-        id: "welcome-reset",
-        role: "assistant",
-        content: "Conversa reiniciada. Como posso ajudar com os planos de governo?",
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        suggested_followups: DEFAULT_SUGGESTIONS.slice(0, 3)
-      }
-    ]);
-  };
+  }
 
   return (
     <div className="py-6 max-w-4xl mx-auto space-y-6">
@@ -112,78 +80,68 @@ export default function ChatRAGPage() {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-2">
             <Bot className="w-3.5 h-3.5" />
-            <span>Motor RAG com Citações Oficiais</span>
+            <span>Motor RAG com Citações Auditáveis</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Chat Cívico sobre os Planos de Governo
+            Chat Cívico com IA
           </h1>
         </div>
 
-        {/* Filter Candidate & Reset */}
+        {/* Candidate Filter Dropdown */}
         <div className="flex items-center gap-2">
+          <span className="text-xs text-slate-400 font-medium">Filtrar por:</span>
           <select
-            value={selectedCandId}
-            onChange={(e) => setSelectedCandId(e.target.value)}
-            className="bg-[#0F172A] border border-white/[0.1] rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-sky-500 font-medium"
+            value={selectedCandidate}
+            onChange={(e) => setSelectedCandidate(e.target.value)}
+            className="bg-white/[0.04] text-slate-200 border border-white/[0.1] rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:border-sky-500"
           >
-            <option value="all">🔍 Todos os Candidatos</option>
-            {candidates.map((cand) => (
-              <option key={cand.id} value={cand.id}>
-                {cand.ballot_name} ({cand.party_acronym})
+            <option value="all" className="bg-slate-900 text-white">Todos os Candidatos</option>
+            {candidates.map((c) => (
+              <option key={c.id} value={c.id} className="bg-slate-900 text-white">
+                {c.ballot_name} ({c.party_acronym})
               </option>
             ))}
           </select>
-          <button
-            onClick={resetChat}
-            className="p-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-400 hover:text-white border border-white/[0.08] transition-colors"
-            title="Reiniciar conversa"
-          >
-            <RotateCcw className="w-4 h-4" />
-          </button>
         </div>
       </div>
 
-      {/* Chat Container */}
-      <div className="liquid-glass-card rounded-3xl p-4 sm:p-6 flex flex-col h-[600px] justify-between border border-white/[0.08]">
-        {/* Messages List */}
-        <div className="flex-1 overflow-y-auto space-y-4 pr-2">
-          {messages.map((msg) => (
+      {/* Messages Box */}
+      <div className="liquid-glass-card rounded-3xl p-4 sm:p-6 min-h-[480px] max-h-[600px] overflow-y-auto space-y-6">
+        {messages.map((msg) => {
+          const isUser = msg.role === "user";
+          return (
             <div
               key={msg.id}
-              className={cn(
-                "flex items-start gap-3 text-xs sm:text-sm",
-                msg.role === "user" ? "flex-row-reverse" : "flex-row"
-              )}
+              className={cn("flex gap-3 max-w-[90%]", isUser ? "ml-auto flex-row-reverse" : "mr-auto")}
             >
-              {/* Avatar */}
               <div
                 className={cn(
-                  "w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-white font-bold text-xs shadow-md",
-                  msg.role === "user"
-                    ? "bg-gradient-to-tr from-sky-500 to-indigo-600"
-                    : "bg-slate-800 border border-white/[0.1] text-sky-400"
+                  "w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-xs font-bold shadow-md",
+                  isUser ? "bg-sky-500 text-slate-950" : "bg-white/[0.08] text-sky-400 border border-white/[0.08]"
                 )}
               >
-                {msg.role === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
               </div>
 
-              {/* Message Bubble */}
-              <div
-                className={cn(
-                  "max-w-[85%] rounded-2xl p-4 leading-relaxed",
-                  msg.role === "user"
-                    ? "bg-sky-500 text-slate-950 font-medium rounded-tr-none shadow-md shadow-sky-500/10"
-                    : "bg-black/40 border border-white/[0.08] text-slate-200 rounded-tl-none space-y-3"
-                )}
-              >
-                <div className="whitespace-pre-wrap">{msg.content}</div>
+              <div className="space-y-3">
+                <div
+                  className={cn(
+                    "p-4 rounded-2xl text-xs sm:text-sm leading-relaxed",
+                    isUser
+                      ? "bg-sky-500 text-slate-950 font-medium shadow-md"
+                      : "liquid-glass-card border border-white/[0.06] text-slate-200"
+                  )}
+                >
+                  <p className="whitespace-pre-line">{msg.content}</p>
+                </div>
 
-                {/* Citations List (if available) */}
+                {/* Citations Attached */}
                 {msg.citations && msg.citations.length > 0 && (
-                  <div className="pt-3 border-t border-white/[0.08] space-y-2">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block font-semibold">
-                      📄 Citações e Páginas nos Planos Oficiais:
-                    </span>
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2">
+                    <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-400">
+                      <BookOpen className="w-3.5 h-3.5 text-sky-400" />
+                      <span>Citações Oficiais Auditáveis:</span>
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {msg.citations.map((c, i) => (
                         <CitationBadge key={i} citation={c} />
@@ -194,14 +152,16 @@ export default function ChatRAGPage() {
 
                 {/* Suggested Followups */}
                 {msg.suggested_followups && msg.suggested_followups.length > 0 && (
-                  <div className="pt-3 border-t border-white/[0.08] space-y-1.5">
-                    <span className="text-[10px] font-mono text-slate-400 block">💡 Sugestões de perguntas:</span>
-                    <div className="flex flex-wrap gap-1.5">
+                  <div className="space-y-1.5 pt-1">
+                    <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">
+                      Perguntas Relacionadas:
+                    </span>
+                    <div className="flex flex-wrap gap-2">
                       {msg.suggested_followups.map((sug, i) => (
                         <button
                           key={i}
                           onClick={() => handleSend(sug)}
-                          className="text-[11px] text-left px-2.5 py-1 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-sky-300 border border-white/[0.06] transition-colors"
+                          className="text-[11px] text-sky-300 hover:text-sky-200 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 px-2.5 py-1 rounded-lg transition-all text-left"
                         >
                           {sug}
                         </button>
@@ -209,52 +169,68 @@ export default function ChatRAGPage() {
                     </div>
                   </div>
                 )}
-
-                <span className="text-[9px] text-slate-400 block text-right font-mono">{msg.timestamp}</span>
               </div>
             </div>
-          ))}
+          );
+        })}
 
-          {loading && (
-            <div className="flex items-center gap-3 text-xs text-slate-400">
-              <div className="w-8 h-8 rounded-xl bg-slate-800 border border-white/[0.1] flex items-center justify-center text-sky-400">
-                <Sparkles className="w-4 h-4 animate-spin" />
-              </div>
-              <div className="bg-black/40 border border-white/[0.08] rounded-2xl px-4 py-3 text-slate-300">
-                Recuperando e analisando trechos nos planos de governo com o motor RAG...
-              </div>
+        {loading && (
+          <div className="flex items-center gap-3 text-xs text-slate-400">
+            <div className="w-8 h-8 rounded-xl bg-white/[0.08] flex items-center justify-center">
+              <Sparkles className="w-4 h-4 text-sky-400 animate-spin" />
             </div>
-          )}
-
-          <div ref={messagesEndRef} />
-        </div>
-
-        {/* Input Bar */}
-        <div className="pt-4 border-t border-white/[0.08]">
-          <div className="relative flex items-center">
-            <input
-              type="text"
-              value={inputQuery}
-              onChange={(e) => setInputQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Ex: Como os candidatos propõem diminuir a fila de exames no SUS?"
-              disabled={loading}
-              className="w-full bg-black/50 border border-white/[0.12] focus:border-sky-500 rounded-2xl px-4 py-3.5 pr-14 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none transition-all shadow-inner"
-            />
-            <button
-              onClick={() => handleSend()}
-              disabled={!inputQuery.trim() || loading}
-              className="absolute right-2 p-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 disabled:opacity-30 disabled:hover:bg-sky-500 text-slate-950 font-bold transition-all shadow-md"
-            >
-              <Send className="w-4 h-4" />
-            </button>
+            <span>Consultando índices vetoriais dos planos de governo do TSE...</span>
           </div>
-          <div className="flex items-center justify-between text-[11px] text-slate-400 mt-2 px-1">
-            <span>Pressione Enter para enviar</span>
-            <span>Respostas auditáveis com base em dados do TSE</span>
-          </div>
-        </div>
+        )}
+
+        <div ref={messagesEndRef} />
       </div>
+
+      {/* Suggested Initial Prompts */}
+      {messages.length === 1 && (
+        <div className="space-y-2">
+          <span className="text-xs text-slate-400 font-semibold flex items-center gap-1.5">
+            <HelpCircle className="w-3.5 h-3.5 text-sky-400" />
+            Sugestões para começar:
+          </span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {INITIAL_SUGGESTIONS.map((sug, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleSend(sug)}
+                className="text-xs text-slate-300 text-left p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-500/30 hover:bg-sky-500/5 transition-colors"
+              >
+                {sug}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Input Box */}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSend();
+        }}
+        className="flex items-center gap-2"
+      >
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Pergunte sobre qualquer proposta (ex: Reforma Tributária, SUS, Segurança)..."
+          className="flex-1 px-4 py-3 rounded-2xl bg-white/[0.04] border border-white/[0.08] text-white text-xs sm:text-sm placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
+        />
+        <button
+          type="submit"
+          disabled={loading || !input.trim()}
+          className="px-5 py-3 rounded-2xl bg-sky-500 hover:bg-sky-400 disabled:opacity-50 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-lg shadow-sky-500/20"
+        >
+          <Send className="w-4 h-4" />
+          <span className="hidden sm:inline">Enviar</span>
+        </button>
+      </form>
     </div>
   );
 }
