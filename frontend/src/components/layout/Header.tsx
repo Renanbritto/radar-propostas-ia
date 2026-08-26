@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bot, Compass, GitCompare, Users, Sparkles, Github } from "lucide-react";
+import { Bot, Compass, GitCompare, Users, Sparkles, Github, DollarSign } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { label: "Comparador", href: "/comparador", icon: GitCompare },
   { label: "Chat RAG Cívico", href: "/chat", icon: Bot },
   { label: "Bússola (Quiz)", href: "/quiz", icon: Compass },
+  { label: "InvestigaVoto (Finanças)", href: "/financiamento", icon: DollarSign },
   { label: "Candidatos", href: "/candidatos", icon: Users },
 ];
 
@@ -30,15 +31,15 @@ export function Header() {
             <div className="flex items-center gap-2">
               <span className="font-bold text-base tracking-tight text-white">Radar de Propostas</span>
               <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">
-                IA Cívica
+                IA + Forense
               </span>
             </div>
-            <span className="text-[11px] text-slate-400 font-mono">Planos Oficiais TSE</span>
+            <span className="text-[11px] text-slate-400 font-mono">Planos & Financiamento TSE</span>
           </div>
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-white/[0.03] p-1 rounded-2xl border border-white/[0.06]">
+        <nav className="hidden lg:flex items-center gap-1 bg-white/[0.03] p-1 rounded-2xl border border-white/[0.06]">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
@@ -47,7 +48,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200",
+                  "flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-200",
                   isActive
                     ? "bg-sky-500/20 text-sky-300 border border-sky-500/30 shadow-sm"
                     : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
