@@ -10,15 +10,15 @@ def test_get_finance_overview():
     data = response.json()
     assert data["total_campaign_funds"] > 0
     assert data["total_campaign_expenses"] > 0
-    assert len(data["candidates_financials"]) >= 3
+    assert len(data["candidates_financials"]) >= 4
     assert len(data["system_wide_anomalies"]) > 0
     assert data["transparency_index_score"] > 0
 
 def test_get_candidate_finances_valid():
-    response = client.get("/api/v1/finances/candidates/cand_pres_1")
+    response = client.get("/api/v1/finances/candidates/cand_lula")
     assert response.status_code == 200
     data = response.json()
-    assert data["candidate_name"] == "Fernando Valente"
+    assert data["candidate_name"] == "Lula"
     assert len(data["revenue_breakdown"]) > 0
     assert len(data["expense_breakdown"]) > 0
     assert len(data["top_suppliers"]) > 0

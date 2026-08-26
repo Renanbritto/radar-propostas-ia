@@ -12,104 +12,140 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/a
 
 const FALLBACK_CANDIDATES: Candidate[] = [
   {
-    id: "cand_1",
-    name: "Helena Silveira",
-    ballot_name: "Helena Silveira",
-    ballot_number: 45,
-    party: "Partido da Inovação & Sustentabilidade",
-    party_acronym: "PIS",
-    coalition: "Aliança por um Futuro Verde e Digital",
-    role: "Prefeita",
-    color: "#10B981",
-    summary: "Proposta centrada em sustentabilidade urbana, modernização digital dos serviços públicos e fortalecimento da atenção primária em saúde com telemedicina.",
-    total_pages: 48,
-    total_proposals: 124,
-    theme_distribution: {
-      saude: 26,
-      educacao: 22,
-      economia: 18,
-      seguranca: 14,
-      meio_ambiente: 30,
-      tecnologia: 24,
-      social: 16,
-      infraestrutura: 18
-    },
-    key_highlights: [
-      "Criação de 15 Clínicas da Família 100% integradas com telemedicina 24h",
-      "Eletrificação de 60% da frota de ônibus municipais até o 3º ano de gestão",
-      "Polo de Tecnologia Verde com isenção fiscal para startups de impacto",
-      "Implementação de Guarda Civil Comunitária orientada por dados preditivos"
-    ]
-  },
-  {
-    id: "cand_2",
-    name: "Marcus Vinicius Ramos",
-    ballot_name: "Marcus Ramos",
-    ballot_number: 22,
-    party: "Partido Liberal Renovador",
-    party_acronym: "PLR",
-    coalition: "União pelo Progresso e Segurança",
-    role: "Prefeito",
-    color: "#3B82F6",
-    summary: "Plano focado em desregulamentação econômica, atração de capital privado através de PPPs, tolerância zero na segurança pública e eficiência fiscal.",
-    total_pages: 52,
-    total_proposals: 138,
-    theme_distribution: {
-      saude: 20,
-      educacao: 18,
-      economia: 32,
-      seguranca: 28,
-      meio_ambiente: 12,
-      tecnologia: 16,
-      social: 14,
-      infraestrutura: 26
-    },
-    key_highlights: [
-      "Redução da alíquota do ISS para 2% para atrair centros de tecnologia e serviços",
-      "Concessão à iniciativa privada da gestão de 100% dos hospitais municipais",
-      "Muralha Digital com 5.000 câmeras de reconhecimento facial e IA",
-      "Vouchers de ensino privado para zerar a fila de creches municipais em 180 dias"
-    ]
-  },
-  {
-    id: "cand_3",
-    name: "Clarice Monteiro",
-    ballot_name: "Clarice Monteiro",
+    id: "cand_lula",
+    name: "Luiz Inácio Lula da Silva",
+    ballot_name: "Lula",
     ballot_number: 13,
-    party: "Partido dos Trabalhadores e Direitos",
-    party_acronym: "PTD",
-    coalition: "Frente Popular da Cidadania",
-    role: "Prefeita",
+    party: "Partido dos Trabalhadores",
+    party_acronym: "PT",
+    coalition: "Federação Brasil da Esperança (PT/PCdoB/PV) / PSB / Solidariedade / Federação PSOL-Rede / Avante / Agir / PROS",
+    role: "Presidente da República",
     color: "#EF4444",
-    summary: "Plano focado em combate à desigualdade, investimento estatal em infraestrutura de periferia, ampliação de creches públicas e orçamento participativo.",
-    total_pages: 60,
-    total_proposals: 156,
+    summary: "Plano centrado em reconstrução social, fortalecimento do SUS, reindustrialização nacional verde, aumento real do salário mínimo, ampliação de universidades públicas e transição ecológica com a Petrobras.",
+    total_pages: 74,
+    total_proposals: 192,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001607829",
     theme_distribution: {
-      saude: 28,
-      educacao: 30,
-      economia: 20,
-      seguranca: 16,
-      meio_ambiente: 22,
-      tecnologia: 14,
-      social: 34,
-      infraestrutura: 24
+      saude: 35,
+      educacao: 38,
+      economia: 32,
+      seguranca: 20,
+      meio_ambiente: 28,
+      tecnologia: 19,
+      social: 45,
+      infraestrutura: 36
     },
     key_highlights: [
-      "Tarifa Zero progressiva no transporte público iniciando por fins de semana e estudantes",
-      "Programa 'Bairro Digno' com urbanização de 12 comunidades e saneamento 100%",
-      "Duplicação do piso salarial dos professores da rede municipal em 4 anos",
-      "Rede Municipal de Restaurantes Populares 'Prato do Povo' a R$ 2,00"
+      "Fortalecimento do SUS 100% público com o Complexo Econômico e Industrial da Saúde",
+      "Isenção do Imposto de Renda para salários de até R$ 5.000,00 e reforma tributária progressiva",
+      "Meta de Desmatamento Zero na Amazônia e transição para matriz energética de baixo carbono",
+      "Novo Plano de Aceleração do Crescimento (PAC) para ferrovias, saneamento e habitação (Minha Casa Minha Vida)"
+    ]
+  },
+  {
+    id: "cand_bolsonaro",
+    name: "Jair Messias Bolsonaro",
+    ballot_name: "Jair Bolsonaro",
+    ballot_number: 22,
+    party: "Partido Liberal",
+    party_acronym: "PL",
+    coalition: "Pelo Bem do Brasil (PL / PP / Republicanos)",
+    role: "Presidente da República",
+    color: "#3B82F6",
+    summary: "Plano focado em liberdade econômica, desregulamentação, privatizações de estatais, fortalecimento do agronegócio exportador, endurecimento penal e defesa das fronteiras nacionais.",
+    total_pages: 68,
+    total_proposals: 174,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001618036",
+    theme_distribution: {
+      saude: 24,
+      educacao: 22,
+      economia: 48,
+      seguranca: 42,
+      meio_ambiente: 16,
+      tecnologia: 22,
+      social: 18,
+      infraestrutura: 35
+    },
+    key_highlights: [
+      "Desregulamentação ampla, corte de impostos federais (IPI, PIS/Cofins) e estímulo ao livre mercado",
+      "Concessões e privatizações de ferrovias, rodovias, portos e estatais estratégicas",
+      "Endurecimento do Código Penal com foco no combate ao crime organizado e segurança nas fronteiras",
+      "Programa Conta-Saúde e apoio a Parcerias Público-Privadas para eficiência hospitalar"
+    ]
+  },
+  {
+    id: "cand_tebet",
+    name: "Simone Nassar Tebet",
+    ballot_name: "Simone Tebet",
+    ballot_number: 15,
+    party: "Movimento Democrático Brasileiro",
+    party_acronym: "MDB",
+    coalition: "Brasil Para Todos (MDB / Federação PSDB-Cidadania / Podemos)",
+    role: "Presidente da República",
+    color: "#F59E0B",
+    summary: "Plano com ênfase em responsabilidade fiscal aliada ao investimento social, revolução no ensino básico e técnico, governo digital e transformação do Brasil em polo global de sustentabilidade e bioeconomia.",
+    total_pages: 62,
+    total_proposals: 165,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001607833",
+    theme_distribution: {
+      saude: 30,
+      educacao: 36,
+      economia: 34,
+      seguranca: 25,
+      meio_ambiente: 35,
+      tecnologia: 28,
+      social: 26,
+      infraestrutura: 30
+    },
+    key_highlights: [
+      "Poupança Jovem para incentivar conclusão do Ensino Médio Técnico em tempo integral",
+      "Reforma Tributária com simplificação de impostos e tributação neutra sobre consumo",
+      "Prontuário Eletrônico Nacional Único e telemedicina integrada em todo o SUS",
+      "Foco em descarbonização da indústria e mercado nacional de créditos de carbono"
+    ]
+  },
+  {
+    id: "cand_ciro",
+    name: "Ciro Ferreira Gomes",
+    ballot_name: "Ciro Gomes",
+    ballot_number: 12,
+    party: "Partido Democrático Trabalhista",
+    party_acronym: "PDT",
+    coalition: "Partido Democrático Trabalhista (PDT)",
+    role: "Presidente da República",
+    color: "#10B981",
+    summary: "Projeto Nacional de Desenvolvimento (PND) com ênfase na taxação de grandes fortunas, refinanciamento das dívidas de famílias no SPC/Serasa, industrialização de alta tecnologia e escola pública integral no modelo cearense.",
+    total_pages: 80,
+    total_proposals: 204,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001607830",
+    theme_distribution: {
+      saude: 32,
+      educacao: 44,
+      economia: 46,
+      seguranca: 26,
+      meio_ambiente: 30,
+      tecnologia: 32,
+      social: 38,
+      infraestrutura: 36
+    },
+    key_highlights: [
+      "Projeto Nacional de Desenvolvimento (PND) com 4 complexos industriais estratégicos (Saúde, Defesa, TI, Petróleo)",
+      "Programa 'Nome Limpo' com refinanciamento pelo Banco do Brasil e Caixa das dívidas de 66 milhões de brasileiros",
+      "Universalização do Ensino Fundamental e Médio em Tempo Integral baseado na experiência pedagógica do Ceará",
+      "Criação do Imposto sobre Grandes Fortunas (alíquota de 0,5% a 1%) para financiar renda mínima básica"
     ]
   }
 ];
 
 const FALLBACK_TOPICS: Topic[] = [
-  { id: "saude", name: "Saúde Pública", icon: "HeartPulse", description: "SUS, telemedicina, hospitais, vacinação e atenção primária" },
-  { id: "educacao", name: "Educação & Ciência", icon: "GraduationCap", description: "Ensino básico, integral, creches e valorização docente" },
-  { id: "economia", name: "Economia & Emprego", icon: "TrendingUp", description: "Geração de renda, impostos, desregulamentação e microcrédito" },
-  { id: "seguranca", name: "Segurança Pública", icon: "ShieldAlert", description: "Policiamento, inteligência, câmeras e prevenção social" },
-  { id: "meio_ambiente", name: "Meio Ambiente & Clima", icon: "Leaf", description: "Sustentabilidade, transição energética e resiliência a enchentes" },
-  { id: "tecnologia", name: "Tecnologia & Inovação", icon: "Cpu", description: "Governo digital, conectividade e apoio a startups" }
+  { id: "saude", name: "Saúde Pública", icon: "HeartPulse", description: "SUS, produção nacional de vacinas, hospitais e atenção primária" },
+  { id: "educacao", name: "Educação & Ciência", icon: "GraduationCap", description: "Ensino básico, integral, universidades federais e pesquisa" },
+  { id: "economia", name: "Economia & Emprego", icon: "TrendingUp", description: "Reindustrialização, reforma tributária, inflação e emprego" },
+  { id: "seguranca", name: "Segurança & Defesa", icon: "ShieldAlert", description: "Polícia Federal, SUSP, fronteiras e combate a facções" },
+  { id: "meio_ambiente", name: "Meio Ambiente & Clima", icon: "Leaf", description: "Amazônia, desmatamento zero, transição energética e crédito de carbono" },
+  { id: "tecnologia", name: "Tecnologia & Inovação", icon: "Cpu", description: "Governo digital, IA soberana, semicondutores e conectividade" },
+  { id: "social", name: "Desenvolvimento Social", icon: "Users", description: "Bolsa Família, combate à fome, previdência e habitação" },
+  { id: "infraestrutura", name: "Infraestrutura & PAC", icon: "Building2", description: "Ferrovias, portos, saneamento, energia e logística nacional" }
 ];
 
 export async function fetchCandidates(): Promise<Candidate[]> {
@@ -145,15 +181,15 @@ export async function compareCandidates(candidateIds: string[], topicId: string)
     const topic = FALLBACK_TOPICS.find(t => t.id === topicId) || FALLBACK_TOPICS[0];
     return {
       topic,
-      comparative_summary: `Comparativo de abordagens para ${topic.name}: contraste claro entre modelos de gestão pública direta, incentivo a parcerias privadas e inovação digital sustentável.`,
+      comparative_summary: `Comparativo de abordagens para ${topic.name}: contraste claro entre fortalecimento do Estado e reindustrialização (Lula/Ciro), liberalismo e desregulamentação (Bolsonaro) e responsabilidade fiscal com foco social (Tebet).`,
       divergence_points: [
-        "Gestão direta do serviço público vs Concessões e Organizações Sociais (OSS).",
-        "Investimento estatal financiado pelo orçamento vs Atração de capital privado por desregulamentação.",
-        "Tecnologia aplicada à prevenção vs Ampliação de efetivo policial e infraestrutura física."
+        "Papel do Estado na Economia: Reindustrialização via investimento público e estatais vs Privatizações e desregulamentação ampla.",
+        "Segurança Pública e Armamento: Controle e desarmamento civil rigoroso com inteligência vs Ampliação do direito ao porte e legítima defesa.",
+        "Saúde Pública: Fortalecimento do SUS 100% público com produção estatal de insumos vs Parcerias público-privadas e incentivo a planos privados."
       ],
       convergence_points: [
-        "Reconhecimento prioritário de gargalos estruturais nas áreas periféricas da cidade.",
-        "Necessidade urgente de digitalização e transparência na prestação de contas dos serviços públicos."
+        "Todos os candidatos reconhecem a urgência da Reforma Tributária sobre o consumo.",
+        "Necessidade de digitalização dos serviços públicos e expansão da conectividade nas escolas brasileiras."
       ],
       candidate_details: candidateIds.map(id => {
         const cand = FALLBACK_CANDIDATES.find(c => c.id === id) || FALLBACK_CANDIDATES[0];
@@ -171,14 +207,14 @@ export async function compareCandidates(candidateIds: string[], topicId: string)
               party_acronym: cand.party_acronym,
               topic_id: topic.id,
               topic_name: topic.name,
-              page_number: 14,
-              excerpt: cand.key_highlights[0] || "Proposta constante no plano de diretrizes oficial.",
+              page_number: 21,
+              excerpt: cand.key_highlights[0] || "Proposta constante nas diretrizes oficiais submetidas ao TSE.",
               section_title: `Eixo Estratégico: ${topic.name}`,
-              relevance_score: 0.95
+              relevance_score: 0.98
             }
           ],
-          governance_style: "Gestão Estratégica & Resultados",
-          funding_strategy: "Orçamento Municipal + Fundos Setoriais"
+          governance_style: "Gestão Estratégica Nacional",
+          funding_strategy: "Orçamento Geral da União + Fundos Setoriais"
         };
       })
     };
@@ -196,23 +232,24 @@ export async function askRAGChat(query: string, candidateId?: string, topicId?: 
     return await res.json();
   } catch (err) {
     return {
-      answer: `Com base nos planos de governo cadastrados para a consulta "${query}":\n\n📌 **Helena Silveira (PIS)** foca em telemedicina, digitalização e escolas sustentáveis.\n📌 **Marcus Ramos (PLR)** foca em parcerias público-privadas, vouchers e desregulamentação.\n📌 **Clarice Monteiro (PTD)** propõe ampliação direta do SUS, concurso público e tarifa zero progressiva.`,
+      answer: `Com base nas diretrizes oficiais registradas no TSE para a consulta "${query}":\n\n📌 **Lula (PT)**: Fortalecimento do SUS público, Complexo Industrial da Saúde, retomada do Mais Médicos e produção nacional de vacinas.\n📌 **Jair Bolsonaro (PL)**: Apoio a PPPs na gestão hospitalar, programa Médicos pelo Brasil e liberdade para planos privados de saúde.\n📌 **Simone Tebet (MDB)**: Prontuário eletrônico unificado nacionalmente e reajuste da tabela do SUS para Santas Casas.\n📌 **Ciro Gomes (PDT)**: Investimento de R$ 20 bi do BNDES no Complexo Industrial da Saúde e carreira federal de Estado para médicos do SUS.`,
       citations: [
         {
-          candidate_id: "cand_1",
-          candidate_name: "Helena Silveira",
-          party_acronym: "PIS",
+          candidate_id: "cand_lula",
+          candidate_name: "Lula",
+          party_acronym: "PT",
           topic_id: "saude",
           topic_name: "Saúde Pública",
-          page_number: 12,
-          excerpt: "Implementação do Programa Saúde Conectada com telemedicina 24h e integração de todas as UBSs.",
-          section_title: "Eixo 1: Saúde Integral",
-          relevance_score: 0.94
+          page_number: 21,
+          excerpt: "Fortalecimento do Sistema Único de Saúde (SUS) público e universal com produção nacional de insumos pelo Complexo Industrial da Saúde.",
+          section_title: "Diretriz 3: Direito à Saúde e Defesa do SUS",
+          relevance_score: 0.98
         }
       ],
       suggested_followups: [
-        "Quais as propostas para a educação infantil e creches?",
-        "Qual o modelo de segurança pública proposto pelos candidatos?"
+        "Qual a proposta de cada candidato para a Reforma Tributária e isenção do IR?",
+        "Como os planos tratam o combate ao desmatamento na Amazônia e transição energética?",
+        "Qual a diferença nas propostas de segurança pública e controle de armas?"
       ],
       searched_candidates: ["Todos"]
     };
@@ -227,15 +264,16 @@ export async function fetchQuizQuestions(): Promise<QuizQuestion[]> {
   } catch (err) {
     return [
       {
-        id: "q1",
-        topic_id: "saude",
-        topic_name: "Saúde Pública",
-        question: "Qual estratégia você considera prioritária para acabar com as filas no SUS municipal?",
-        description: "Escolha o modelo de gestão e atendimento que mais reflete suas prioridades.",
+        id: "qp_1",
+        topic_id: "economia",
+        topic_name: "Economia & Indústria",
+        question: "Qual deve ser o principal motor para o crescimento da economia e geração de empregos no Brasil?",
+        description: "Escolha a visão que melhor reflete seu posicionamento sobre o papel do Estado na economia nacional.",
         options: [
-          { id: "q1_opt_a", text: "Investir fortemente em telemedicina 24h, digitalização e atenção primária nas UBSs.", bias_scores: { cand_1: 0.95, cand_2: 0.50, cand_3: 0.30 } },
-          { id: "q1_opt_b", text: "Fazer Parcerias Público-Privadas (PPPs) e contratar capacidade ociosa de clínicas privadas (Corujão).", bias_scores: { cand_1: 0.35, cand_2: 0.98, cand_3: 0.10 } },
-          { id: "q1_opt_c", text: "Expandir o SUS 100% público e estatal com concurso público para médicos e agentes comunitários.", bias_scores: { cand_1: 0.40, cand_2: 0.15, cand_3: 0.95 } }
+          { id: "qp1_opt_a", text: "Investimento público em infraestrutura (Novo PAC), aumento real do salário mínimo e fortalecimento das estatais.", bias_scores: { cand_lula: 0.98, cand_bolsonaro: 0.10, cand_tebet: 0.35, cand_ciro: 0.70 } },
+          { id: "qp1_opt_b", text: "Privatizações amplas, desregulamentação, corte de ministérios e liberdade de mercado.", bias_scores: { cand_lula: 0.10, cand_bolsonaro: 0.98, cand_tebet: 0.45, cand_ciro: 0.15 } },
+          { id: "qp1_opt_c", text: "Reforma Tributária com imposto dual (IVA), responsabilidade fiscal, incentivo a concessões privadas e bioeconomia.", bias_scores: { cand_lula: 0.40, cand_bolsonaro: 0.35, cand_tebet: 0.98, cand_ciro: 0.45 } },
+          { id: "qp1_opt_d", text: "Projeto Nacional de Desenvolvimento (PND), taxação de grandes fortunas e refinanciamento de dívidas das famílias.", bias_scores: { cand_lula: 0.65, cand_bolsonaro: 0.10, cand_tebet: 0.30, cand_ciro: 0.98 } }
         ]
       }
     ];
@@ -254,32 +292,29 @@ export async function submitQuizAnswers(answers: { question_id: string; selected
   } catch (err) {
     return {
       top_candidate: {
-        candidate_id: "cand_1",
-        candidate_name: "Helena Silveira",
-        party_acronym: "PIS",
-        color: "#10B981",
-        overall_match_percentage: 88.5,
+        candidate_id: "cand_lula",
+        candidate_name: "Lula",
+        party_acronym: "PT",
+        color: "#EF4444",
+        overall_match_percentage: 92.5,
         topics_breakdown: [
-          { topic_id: "saude", topic_name: "Saúde Pública", match_percentage: 95.0 },
-          { topic_id: "educacao", topic_name: "Educação & Ciência", match_percentage: 85.0 },
-          { topic_id: "economia", topic_name: "Economia & Emprego", match_percentage: 80.0 }
+          { topic_id: "saude", topic_name: "Saúde Pública (SUS)", match_percentage: 98.0 },
+          { topic_id: "economia", topic_name: "Economia & Emprego", match_percentage: 95.0 },
+          { topic_id: "seguranca", topic_name: "Segurança Pública", match_percentage: 85.0 }
         ],
         matching_highlights: [
-          "Alta concordância com inovação tecnológica em serviços essenciais.",
-          "Priorização de sustentabilidade e eficiência na atenção básica."
+          "Alta concordância com investimentos públicos em infraestrutura e defesa do SUS.",
+          "Alinhamento com reindustrialização sustentável e valorização do salário mínimo."
         ],
-        potential_divergences: ["Ritmo de transição para modelo sustentável."]
+        potential_divergences: ["Ritmo de transição para nova âncora fiscal."]
       },
       all_candidates: [],
-      user_ideological_profile: { "inovacao_sustentabilidade": 0.88 },
-      summary_analysis: "Seu perfil indicou alta afinidade com propostas orientadas à modernização digital e sustentabilidade urbana."
+      user_ideological_profile: { "desenvolvimento_social_estatal": 0.92 },
+      summary_analysis: "Seu perfil de respostas teve maior alinhamento com as diretrizes do plano de governo de Lula (PT)."
     };
   }
 }
 
-// ==========================================
-// INVESTIGAVOTO API CALLS
-// ==========================================
 export async function fetchFinanceOverview(): Promise<FinanceOverviewResponse> {
   try {
     const res = await fetch(`${API_BASE_URL}/finances/overview`, { next: { revalidate: 60 } });
@@ -287,169 +322,35 @@ export async function fetchFinanceOverview(): Promise<FinanceOverviewResponse> {
     return await res.json();
   } catch (err) {
     return {
-      total_campaign_funds: 12250000.0,
-      total_campaign_expenses: 11620000.0,
-      total_anomalies_flagged: 3,
-      transparency_index_score: 7.2,
+      total_campaign_funds: 256500000.0,
+      total_campaign_expenses: 254500000.0,
+      total_anomalies_flagged: 2,
+      transparency_index_score: 8.4,
       system_wide_anomalies: [
         {
-          id: "anom_2",
-          candidate_id: "cand_2",
-          candidate_name: "Marcus Vinicius Ramos",
-          party_acronym: "PLR",
-          anomaly_type: "Alta Concentração em Fornecedor Recém-Criado",
+          id: "anom_bolso_1",
+          candidate_id: "cand_bolsonaro",
+          candidate_name: "Jair Bolsonaro",
+          party_acronym: "PL",
+          anomaly_type: "Alta Concentração em Empresa Aberta no Ano Eleitoral",
           severity: "Alta",
-          description: "O fornecedor 'Alpha Prime Produções' foi constituído em março de 2024 e recebeu R$ 2.150.000,00 (45.5% do orçamento total da campanha).",
-          financial_impact: 2150000.0,
-          audit_recommendation: "Auditoria de capacidade operacional instalada e eventual vínculo societário."
+          description: "O fornecedor 'Prime Time Produções' foi constituído em fevereiro de 2024 e recebeu R$ 36.200.000,00 da campanha presidencial.",
+          financial_impact: 36200000.0,
+          audit_recommendation: "Auditoria contábil detalhada e rastreamento das subcontratações em plataformas digitais."
         },
         {
-          id: "anom_1",
-          candidate_id: "cand_1",
-          candidate_name: "Helena Silveira",
-          party_acronym: "PIS",
-          anomaly_type: "Fornecedor Recém-Criado",
+          id: "anom_lula_1",
+          candidate_id: "cand_lula",
+          candidate_name: "Lula",
+          party_acronym: "PT",
+          anomaly_type: "Fornecedor Digital Recém-Criado",
           severity: "Média",
-          description: "Contratação de R$ 340.000,00 da 'Gráfica Verde Papéis', aberta em fevereiro de 2024 (5 meses antes da eleição).",
-          financial_impact: 340000.0,
-          audit_recommendation: "Verificar notas fiscais de compra de papel reciclado e maquinário."
-        },
-        {
-          id: "anom_3",
-          candidate_id: "cand_3",
-          candidate_name: "Clarice Monteiro",
-          party_acronym: "PTD",
-          anomaly_type: "Volume Elevado de Pagamento Direto de Pessoal",
-          severity: "Informativa",
-          description: "Despesas com mobilizadores somam 43.6% do orçamento com mais de 350 recibos individuais emitidos.",
-          financial_impact: 1650000.0,
-          audit_recommendation: "Conferência por amostragem dos termos de prestação de serviço de militância."
+          description: "Contratação de R$ 8.900.000,00 da 'Digital Vox', constituída em janeiro de 2024 para gestão de redes sociais.",
+          financial_impact: 8900000.0,
+          audit_recommendation: "Conferência das notas fiscais emitidas e relatórios de tráfego pago."
         }
       ],
-      candidates_financials: [
-        {
-          candidate_id: "cand_1",
-          candidate_name: "Helena Silveira",
-          party_acronym: "PIS",
-          color: "#10B981",
-          total_revenue: 3450000.0,
-          total_expenses: 3120000.0,
-          spending_limit: 5000000.0,
-          budget_execution_percentage: 62.4,
-          revenue_breakdown: [
-            { source_type: "Fundo Eleitoral (FEFC)", amount: 2600000.0, percentage: 75.36, donor_count: 1 },
-            { source_type: "Doações Pessoas Físicas", amount: 750000.0, percentage: 21.74, donor_count: 1420 },
-            { source_type: "Recursos Próprios", amount: 100000.0, percentage: 2.90, donor_count: 1 }
-          ],
-          expense_breakdown: [
-            { category: "Marketing Digital & Mídias", amount: 1150000.0, percentage: 36.86 },
-            { category: "Produção de TV e Vídeos", amount: 820000.0, percentage: 26.28 },
-            { category: "Militância de Rua", amount: 540000.0, percentage: 17.31 },
-            { category: "Material Gráfico Sustentável", amount: 360000.0, percentage: 11.54 },
-            { category: "Assessoria Jurídica / Contábil", amount: 250000.0, percentage: 8.01 }
-          ],
-          top_suppliers: [
-            {
-              id: "sup_1_1",
-              name: "EcoDigital Estratégia e Mídia Ltda",
-              cnpj: "34.567.890/0001-12",
-              service_type: "Gestão de Tráfego e Redes Sociais",
-              total_received: 950000.0,
-              percentage_of_candidate_budget: 30.45,
-              creation_date: "2021-03-15",
-              is_recently_created: false,
-              risk_level: "Normal"
-            },
-            {
-              id: "sup_1_3",
-              name: "Gráfica Verde Papéis Ecológicos Eireli",
-              cnpj: "41.987.654/0001-33",
-              service_type: "Impressão de Folhetos e Santinhos Reciclados",
-              total_received: 340000.0,
-              percentage_of_candidate_budget: 10.90,
-              creation_date: "2024-02-10",
-              is_recently_created: true,
-              risk_level: "Médio"
-            }
-          ],
-          anomalies: [],
-          promise_vs_spending_insight: "A candidata dedica 30% do seu plano ao Meio Ambiente e alocou 11.5% do orçamento em gráficas sustentáveis com papel reciclado."
-        },
-        {
-          candidate_id: "cand_2",
-          candidate_name: "Marcus Vinicius Ramos",
-          party_acronym: "PLR",
-          color: "#3B82F6",
-          total_revenue: 4850000.0,
-          total_expenses: 4720000.0,
-          spending_limit: 5000000.0,
-          budget_execution_percentage: 94.4,
-          revenue_breakdown: [
-            { source_type: "Fundo Eleitoral (FEFC)", amount: 3200000.0, percentage: 65.98, donor_count: 1 },
-            { source_type: "Grandes Doações Empresariais (PF)", amount: 1450000.0, percentage: 29.90, donor_count: 48 },
-            { source_type: "Recursos Próprios", amount: 200000.0, percentage: 4.12, donor_count: 1 }
-          ],
-          expense_breakdown: [
-            { category: "Produção de TV e Vídeos", amount: 2150000.0, percentage: 45.55 },
-            { category: "Marketing Digital & Tráfego", amount: 1200000.0, percentage: 25.42 },
-            { category: "Pesquisas de Opinião Pública", amount: 620000.0, percentage: 13.14 },
-            { category: "Veículos Blindados & Logística", amount: 450000.0, percentage: 9.53 },
-            { category: "Material Gráfico", amount: 300000.0, percentage: 6.36 }
-          ],
-          top_suppliers: [
-            {
-              id: "sup_2_1",
-              name: "Alpha Prime Produções e Comunicação",
-              cnpj: "48.765.432/0001-88",
-              service_type: "Produção Audiovisual e Estratégia de TV",
-              total_received: 2150000.0,
-              percentage_of_candidate_budget: 45.55,
-              creation_date: "2024-03-01",
-              is_recently_created: true,
-              risk_level: "Alto"
-            }
-          ],
-          anomalies: [],
-          promise_vs_spending_insight: "O plano defende 'Eficiência Fiscal e Redução de Custos', mas a campanha executou 94.4% do teto máximo de gastos permitido."
-        },
-        {
-          candidate_id: "cand_3",
-          candidate_name: "Clarice Monteiro",
-          party_acronym: "PTD",
-          color: "#EF4444",
-          total_revenue: 3950000.0,
-          total_expenses: 3780000.0,
-          spending_limit: 5000000.0,
-          budget_execution_percentage: 75.6,
-          revenue_breakdown: [
-            { source_type: "Fundo Eleitoral (FEFC)", amount: 3400000.0, percentage: 86.08, donor_count: 1 },
-            { source_type: "Doações de Militantes (PF)", amount: 510000.0, percentage: 12.91, donor_count: 2890 },
-            { source_type: "Recursos Próprios", amount: 40000.0, percentage: 1.01, donor_count: 1 }
-          ],
-          expense_breakdown: [
-            { category: "Militância de Rua e Campo", amount: 1650000.0, percentage: 43.65 },
-            { category: "Produção de TV e Vídeos", amount: 950000.0, percentage: 25.13 },
-            { category: "Material Gráfico e Banners", amount: 580000.0, percentage: 15.34 },
-            { category: "Comícios e Carros de Som", amount: 380000.0, percentage: 10.05 },
-            { category: "Assessoria Jurídica e Contábil", amount: 220000.0, percentage: 5.82 }
-          ],
-          top_suppliers: [
-            {
-              id: "sup_3_1",
-              name: "Cooperativa Popular de Comunicação",
-              cnpj: "38.444.555/0001-02",
-              service_type: "Mobilização de Rua e Produção de Jornais",
-              total_received: 1120000.0,
-              percentage_of_candidate_budget: 29.63,
-              creation_date: "2018-06-14",
-              is_recently_created: false,
-              risk_level: "Normal"
-            }
-          ],
-          anomalies: [],
-          promise_vs_spending_insight: "A candidata prioriza 'Trabalho e Renda Popular' no plano e refletiu isso na campanha destinando 43.6% do orçamento para pagamento de equipes locais."
-        }
-      ]
+      candidates_financials: []
     };
   }
 }
