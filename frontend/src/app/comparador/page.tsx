@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Candidate, Topic, CompareResponse } from "@/types";
 import { fetchCandidates, fetchTopics, compareCandidates } from "@/lib/api";
 import { CitationBadge } from "@/components/ui/CitationBadge";
-import { GitCompare, Sparkles, Check, AlertTriangle, CheckCircle2, RefreshCw } from "lucide-react";
+import { GitCompare, Sparkles, Check, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 function ComparadorContent() {
@@ -65,26 +65,26 @@ function ComparadorContent() {
     <div className="py-8 space-y-8">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold mb-3">
           <GitCompare className="w-3.5 h-3.5" />
-          <span>Matriz Temática Cruzada</span>
+          <span>MATRIZ TEMÁTICA CRUZADA</span>
         </div>
         <h1 className="text-3xl font-extrabold text-white tracking-tight">
           Comparador Lado a Lado de Propostas
         </h1>
-        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
-          Contraste as diretrizes e propostas oficiais dos candidatos por eixo temático, identificando convergências, divergências e citações com página oficial do TSE.
+        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+          Contraste as diretrizes oficiais dos candidatos por eixo temático, identificando convergências, divergências e citações com número de página oficial do TSE.
         </p>
       </div>
 
       {/* Selectors Bar */}
-      <div className="liquid-glass-card rounded-2xl p-6 space-y-6">
+      <div className="obsidian-card rounded-2xl p-6 space-y-6">
         {/* 1. Escolha de Candidatos */}
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-3">
+          <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono block mb-3">
             1. Selecione os Candidatos para Comparar:
           </label>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2.5">
             {candidates.map((cand) => {
               const isSelected = selectedCandIds.includes(cand.id);
               return (
@@ -92,17 +92,17 @@ function ComparadorContent() {
                   key={cand.id}
                   onClick={() => toggleCandidate(cand.id)}
                   className={cn(
-                    "flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-medium border transition-all duration-200",
+                    "flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border transition-all duration-200",
                     isSelected
-                      ? "bg-sky-500/20 text-white border-sky-500/40 shadow-sm"
-                      : "bg-white/[0.03] text-slate-400 border-white/[0.08] hover:border-white/[0.2] hover:text-slate-200"
+                      ? "bg-emerald-500/20 text-white border-emerald-500/40 shadow-sm"
+                      : "bg-white/[0.02] text-slate-400 border-white/[0.06] hover:border-white/[0.15] hover:text-slate-200"
                   )}
                 >
                   <div
-                    className="w-3.5 h-3.5 rounded-full flex items-center justify-center text-[9px] font-bold text-white"
+                    className="w-3 h-3 rounded-full flex items-center justify-center text-[8px] font-bold text-white shrink-0"
                     style={{ backgroundColor: cand.color }}
                   >
-                    {isSelected && <Check className="w-2.5 h-2.5" />}
+                    {isSelected && <Check className="w-2 h-2" />}
                   </div>
                   <span>{cand.ballot_name}</span>
                   <span className="font-mono text-[10px] text-slate-400">({cand.party_acronym})</span>
@@ -114,7 +114,7 @@ function ComparadorContent() {
 
         {/* 2. Escolha do Tema */}
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-3">
+          <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono block mb-3">
             2. Selecione o Eixo Temático:
           </label>
           <div className="flex flex-wrap gap-2">
@@ -127,8 +127,8 @@ function ComparadorContent() {
                   className={cn(
                     "px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-200",
                     isSelected
-                      ? "bg-sky-500 text-slate-950 border-sky-400 font-bold shadow-md shadow-sky-500/20"
-                      : "bg-white/[0.03] text-slate-300 border-white/[0.08] hover:border-white/[0.2]"
+                      ? "bg-emerald-500 text-slate-950 border-emerald-400 font-bold shadow-md shadow-emerald-500/20"
+                      : "bg-white/[0.02] text-slate-300 border-white/[0.06] hover:border-white/[0.15]"
                   )}
                 >
                   {t.name}
@@ -141,17 +141,17 @@ function ComparadorContent() {
 
       {/* Comparison Results */}
       {loading ? (
-        <div className="liquid-glass-card rounded-2xl p-12 text-center">
-          <Sparkles className="w-8 h-8 text-sky-400 animate-spin mx-auto mb-3" />
+        <div className="obsidian-card rounded-2xl p-12 text-center">
+          <Sparkles className="w-8 h-8 text-emerald-400 animate-spin mx-auto mb-3" />
           <p className="text-xs text-slate-300 font-medium">Analisando propostas nos planos de governo oficiais...</p>
         </div>
       ) : comparison ? (
         <div className="space-y-6">
           {/* Executive Summary Card */}
-          <div className="liquid-glass-card rounded-2xl p-6 border-l-4 border-sky-500">
+          <div className="obsidian-card rounded-2xl p-6 border-l-4 border-emerald-500">
             <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="w-4 h-4 text-sky-400" />
-              <h3 className="text-sm font-bold text-white">Síntese Comparativa da IA</h3>
+              <Sparkles className="w-4 h-4 text-emerald-400" />
+              <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wide">Síntese Comparativa da IA</h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
               {comparison.comparative_summary}
@@ -159,11 +159,11 @@ function ComparadorContent() {
           </div>
 
           {/* Side by Side Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {comparison.candidate_details.map((cand) => (
               <div
                 key={cand.candidate_id}
-                className="liquid-glass-card rounded-2xl p-6 flex flex-col justify-between border-t-4"
+                className="obsidian-card rounded-2xl p-6 flex flex-col justify-between border-t-4"
                 style={{ borderTopColor: cand.color }}
               >
                 <div>
@@ -177,19 +177,19 @@ function ComparadorContent() {
 
                   {/* Governance & Funding Badges */}
                   <div className="space-y-2 mb-4">
-                    <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px]">
-                      <span className="text-slate-400 block font-semibold">Modelo de Gestão:</span>
-                      <span className="text-sky-300 font-medium">{cand.governance_style}</span>
+                    <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] text-[11px]">
+                      <span className="text-slate-400 block font-semibold font-mono text-[10px]">MODELO DE GESTÃO:</span>
+                      <span className="text-emerald-300 font-medium">{cand.governance_style}</span>
                     </div>
-                    <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px]">
-                      <span className="text-slate-400 block font-semibold">Fonte de Recursos:</span>
+                    <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] text-[11px]">
+                      <span className="text-slate-400 block font-semibold font-mono text-[10px]">FONTE DE RECURSOS:</span>
                       <span className="text-slate-200">{cand.funding_strategy}</span>
                     </div>
                   </div>
 
                   {/* Key Proposals */}
                   <div className="space-y-3 mb-6">
-                    <h5 className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                    <h5 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-mono">
                       Propostas Registradas:
                     </h5>
                     {cand.key_proposals.map((prop, i) => (
@@ -202,7 +202,7 @@ function ComparadorContent() {
 
                 {/* Citations Footer */}
                 <div className="pt-4 border-t border-white/[0.06]">
-                  <span className="text-[10px] text-slate-400 block mb-2 font-mono">Citações no Documento:</span>
+                  <span className="text-[10px] text-slate-400 block mb-2 font-mono uppercase">Citações Documentais:</span>
                   <div className="flex flex-wrap gap-2">
                     {cand.quotes_with_citations.map((citation, i) => (
                       <CitationBadge key={i} citation={citation} />
@@ -216,10 +216,10 @@ function ComparadorContent() {
           {/* Divergences & Convergences */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Divergence */}
-            <div className="liquid-glass-card rounded-2xl p-6 border-l-4 border-amber-500">
+            <div className="obsidian-card rounded-2xl p-6 border-l-4 border-amber-500">
               <div className="flex items-center gap-2 mb-4">
                 <AlertTriangle className="w-4 h-4 text-amber-400" />
-                <h4 className="text-sm font-bold text-white">Principais Divergências</h4>
+                <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wide">Principais Divergências</h4>
               </div>
               <ul className="space-y-2.5">
                 {comparison.divergence_points.map((pt, i) => (
@@ -232,10 +232,10 @@ function ComparadorContent() {
             </div>
 
             {/* Convergence */}
-            <div className="liquid-glass-card rounded-2xl p-6 border-l-4 border-emerald-500">
+            <div className="obsidian-card rounded-2xl p-6 border-l-4 border-emerald-500">
               <div className="flex items-center gap-2 mb-4">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <h4 className="text-sm font-bold text-white">Pontos de Convergência</h4>
+                <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wide">Pontos de Convergência</h4>
               </div>
               <ul className="space-y-2.5">
                 {comparison.convergence_points.map((pt, i) => (
@@ -256,7 +256,7 @@ function ComparadorContent() {
 export default function ComparadorPage() {
   return (
     <Suspense fallback={
-      <div className="py-12 text-center text-slate-400 text-xs">
+      <div className="py-12 text-center text-slate-400 text-xs font-mono">
         Carregando comparador de propostas...
       </div>
     }>

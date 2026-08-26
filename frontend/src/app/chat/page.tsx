@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { ChatMessage, Candidate, Topic } from "@/types";
 import { askRAGChat, fetchCandidates, fetchTopics } from "@/lib/api";
 import { CitationBadge } from "@/components/ui/CitationBadge";
-import { Bot, User, Send, Sparkles, BookOpen, HelpCircle } from "lucide-react";
+import { Bot, User, Send, Sparkles, BookOpen, HelpCircle, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const INITIAL_SUGGESTIONS = [
@@ -78,9 +78,9 @@ export default function ChatPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-2">
-            <Bot className="w-3.5 h-3.5" />
-            <span>Motor RAG com Citações Auditáveis</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold mb-2">
+            <Terminal className="w-3.5 h-3.5" />
+            <span>TERMINAL RAG COM CITAÇÕES AUDITÁVEIS</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Chat Cívico com IA
@@ -89,15 +89,15 @@ export default function ChatPage() {
 
         {/* Candidate Filter Dropdown */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-slate-400 font-medium">Filtrar por:</span>
+          <span className="text-xs text-slate-400 font-mono">Filtro:</span>
           <select
             value={selectedCandidate}
             onChange={(e) => setSelectedCandidate(e.target.value)}
-            className="bg-white/[0.04] text-slate-200 border border-white/[0.1] rounded-xl px-3 py-1.5 text-xs font-medium focus:outline-none focus:border-sky-500"
+            className="bg-[#0D111A] text-slate-200 border border-white/[0.1] rounded-xl px-3 py-1.5 text-xs font-mono focus:outline-none focus:border-emerald-500"
           >
-            <option value="all" className="bg-slate-900 text-white">Todos os Candidatos</option>
+            <option value="all">Todos os Candidatos</option>
             {candidates.map((c) => (
-              <option key={c.id} value={c.id} className="bg-slate-900 text-white">
+              <option key={c.id} value={c.id}>
                 {c.ballot_name} ({c.party_acronym})
               </option>
             ))}
@@ -106,7 +106,7 @@ export default function ChatPage() {
       </div>
 
       {/* Messages Box */}
-      <div className="liquid-glass-card rounded-3xl p-4 sm:p-6 min-h-[480px] max-h-[600px] overflow-y-auto space-y-6">
+      <div className="obsidian-card rounded-3xl p-4 sm:p-6 min-h-[480px] max-h-[600px] overflow-y-auto space-y-6">
         {messages.map((msg) => {
           const isUser = msg.role === "user";
           return (
@@ -117,7 +117,7 @@ export default function ChatPage() {
               <div
                 className={cn(
                   "w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-xs font-bold shadow-md",
-                  isUser ? "bg-sky-500 text-slate-950" : "bg-white/[0.08] text-sky-400 border border-white/[0.08]"
+                  isUser ? "bg-emerald-500 text-slate-950" : "bg-white/[0.05] text-emerald-400 border border-white/[0.08]"
                 )}
               >
                 {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
@@ -128,8 +128,8 @@ export default function ChatPage() {
                   className={cn(
                     "p-4 rounded-2xl text-xs sm:text-sm leading-relaxed",
                     isUser
-                      ? "bg-sky-500 text-slate-950 font-medium shadow-md"
-                      : "liquid-glass-card border border-white/[0.06] text-slate-200"
+                      ? "bg-emerald-500 text-slate-950 font-semibold shadow-md"
+                      : "bg-[#0C1019] border border-white/[0.06] text-slate-200"
                   )}
                 >
                   <p className="whitespace-pre-line">{msg.content}</p>
@@ -137,9 +137,9 @@ export default function ChatPage() {
 
                 {/* Citations Attached */}
                 {msg.citations && msg.citations.length > 0 && (
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2">
-                    <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-400">
-                      <BookOpen className="w-3.5 h-3.5 text-sky-400" />
+                  <div className="p-3 rounded-xl bg-black/40 border border-white/[0.06] space-y-2">
+                    <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-400 font-mono">
+                      <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
                       <span>Citações Oficiais Auditáveis:</span>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -153,7 +153,7 @@ export default function ChatPage() {
                 {/* Suggested Followups */}
                 {msg.suggested_followups && msg.suggested_followups.length > 0 && (
                   <div className="space-y-1.5 pt-1">
-                    <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">
+                    <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider font-mono block">
                       Perguntas Relacionadas:
                     </span>
                     <div className="flex flex-wrap gap-2">
@@ -161,7 +161,7 @@ export default function ChatPage() {
                         <button
                           key={i}
                           onClick={() => handleSend(sug)}
-                          className="text-[11px] text-sky-300 hover:text-sky-200 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 px-2.5 py-1 rounded-lg transition-all text-left"
+                          className="text-[11px] text-emerald-300 hover:text-emerald-200 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 px-2.5 py-1 rounded-lg transition-all text-left"
                         >
                           {sug}
                         </button>
@@ -176,10 +176,10 @@ export default function ChatPage() {
 
         {loading && (
           <div className="flex items-center gap-3 text-xs text-slate-400">
-            <div className="w-8 h-8 rounded-xl bg-white/[0.08] flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-sky-400 animate-spin" />
+            <div className="w-8 h-8 rounded-xl bg-white/[0.05] flex items-center justify-center">
+              <Sparkles className="w-4 h-4 text-emerald-400 animate-spin" />
             </div>
-            <span>Consultando índices vetoriais dos planos de governo do TSE...</span>
+            <span className="font-mono">Consultando índices vetoriais do TSE...</span>
           </div>
         )}
 
@@ -189,16 +189,16 @@ export default function ChatPage() {
       {/* Suggested Initial Prompts */}
       {messages.length === 1 && (
         <div className="space-y-2">
-          <span className="text-xs text-slate-400 font-semibold flex items-center gap-1.5">
-            <HelpCircle className="w-3.5 h-3.5 text-sky-400" />
-            Sugestões para começar:
+          <span className="text-xs text-slate-400 font-semibold flex items-center gap-1.5 font-mono">
+            <HelpCircle className="w-3.5 h-3.5 text-emerald-400" />
+            Sugestões de consulta:
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {INITIAL_SUGGESTIONS.map((sug, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(sug)}
-                className="text-xs text-slate-300 text-left p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-500/30 hover:bg-sky-500/5 transition-colors"
+                className="text-xs text-slate-300 text-left p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-colors"
               >
                 {sug}
               </button>
@@ -220,12 +220,12 @@ export default function ChatPage() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Pergunte sobre qualquer proposta (ex: Reforma Tributária, SUS, Segurança)..."
-          className="flex-1 px-4 py-3 rounded-2xl bg-white/[0.04] border border-white/[0.08] text-white text-xs sm:text-sm placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors"
+          className="flex-1 px-4 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-white text-xs sm:text-sm placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
         />
         <button
           type="submit"
           disabled={loading || !input.trim()}
-          className="px-5 py-3 rounded-2xl bg-sky-500 hover:bg-sky-400 disabled:opacity-50 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-lg shadow-sky-500/20"
+          className="px-5 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-lg shadow-emerald-500/20"
         >
           <Send className="w-4 h-4" />
           <span className="hidden sm:inline">Enviar</span>
