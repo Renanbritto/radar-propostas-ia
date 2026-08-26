@@ -18,121 +18,122 @@ const FALLBACK_CANDIDATES: Candidate[] = [
     ballot_number: 13,
     party: "Partido dos Trabalhadores",
     party_acronym: "PT",
-    coalition: "Federação Brasil da Esperança (PT/PCdoB/PV) / PSB / Solidariedade / Federação PSOL-Rede / Avante / Agir / PROS",
+    coalition: "Brasil Pronto Pra Mais (PT / PCdoB / PV / PSB / Solidariedade)",
     role: "Presidente da República",
     color: "#EF4444",
-    summary: "Plano centrado em reconstrução social, fortalecimento do SUS, reindustrialização nacional verde, aumento real do salário mínimo, ampliação de universidades públicas e transição ecológica com a Petrobras.",
-    total_pages: 74,
-    total_proposals: 192,
-    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001607829",
+    summary: "Candidato à reeleição com plano de continuidade das políticas do terceiro mandato: fortalecimento do SUS e do Complexo Industrial da Saúde, Novo PAC de infraestrutura, isenção do IR até R$ 5.000, transição energética e Desmatamento Zero na Amazônia.",
+    total_pages: 78,
+    total_proposals: 196,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026",
     theme_distribution: {
-      saude: 35,
-      educacao: 38,
-      economia: 32,
-      seguranca: 20,
-      meio_ambiente: 28,
-      tecnologia: 19,
-      social: 45,
-      infraestrutura: 36
+      saude: 36, educacao: 40, economia: 30, seguranca: 22,
+      meio_ambiente: 30, tecnologia: 18, social: 48, infraestrutura: 38
     },
     key_highlights: [
-      "Fortalecimento do SUS 100% público com o Complexo Econômico e Industrial da Saúde",
-      "Isenção do Imposto de Renda para salários de até R$ 5.000,00 e reforma tributária progressiva",
-      "Meta de Desmatamento Zero na Amazônia e transição para matriz energética de baixo carbono",
-      "Novo Plano de Aceleração do Crescimento (PAC) para ferrovias, saneamento e habitação (Minha Casa Minha Vida)"
+      "Consolidação do Novo PAC com R$ 1,7 trilhão em obras de saneamento, ferrovias e habitação",
+      "Isenção do Imposto de Renda para salários de até R$ 5.000 e taxação de super-ricos",
+      "Desmatamento Zero na Amazônia e metas de transição energética com créditos de carbono",
+      "Ampliação do Minha Casa Minha Vida e universalização do acesso à água potável"
     ]
   },
   {
-    id: "cand_bolsonaro",
-    name: "Jair Messias Bolsonaro",
-    ballot_name: "Jair Bolsonaro",
+    id: "cand_flavio",
+    name: "Flavio Nantes Bolsonaro",
+    ballot_name: "Flavio Bolsonaro",
     ballot_number: 22,
     party: "Partido Liberal",
     party_acronym: "PL",
-    coalition: "Pelo Bem do Brasil (PL / PP / Republicanos)",
+    coalition: "Coligação Pelo Bem do Brasil (PL / PP / Republicanos)",
     role: "Presidente da República",
     color: "#3B82F6",
-    summary: "Plano focado em liberdade econômica, desregulamentação, privatizações de estatais, fortalecimento do agronegócio exportador, endurecimento penal e defesa das fronteiras nacionais.",
-    total_pages: 68,
-    total_proposals: 174,
-    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001618036",
+    summary: "Plano focado em liberdade econômica, privatizações de estatais, desregulamentação ampla, fortalecimento do agronegócio exportador, redução de ministérios, endurecimento penal e defesa das fronteiras com as Forças Armadas.",
+    total_pages: 62,
+    total_proposals: 168,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026",
     theme_distribution: {
-      saude: 24,
-      educacao: 22,
-      economia: 48,
-      seguranca: 42,
-      meio_ambiente: 16,
-      tecnologia: 22,
-      social: 18,
-      infraestrutura: 35
+      saude: 22, educacao: 20, economia: 48, seguranca: 44,
+      meio_ambiente: 14, tecnologia: 22, social: 16, infraestrutura: 34
     },
     key_highlights: [
-      "Desregulamentação ampla, corte de impostos federais (IPI, PIS/Cofins) e estímulo ao livre mercado",
-      "Concessões e privatizações de ferrovias, rodovias, portos e estatais estratégicas",
-      "Endurecimento do Código Penal com foco no combate ao crime organizado e segurança nas fronteiras",
-      "Programa Conta-Saúde e apoio a Parcerias Público-Privadas para eficiência hospitalar"
+      "Reforma Administrativa com redução drástica de ministérios e cargos comissionados",
+      "Privatização de estatais e concessões de ferrovias, portos e aeroportos",
+      "Endurecimento do Código Penal e garantia do direito à legítima defesa armada",
+      "Desoneração permanente de combustíveis e incentivos fiscais ao agronegócio exportador"
     ]
   },
   {
-    id: "cand_tebet",
-    name: "Simone Nassar Tebet",
-    ballot_name: "Simone Tebet",
-    ballot_number: 15,
-    party: "Movimento Democrático Brasileiro",
-    party_acronym: "MDB",
-    coalition: "Brasil Para Todos (MDB / Federação PSDB-Cidadania / Podemos)",
+    id: "cand_renan",
+    name: "Renan Antonio Ferreira dos Santos",
+    ballot_name: "Renan Santos",
+    ballot_number: 14,
+    party: "Missão",
+    party_acronym: "MISSÃO",
+    coalition: "Missão (MISSÃO)",
+    role: "Presidente da República",
+    color: "#8B5CF6",
+    summary: "Plano pautado em valores conservadores, combate à corrupção sistêmica, revisão de pautas no ensino público, fortalecimento da família como núcleo social e defesa da soberania nacional.",
+    total_pages: 48,
+    total_proposals: 120,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026",
+    theme_distribution: {
+      saude: 18, educacao: 24, economia: 26, seguranca: 30,
+      meio_ambiente: 10, tecnologia: 14, social: 20, infraestrutura: 18
+    },
+    key_highlights: [
+      "Combate à corrupção com endurecimento de penas para crimes contra o erário",
+      "Revisão curricular no ensino público com foco em valores cívicos e patrióticos",
+      "Fortalecimento da família como base da política social e proteção à infância",
+      "Soberania nacional e renegociação de acordos internacionais desfavoráveis ao Brasil"
+    ]
+  },
+  {
+    id: "cand_caiado",
+    name: "Ronaldo Ramos Caiado",
+    ballot_name: "Ronaldo Caiado",
+    ballot_number: 55,
+    party: "Partido Social Democrático",
+    party_acronym: "PSD",
+    coalition: "Coligação Brasil de Resultados (PSD / MDB / União Brasil / Podemos)",
     role: "Presidente da República",
     color: "#F59E0B",
-    summary: "Plano com ênfase em responsabilidade fiscal aliada ao investimento social, revolução no ensino básico e técnico, governo digital e transformação do Brasil em polo global de sustentabilidade e bioeconomia.",
-    total_pages: 62,
-    total_proposals: 165,
-    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001607833",
+    summary: "Plano de centro-direita com ênfase em gestão eficiente e resultados, experiência como governador de Goiás, equilíbrio fiscal rigoroso, parcerias público-privadas e digitalização dos serviços públicos.",
+    total_pages: 70,
+    total_proposals: 178,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026",
     theme_distribution: {
-      saude: 30,
-      educacao: 36,
-      economia: 34,
-      seguranca: 25,
-      meio_ambiente: 35,
-      tecnologia: 28,
-      social: 26,
-      infraestrutura: 30
+      saude: 30, educacao: 32, economia: 40, seguranca: 32,
+      meio_ambiente: 24, tecnologia: 26, social: 24, infraestrutura: 36
     },
     key_highlights: [
-      "Poupança Jovem para incentivar conclusão do Ensino Médio Técnico em tempo integral",
-      "Reforma Tributária com simplificação de impostos e tributação neutra sobre consumo",
-      "Prontuário Eletrônico Nacional Único e telemedicina integrada em todo o SUS",
-      "Foco em descarbonização da indústria e mercado nacional de créditos de carbono"
+      "Modelo Goiás para o Brasil: gestão por resultados com metas auditáveis por trimestre",
+      "Reforma Tributária com simplificação de impostos e incentivos fiscais regionalizados",
+      "PPPs na saúde com metas de atendimento e prontuário digital integrado nacionalmente",
+      "Programa de Concessões em rodovias e ferrovias com investimento privado de R$ 200 bilhões"
     ]
   },
   {
-    id: "cand_ciro",
-    name: "Ciro Ferreira Gomes",
-    ballot_name: "Ciro Gomes",
-    ballot_number: 12,
-    party: "Partido Democrático Trabalhista",
-    party_acronym: "PDT",
-    coalition: "Partido Democrático Trabalhista (PDT)",
+    id: "cand_zema",
+    name: "Romeu Zema Neto",
+    ballot_name: "Zema",
+    ballot_number: 30,
+    party: "Partido Novo",
+    party_acronym: "NOVO",
+    coalition: "Coligação Brasil Eficiente (NOVO / Cidadania)",
     role: "Presidente da República",
-    color: "#10B981",
-    summary: "Projeto Nacional de Desenvolvimento (PND) com ênfase na taxação de grandes fortunas, refinanciamento das dívidas de famílias no SPC/Serasa, industrialização de alta tecnologia e escola pública integral no modelo cearense.",
-    total_pages: 80,
-    total_proposals: 204,
-    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/rest/v1/proposta/governo/2022/BR/280001607830",
+    color: "#F97316",
+    summary: "Plano de gestão empresarial aplicada ao governo: austeridade fiscal, privatizações, desburocratização, estado mínimo eficiente, corte de privilégios e digitalização total dos serviços públicos.",
+    total_pages: 56,
+    total_proposals: 142,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026",
     theme_distribution: {
-      saude: 32,
-      educacao: 44,
-      economia: 46,
-      seguranca: 26,
-      meio_ambiente: 30,
-      tecnologia: 32,
-      social: 38,
-      infraestrutura: 36
+      saude: 22, educacao: 26, economia: 46, seguranca: 28,
+      meio_ambiente: 18, tecnologia: 30, social: 14, infraestrutura: 30
     },
     key_highlights: [
-      "Projeto Nacional de Desenvolvimento (PND) com 4 complexos industriais estratégicos (Saúde, Defesa, TI, Petróleo)",
-      "Programa 'Nome Limpo' com refinanciamento pelo Banco do Brasil e Caixa das dívidas de 66 milhões de brasileiros",
-      "Universalização do Ensino Fundamental e Médio em Tempo Integral baseado na experiência pedagógica do Ceará",
-      "Criação do Imposto sobre Grandes Fortunas (alíquota de 0,5% a 1%) para financiar renda mínima básica"
+      "Modelo Minas Gerais: estado saneado financeiramente com superávit e nota de crédito A",
+      "Privatização de estatais federais não estratégicas e fim de cabides políticos",
+      "Corte de 30% dos cargos comissionados e eliminação de privilégios do funcionalismo",
+      "Governo 100% digital com inteligência artificial para atendimento ao cidadão"
     ]
   }
 ];
@@ -181,11 +182,11 @@ export async function compareCandidates(candidateIds: string[], topicId: string)
     const topic = FALLBACK_TOPICS.find(t => t.id === topicId) || FALLBACK_TOPICS[0];
     return {
       topic,
-      comparative_summary: `Comparativo de abordagens para ${topic.name}: contraste claro entre fortalecimento do Estado e reindustrialização (Lula/Ciro), liberalismo e desregulamentação (Bolsonaro) e responsabilidade fiscal com foco social (Tebet).`,
+      comparative_summary: `Comparativo de abordagens para ${topic.name}: contraste entre fortalecimento do Estado e investimentos públicos (Lula), liberalismo e privatizações (Flavio Bolsonaro/Zema), gestão por resultados (Caiado) e combate à corrupção (Renan Santos).`,
       divergence_points: [
-        "Papel do Estado na Economia: Reindustrialização via investimento público e estatais vs Privatizações e desregulamentação ampla.",
+        "Papel do Estado na Economia: Reindustrialização via investimento público vs Privatizações e desregulamentação ampla.",
         "Segurança Pública e Armamento: Controle e desarmamento civil rigoroso com inteligência vs Ampliação do direito ao porte e legítima defesa.",
-        "Saúde Pública: Fortalecimento do SUS 100% público com produção estatal de insumos vs Parcerias público-privadas e incentivo a planos privados."
+        "Saúde Pública: Fortalecimento do SUS 100% público com produção estatal vs Parcerias público-privadas e incentivo a planos privados."
       ],
       convergence_points: [
         "Todos os candidatos reconhecem a urgência da Reforma Tributária sobre o consumo.",
@@ -232,7 +233,7 @@ export async function askRAGChat(query: string, candidateId?: string, topicId?: 
     return await res.json();
   } catch (err) {
     return {
-      answer: `Com base nas diretrizes oficiais registradas no TSE para a consulta "${query}":\n\n📌 **Lula (PT)**: Fortalecimento do SUS público, Complexo Industrial da Saúde, retomada do Mais Médicos e produção nacional de vacinas.\n📌 **Jair Bolsonaro (PL)**: Apoio a PPPs na gestão hospitalar, programa Médicos pelo Brasil e liberdade para planos privados de saúde.\n📌 **Simone Tebet (MDB)**: Prontuário eletrônico unificado nacionalmente e reajuste da tabela do SUS para Santas Casas.\n📌 **Ciro Gomes (PDT)**: Investimento de R$ 20 bi do BNDES no Complexo Industrial da Saúde e carreira federal de Estado para médicos do SUS.`,
+      answer: `Com base nas diretrizes oficiais registradas no TSE para a consulta "${query}":\n\n🔴 **Lula (PT)**: Fortalecimento do SUS público, Complexo Industrial da Saúde e Mais Médicos.\n🔵 **Flavio Bolsonaro (PL)**: PPPs na gestão hospitalar, telemedicina e liberdade para planos privados.\n🟣 **Renan Santos (MISSÃO)**: Prioridade materno-infantil, reajuste da tabela do SUS e combate às drogas.\n🟡 **Ronaldo Caiado (PSD)**: Prontuário eletrônico nacional, diagnóstico rápido e consórcios intermunicipais.\n🟠 **Zema (NOVO)**: Gestão do SUS por Organizações Sociais, licitação eletrônica e IA para triagem.`,
       citations: [
         {
           candidate_id: "cand_lula",
@@ -240,9 +241,9 @@ export async function askRAGChat(query: string, candidateId?: string, topicId?: 
           party_acronym: "PT",
           topic_id: "saude",
           topic_name: "Saúde Pública",
-          page_number: 21,
-          excerpt: "Fortalecimento do Sistema Único de Saúde (SUS) público e universal com produção nacional de insumos pelo Complexo Industrial da Saúde.",
-          section_title: "Diretriz 3: Direito à Saúde e Defesa do SUS",
+          page_number: 24,
+          excerpt: "Consolidação do Complexo Econômico e Industrial da Saúde para produção nacional de 80% dos insumos e vacinas consumidos pelo SUS.",
+          section_title: "Eixo 3: SUS Soberano e Acesso Universal à Saúde",
           relevance_score: 0.98
         }
       ],
@@ -266,14 +267,14 @@ export async function fetchQuizQuestions(): Promise<QuizQuestion[]> {
       {
         id: "qp_1",
         topic_id: "economia",
-        topic_name: "Economia & Indústria",
+        topic_name: "Economia & Modelo de Estado",
         question: "Qual deve ser o principal motor para o crescimento da economia e geração de empregos no Brasil?",
         description: "Escolha a visão que melhor reflete seu posicionamento sobre o papel do Estado na economia nacional.",
         options: [
-          { id: "qp1_opt_a", text: "Investimento público em infraestrutura (Novo PAC), aumento real do salário mínimo e fortalecimento das estatais.", bias_scores: { cand_lula: 0.98, cand_bolsonaro: 0.10, cand_tebet: 0.35, cand_ciro: 0.70 } },
-          { id: "qp1_opt_b", text: "Privatizações amplas, desregulamentação, corte de ministérios e liberdade de mercado.", bias_scores: { cand_lula: 0.10, cand_bolsonaro: 0.98, cand_tebet: 0.45, cand_ciro: 0.15 } },
-          { id: "qp1_opt_c", text: "Reforma Tributária com imposto dual (IVA), responsabilidade fiscal, incentivo a concessões privadas e bioeconomia.", bias_scores: { cand_lula: 0.40, cand_bolsonaro: 0.35, cand_tebet: 0.98, cand_ciro: 0.45 } },
-          { id: "qp1_opt_d", text: "Projeto Nacional de Desenvolvimento (PND), taxação de grandes fortunas e refinanciamento de dívidas das famílias.", bias_scores: { cand_lula: 0.65, cand_bolsonaro: 0.10, cand_tebet: 0.30, cand_ciro: 0.98 } }
+          { id: "qp1_opt_a", text: "Investimento público em infraestrutura (Novo PAC), aumento real do salário mínimo e fortalecimento das estatais.", bias_scores: { cand_lula: 0.98, cand_flavio: 0.10, cand_renan: 0.30, cand_caiado: 0.35, cand_zema: 0.10 } },
+          { id: "qp1_opt_b", text: "Privatizações amplas, desregulamentação, corte de ministérios e liberdade de mercado.", bias_scores: { cand_lula: 0.10, cand_flavio: 0.95, cand_renan: 0.30, cand_caiado: 0.45, cand_zema: 0.98 } },
+          { id: "qp1_opt_c", text: "Estado eficiente com PPPs, concessões, responsabilidade fiscal e incentivos regionais.", bias_scores: { cand_lula: 0.35, cand_flavio: 0.40, cand_renan: 0.30, cand_caiado: 0.98, cand_zema: 0.65 } },
+          { id: "qp1_opt_d", text: "Combate à corrupção como motor da economia, com microcrédito comunitário.", bias_scores: { cand_lula: 0.25, cand_flavio: 0.30, cand_renan: 0.98, cand_caiado: 0.35, cand_zema: 0.30 } }
         ]
       }
     ];
@@ -322,34 +323,11 @@ export async function fetchFinanceOverview(): Promise<FinanceOverviewResponse> {
     return await res.json();
   } catch (err) {
     return {
-      total_campaign_funds: 256500000.0,
-      total_campaign_expenses: 254500000.0,
-      total_anomalies_flagged: 2,
-      transparency_index_score: 8.4,
-      system_wide_anomalies: [
-        {
-          id: "anom_bolso_1",
-          candidate_id: "cand_bolsonaro",
-          candidate_name: "Jair Bolsonaro",
-          party_acronym: "PL",
-          anomaly_type: "Alta Concentração em Empresa Aberta no Ano Eleitoral",
-          severity: "Alta",
-          description: "O fornecedor 'Prime Time Produções' foi constituído em fevereiro de 2024 e recebeu R$ 36.200.000,00 da campanha presidencial.",
-          financial_impact: 36200000.0,
-          audit_recommendation: "Auditoria contábil detalhada e rastreamento das subcontratações em plataformas digitais."
-        },
-        {
-          id: "anom_lula_1",
-          candidate_id: "cand_lula",
-          candidate_name: "Lula",
-          party_acronym: "PT",
-          anomaly_type: "Fornecedor Digital Recém-Criado",
-          severity: "Média",
-          description: "Contratação de R$ 8.900.000,00 da 'Digital Vox', constituída em janeiro de 2024 para gestão de redes sociais.",
-          financial_impact: 8900000.0,
-          audit_recommendation: "Conferência das notas fiscais emitidas e relatórios de tráfego pago."
-        }
-      ],
+      total_campaign_funds: 858000000.0,
+      total_campaign_expenses: 568000000.0,
+      total_anomalies_flagged: 0,
+      transparency_index_score: 8.6,
+      system_wide_anomalies: [],
       candidates_financials: []
     };
   }
