@@ -26,9 +26,10 @@ def test_get_candidates():
     candidates = response.json()
     assert len(candidates) >= 4
     assert any(c["ballot_name"] == "Lula" for c in candidates)
-    assert any(c["ballot_name"] == "Jair Bolsonaro" for c in candidates)
-    assert any(c["ballot_name"] == "Simone Tebet" for c in candidates)
-    assert any(c["ballot_name"] == "Ciro Gomes" for c in candidates)
+    assert any(c["ballot_name"] == "Flavio Bolsonaro" for c in candidates)
+    assert any(c["ballot_name"] == "Renan Santos" for c in candidates)
+    assert any(c["ballot_name"] == "Ronaldo Caiado" for c in candidates)
+    assert any(c["ballot_name"] == "Zema" for c in candidates)
 
 def test_get_topics():
     response = client.get("/api/v1/candidates/topics")
@@ -41,7 +42,7 @@ def test_get_topics():
 
 def test_compare_endpoint():
     payload = {
-        "candidate_ids": ["cand_lula", "cand_bolsonaro"],
+        "candidate_ids": ["cand_lula", "cand_flavio"],
         "topic_id": "saude"
     }
     response = client.post("/api/v1/compare", json=payload)
