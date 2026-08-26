@@ -1,4 +1,4 @@
-﻿from typing import List
+from typing import List
 from app.models.schemas import (
     CompareRequest,
     CompareResponse,

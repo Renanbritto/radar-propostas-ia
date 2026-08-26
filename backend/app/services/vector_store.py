@@ -1,4 +1,4 @@
-﻿import re
+import re
 import math
 from typing import List, Optional, Dict, Tuple
 from collections import Counter

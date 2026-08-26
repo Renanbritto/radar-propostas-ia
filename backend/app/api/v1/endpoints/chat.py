@@ -1,4 +1,4 @@
-﻿from fastapi import APIRouter
+from fastapi import APIRouter
 from app.models.schemas import ChatRequest, ChatResponse
 from app.services.rag_engine import rag_engine
 
