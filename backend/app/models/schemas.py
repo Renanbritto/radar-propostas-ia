@@ -1,18 +1,14 @@
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field
 
-# Topic Schemas
+# ==========================================
+# TOPIC & CANDIDATE SCHEMAS
+# ==========================================
 class Topic(BaseModel):
     id: str
     name: str
     icon: str
     description: str
-
-# Candidate Schemas
-class ThemeScore(BaseModel):
-    topic_id: str
-    proposal_count: int
-    emphasis_score: float # 0.0 to 10.0
 
 class Candidate(BaseModel):
     id: str
@@ -22,7 +18,7 @@ class Candidate(BaseModel):
     party: str
     party_acronym: str
     coalition: Optional[str] = None
-    role: str = "Prefeito / Governador / Presidente"
+    role: str = "Prefeito"
     photo_url: Optional[str] = None
     color: str = "#3B82F6"
     summary: str
@@ -32,7 +28,9 @@ class Candidate(BaseModel):
     theme_distribution: Dict[str, int] = Field(default_factory=dict)
     key_highlights: List[str] = Field(default_factory=list)
 
-# Citation Schema
+# ==========================================
+# RAG & CITATIONS
+# ==========================================
 class Citation(BaseModel):
     candidate_id: str
     candidate_name: str
@@ -44,7 +42,6 @@ class Citation(BaseModel):
     section_title: Optional[str] = None
     relevance_score: float
 
-# Proposal Chunk Schema
 class ProposalChunk(BaseModel):
     id: str
     candidate_id: str
@@ -56,7 +53,9 @@ class ProposalChunk(BaseModel):
     page_number: int
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
-# Comparison Schemas
+# ==========================================
+# COMPARISON SCHEMAS
+# ==========================================
 class CandidateComparisonDetail(BaseModel):
     candidate_id: str
     candidate_name: str
@@ -65,7 +64,7 @@ class CandidateComparisonDetail(BaseModel):
     summary_of_proposals: str
     key_proposals: List[str]
     quotes_with_citations: List[Citation]
-    governance_style: str  # ex: "Foco em Parcerias Público-Privadas", "Investimento Estatal Direto"
+    governance_style: str
     funding_strategy: str
 
 class CompareRequest(BaseModel):
@@ -79,9 +78,11 @@ class CompareResponse(BaseModel):
     divergence_points: List[str]
     convergence_points: List[str]
 
-# Chat Schemas
+# ==========================================
+# CHAT RAG SCHEMAS
+# ==========================================
 class ChatMessage(BaseModel):
-    role: str  # "user" or "assistant"
+    role: str
     content: str
 
 class ChatRequest(BaseModel):
@@ -96,11 +97,13 @@ class ChatResponse(BaseModel):
     suggested_followups: List[str]
     searched_candidates: List[str]
 
-# Quiz Schemas
+# ==========================================
+# QUIZ SCHEMAS
+# ==========================================
 class QuizOption(BaseModel):
     id: str
     text: str
-    bias_scores: Dict[str, float]  # e.g., {"liberal": 0.8, "social_democrata": 0.2, "sustentavel": 0.9}
+    bias_scores: Dict[str, float]
 
 class QuizQuestion(BaseModel):
     id: str
@@ -137,3 +140,63 @@ class QuizResultResponse(BaseModel):
     all_candidates: List[CandidateAffinityResult]
     user_ideological_profile: Dict[str, float]
     summary_analysis: str
+
+# ==========================================
+# INVESTIGAVOTO / FORENSIC FINANCE SCHEMAS
+# ==========================================
+class RevenueItem(BaseModel):
+    source_type: str  # "Fundo Eleitoral / Partidário", "Doações Pessoas Físicas", "Recursos Próprios"
+    amount: float
+    percentage: float
+    donor_count: int
+
+class ExpenseCategoryItem(BaseModel):
+    category: str  # "Marketing & Publicidade", "Serviços Gráficos & Impressos", "Produção de Vídeo", "Comícios & Eventos", "Transporte & Logística", "Consultoria Jurídica / Contábil"
+    amount: float
+    percentage: float
+
+class SupplierItem(BaseModel):
+    id: str
+    name: str
+    cnpj: str
+    service_type: str
+    total_received: float
+    percentage_of_candidate_budget: float
+    creation_date: str
+    is_recently_created: bool  # Flag forense: aberta a < 6 meses da eleição
+    risk_level: str  # "Normal", "Médio", "Alto"
+    notes: Optional[str] = None
+
+class FinancialAnomaly(BaseModel):
+    id: str
+    candidate_id: str
+    candidate_name: str
+    party_acronym: str
+    anomaly_type: str  # "Alta Concentração de Fornecedor", "Fornecedor Recém-Criado", "Discrepância Promessa vs Gasto", "Despesa Desproporcional"
+    severity: str  # "Alta", "Média", "Informativa"
+    description: str
+    financial_impact: float
+    audit_recommendation: str
+
+class CandidateFinancials(BaseModel):
+    candidate_id: str
+    candidate_name: str
+    party_acronym: str
+    color: str
+    total_revenue: float
+    total_expenses: float
+    spending_limit: float
+    budget_execution_percentage: float
+    revenue_breakdown: List[RevenueItem]
+    expense_breakdown: List[ExpenseCategoryItem]
+    top_suppliers: List[SupplierItem]
+    anomalies: List[FinancialAnomaly]
+    promise_vs_spending_insight: str
+
+class FinanceOverviewResponse(BaseModel):
+    total_campaign_funds: float
+    total_campaign_expenses: float
+    total_anomalies_flagged: int
+    transparency_index_score: float # 0.0 to 10.0
+    candidates_financials: List[CandidateFinancials]
+    system_wide_anomalies: List[FinancialAnomaly]

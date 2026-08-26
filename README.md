@@ -1,6 +1,6 @@
-# 🤖 Radar de Propostas IA (RAG + NLP)
+# 🤖 Radar de Propostas IA + InvestigaVoto (RAG + Data Forensics)
 
-> **Plataforma Cívica Inteligente de Análise, Comparação e Consulta Semântica com RAG sobre Planos de Governo Oficiais.**
+> **Plataforma Cívica 360° de IA Generativa (RAG) & Auditoria Forense de Gastos de Campanha e Planos de Governo Oficiais.**
 
 [![CI Pipeline](https://github.com/Renanbritto/radar-propostas-ia/actions/workflows/ci.yml/badge.svg)](https://github.com/Renanbritto/radar-propostas-ia/actions)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111.0+-009688.svg?style=flat&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com)
@@ -14,30 +14,30 @@
 
 ## 🎯 Sobre o Projeto
 
-O **Radar de Propostas IA** é uma aplicação completa (Fullstack + Data Science & IA Generativa) projetada para empoderar eleitores através do acesso simplificado, transparente e auditável aos planos de governo oficiais submetidos à Justiça Eleitoral (TSE).
-
-Diferente de IAs generativas generalistas que podem apresentar alucinações, o projeto utiliza uma arquitetura **RAG (Retrieval-Augmented Generation) estrita**: todas as respostas e comparações são obrigatoriamente vinculadas a trechos reais, indicando o **número da página e a citação oficial** registrada pelo candidato.
+O **Radar de Propostas IA + InvestigaVoto** é uma plataforma cívica completa de dados públicos que une duas pontas essenciais do processo eleitoral:
+1. **O que os candidatos prometem:** Análise semântica e busca via RAG com citações auditáveis de página a partir dos PDFs oficiais do TSE.
+2. **De onde vem e para onde vai o dinheiro:** Auditoria forense de prestação de contas, receitas, maiores fornecedores contratados, empresas recém-abertas e detecção de anomalias.
 
 ---
 
-## 🚀 Principais Funcionalidades
+## 🚀 Principais Módulos da Plataforma
 
-### 1. 🔍 Comparador Temático Lado a Lado
-* **Contraste de Propostas:** Compare 2 ou mais candidatos simultaneamente para qualquer um dos 8 eixos temáticos (Saúde, Educação, Segurança, Economia, Meio Ambiente, Tecnologia, etc.).
-* **Análise de Governança & Financiamento:** Identificação do modelo de gestão (Estatal direto vs PPPs/concessões) e da estratégia orçamentária declarada.
-* **Mapeamento de Convergências e Divergências:** Destaque automático de pontos de concordância e conflito ideológico entre os planos.
+### 1. 🔍 Comparador Temático Lado a Lado (RAG)
+* **Contraste de Propostas:** Compare múltiplos candidatos simultaneamente para qualquer um dos 8 eixos temáticos (Saúde, Educação, Segurança, Economia, etc.).
+* **Mapeamento de Convergências e Divergências:** Destaque de pontos de conflito programático e estratégia orçamentária.
 
 ### 2. 💬 Chat RAG Cívico com Citações Auditáveis
-* **Busca Semântica & Q&A:** O usuário pode perguntar em linguagem natural (ex: *"Como pretendem zerar a fila de creches ou investir em telemedicina?"*).
-* **Citação com Verificação Instantânea:** Cada balão de resposta traz badges interativos que abrem um modal com a citação original do plano e a página correspondente.
-* **Filtro por Candidato:** Possibilidade de consultar o plano de um candidato específico ou varrer todos os concorrentes simultaneamente.
+* **Q&A Semântico:** Pergunte em linguagem natural aos planos de governo.
+* **Citação Transparente:** Modal de auditoria indicando a página exata e o trecho oficial submetido ao TSE (zero alucinações).
 
-### 3. 🧭 Bússola de Afinidade (Quiz de Prioridades)
-* **Match Programático:** Questionário interativo com perguntas estratégicas sobre dilemas de gestão pública.
-* **Cálculo Vetorial:** Avalia a afinidade entre as preferências do eleitor e as propostas dos candidatos, gerando um ranking percentual com breakdown por área.
+### 3. 💰 InvestigaVoto: Auditoria Forense de Campanha
+* **Panorama Financeiro:** Total arrecadado (FEFC, Doações PF, Recursos Próprios) vs. Despesas declaradas.
+* **Detector de Anomalias:** Alertas de alta concentração de verba (> 45% em um único fornecedor) e empresas abertas a menos de 6 meses da eleição.
+* **Tabela de Fornecedores:** Mapeamento de CNPJs, serviços prestados, valores recebidos e nível de risco forense.
+* **Promessa vs. Gasto:** Cruzamento entre a prioridade declarada no plano e a alocação real de recursos na campanha.
 
-### 4. 📊 Diretório de Candidaturas & Analytics
-* **Métricas dos Planos:** Contagem total de propostas indexadas, volume de páginas e distribuição proporcional de ênfase por tema.
+### 4. 🧭 Bússola de Afinidade (Quiz de Prioridades)
+* **Match Programático:** Questionário interativo que calcula a afinidade vetorial entre o eleitor e as propostas dos candidatos.
 
 ---
 
@@ -45,24 +45,25 @@ Diferente de IAs generativas generalistas que podem apresentar alucinações, o 
 
 ```mermaid
 flowchart TD
-    subgraph Ingestao [1. Ingestão & Processamento de Dados]
-        PDF[PDFs Oficiais do TSE] --> Parser[PDF Parser & Text Extractor]
-        Parser --> Chunker[Semantic Chunker com Metadados]
-        Chunker --> VectorStore[(Vector Store / Índice Semântico)]
+    subgraph DataSources [1. Fontes de Dados TSE]
+        PDF[PDFs Planos de Governo] --> Parser[PDF Chunker & Metadata Tag]
+        Fin[Dados Abertos Prestação de Contas] --> FinETL[Finance ETL & Anomaly Engine]
     end
 
-    subgraph Backend [2. Backend FastAPI - Python 3.11]
-        VectorStore --> RAG[RAG Engine & Citation Service]
-        RAG --> API[API Endpoints v1]
-        API --> Endpoints[/candidates, /compare, /chat, /quiz]
+    subgraph BackendAPI [2. Backend FastAPI - Python 3.11]
+        Parser --> VectorStore[(Semantic Vector Store)]
+        VectorStore --> RAG[RAG & Citation Synthesizer]
+        FinETL --> FinService[Finance & Audit Service]
+        RAG --> API[FastAPI Endpoints v1]
+        FinService --> API
     end
 
-    subgraph Frontend [3. Frontend Next.js 14 & TypeScript]
-        Endpoints --> HTTPClient[Typed API Client]
-        HTTPClient --> Comparador[Comparador Lado a Lado]
-        HTTPClient --> ChatRAG[Chat Cívico RAG]
-        HTTPClient --> Quiz[Bússola de Afinidade]
-        HTTPClient --> Candidatos[Diretório de Candidatos]
+    subgraph FrontendUI [3. Frontend Next.js 14 & TypeScript]
+        API --> Comparador[Comparador Temático]
+        API --> ChatRAG[Chat Cívico com Citações]
+        API --> InvestigaVoto[InvestigaVoto Dashboard]
+        API --> Quiz[Bússola de Afinidade]
+        API --> Candidatos[Diretório de Planos]
     end
 ```
 
@@ -74,20 +75,20 @@ flowchart TD
 radar-propostas-ia/
 ├── backend/
 │   ├── app/
-│   │   ├── api/v1/endpoints/       # Endpoints: candidates, compare, chat, quiz
+│   │   ├── api/v1/endpoints/       # Endpoints: candidates, compare, chat, quiz, finances
 │   │   ├── core/                   # Settings, Pydantic BaseSettings, logging
-│   │   ├── data/                   # Dataset estruturado e metadados
+│   │   ├── data/                   # Datasets de planos e prestação de contas
 │   │   ├── models/                 # Pydantic v2 schemas tipados
-│   │   ├── services/               # RAG Engine, VectorStore, Comparator, QuizService
+│   │   ├── services/               # RAG Engine, VectorStore, Comparator, FinanceService
 │   │   └── main.py                 # FastAPI Application
-│   ├── tests/                      # Pytest test suite (100% passing)
+│   ├── tests/                      # Pytest test suite (12 testes passando)
 │   ├── Dockerfile
 │   └── requirements.txt
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── app/                    # Next.js App Router (/, /comparador, /chat, /quiz, /candidatos)
-│   │   ├── components/             # UI Components (Liquid Glass, Header, Footer, Badges)
+│   │   ├── app/                    # Next.js App Router (/, /comparador, /chat, /quiz, /financiamento, /candidatos)
+│   │   ├── components/             # Liquid Glass UI, Header, Footer, CitationBadge
 │   │   ├── lib/                    # API client tipado & helpers
 │   │   ├── styles/                 # Tailwind design tokens & globals.css
 │   │   └── types/                  # TypeScript interfaces
@@ -108,14 +109,14 @@ radar-propostas-ia/
 
 ### Opção 1: Via Docker Compose (Recomendado)
 ```bash
-# 1. Clone o repositório
+# Clone o repositório
 git clone https://github.com/Renanbritto/radar-propostas-ia.git
 cd radar-propostas-ia
 
-# 2. Copie as variáveis de ambiente
+# Copie as variáveis de ambiente
 cp .env.example .env
 
-# 3. Suba a aplicação completa
+# Suba todos os serviços
 docker-compose up --build
 ```
 Acesse:
@@ -151,7 +152,7 @@ npm run dev
 
 ## 🧪 Testes Automatizados
 
-O backend conta com uma suíte de testes com `pytest` cobrindo buscas vetoriais, RAG, comparador e endpoints REST:
+O backend conta com 12 testes unitários e de integração com `pytest`:
 
 ```bash
 cd backend
@@ -162,8 +163,7 @@ pytest tests/ -v
 
 ## 👨‍💻 Autor
 
-Desenvolvido com foco em boas práticas de engenharia de software, IA generativa e transparência cívica por **Renan Nocelli Britto**.
-
+Desenvolvido por **Renan Nocelli Britto**
 * **Portfólio:** [renannocelli.dev](https://renannocelli.com.br)
 * **LinkedIn:** [linkedin.com/in/renan-nocelli](https://linkedin.com/in/renan-nocelli)
 * **GitHub:** [@Renanbritto](https://github.com/Renanbritto)

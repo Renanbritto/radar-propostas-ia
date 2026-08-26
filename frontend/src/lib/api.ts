@@ -1,8 +1,15 @@
-import { Candidate, Topic, CompareResponse, QuizQuestion, QuizResultResponse } from "@/types";
+import {
+  Candidate,
+  Topic,
+  CompareResponse,
+  QuizQuestion,
+  QuizResultResponse,
+  FinanceOverviewResponse,
+  CandidateFinancials
+} from "@/types";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
 
-// Fallback datasets para funcionamento instantâneo offline/demo se o backend não estiver ativo
 const FALLBACK_CANDIDATES: Candidate[] = [
   {
     id: "cand_1",
@@ -111,7 +118,6 @@ export async function fetchCandidates(): Promise<Candidate[]> {
     if (!res.ok) throw new Error("Falha ao buscar candidatos");
     return await res.json();
   } catch (err) {
-    console.warn("Usando dados locais de fallback para candidatos:", err);
     return FALLBACK_CANDIDATES;
   }
 }
@@ -122,7 +128,6 @@ export async function fetchTopics(): Promise<Topic[]> {
     if (!res.ok) throw new Error("Falha ao buscar tópicos");
     return await res.json();
   } catch (err) {
-    console.warn("Usando tópicos locais de fallback:", err);
     return FALLBACK_TOPICS;
   }
 }
@@ -137,7 +142,6 @@ export async function compareCandidates(candidateIds: string[], topicId: string)
     if (!res.ok) throw new Error("Falha na requisição de comparação");
     return await res.json();
   } catch (err) {
-    console.warn("Usando síntese de comparação fallback:", err);
     const topic = FALLBACK_TOPICS.find(t => t.id === topicId) || FALLBACK_TOPICS[0];
     return {
       topic,
@@ -191,7 +195,6 @@ export async function askRAGChat(query: string, candidateId?: string, topicId?: 
     if (!res.ok) throw new Error("Erro na consulta RAG");
     return await res.json();
   } catch (err) {
-    console.warn("Fallback RAG Q&A:", err);
     return {
       answer: `Com base nos planos de governo cadastrados para a consulta "${query}":\n\n📌 **Helena Silveira (PIS)** foca em telemedicina, digitalização e escolas sustentáveis.\n📌 **Marcus Ramos (PLR)** foca em parcerias público-privadas, vouchers e desregulamentação.\n📌 **Clarice Monteiro (PTD)** propõe ampliação direta do SUS, concurso público e tarifa zero progressiva.`,
       citations: [
@@ -222,7 +225,6 @@ export async function fetchQuizQuestions(): Promise<QuizQuestion[]> {
     if (!res.ok) throw new Error("Erro ao buscar perguntas do Quiz");
     return await res.json();
   } catch (err) {
-    console.warn("Fallback quiz questions:", err);
     return [
       {
         id: "q1",
@@ -250,7 +252,6 @@ export async function submitQuizAnswers(answers: { question_id: string; selected
     if (!res.ok) throw new Error("Erro ao calcular afinidade");
     return await res.json();
   } catch (err) {
-    console.warn("Fallback quiz match response:", err);
     return {
       top_candidate: {
         candidate_id: "cand_1",
@@ -272,6 +273,183 @@ export async function submitQuizAnswers(answers: { question_id: string; selected
       all_candidates: [],
       user_ideological_profile: { "inovacao_sustentabilidade": 0.88 },
       summary_analysis: "Seu perfil indicou alta afinidade com propostas orientadas à modernização digital e sustentabilidade urbana."
+    };
+  }
+}
+
+// ==========================================
+// INVESTIGAVOTO API CALLS
+// ==========================================
+export async function fetchFinanceOverview(): Promise<FinanceOverviewResponse> {
+  try {
+    const res = await fetch(`${API_BASE_URL}/finances/overview`, { next: { revalidate: 60 } });
+    if (!res.ok) throw new Error("Falha ao buscar dados financeiros");
+    return await res.json();
+  } catch (err) {
+    return {
+      total_campaign_funds: 12250000.0,
+      total_campaign_expenses: 11620000.0,
+      total_anomalies_flagged: 3,
+      transparency_index_score: 7.2,
+      system_wide_anomalies: [
+        {
+          id: "anom_2",
+          candidate_id: "cand_2",
+          candidate_name: "Marcus Vinicius Ramos",
+          party_acronym: "PLR",
+          anomaly_type: "Alta Concentração em Fornecedor Recém-Criado",
+          severity: "Alta",
+          description: "O fornecedor 'Alpha Prime Produções' foi constituído em março de 2024 e recebeu R$ 2.150.000,00 (45.5% do orçamento total da campanha).",
+          financial_impact: 2150000.0,
+          audit_recommendation: "Auditoria de capacidade operacional instalada e eventual vínculo societário."
+        },
+        {
+          id: "anom_1",
+          candidate_id: "cand_1",
+          candidate_name: "Helena Silveira",
+          party_acronym: "PIS",
+          anomaly_type: "Fornecedor Recém-Criado",
+          severity: "Média",
+          description: "Contratação de R$ 340.000,00 da 'Gráfica Verde Papéis', aberta em fevereiro de 2024 (5 meses antes da eleição).",
+          financial_impact: 340000.0,
+          audit_recommendation: "Verificar notas fiscais de compra de papel reciclado e maquinário."
+        },
+        {
+          id: "anom_3",
+          candidate_id: "cand_3",
+          candidate_name: "Clarice Monteiro",
+          party_acronym: "PTD",
+          anomaly_type: "Volume Elevado de Pagamento Direto de Pessoal",
+          severity: "Informativa",
+          description: "Despesas com mobilizadores somam 43.6% do orçamento com mais de 350 recibos individuais emitidos.",
+          financial_impact: 1650000.0,
+          audit_recommendation: "Conferência por amostragem dos termos de prestação de serviço de militância."
+        }
+      ],
+      candidates_financials: [
+        {
+          candidate_id: "cand_1",
+          candidate_name: "Helena Silveira",
+          party_acronym: "PIS",
+          color: "#10B981",
+          total_revenue: 3450000.0,
+          total_expenses: 3120000.0,
+          spending_limit: 5000000.0,
+          budget_execution_percentage: 62.4,
+          revenue_breakdown: [
+            { source_type: "Fundo Eleitoral (FEFC)", amount: 2600000.0, percentage: 75.36, donor_count: 1 },
+            { source_type: "Doações Pessoas Físicas", amount: 750000.0, percentage: 21.74, donor_count: 1420 },
+            { source_type: "Recursos Próprios", amount: 100000.0, percentage: 2.90, donor_count: 1 }
+          ],
+          expense_breakdown: [
+            { category: "Marketing Digital & Mídias", amount: 1150000.0, percentage: 36.86 },
+            { category: "Produção de TV e Vídeos", amount: 820000.0, percentage: 26.28 },
+            { category: "Militância de Rua", amount: 540000.0, percentage: 17.31 },
+            { category: "Material Gráfico Sustentável", amount: 360000.0, percentage: 11.54 },
+            { category: "Assessoria Jurídica / Contábil", amount: 250000.0, percentage: 8.01 }
+          ],
+          top_suppliers: [
+            {
+              id: "sup_1_1",
+              name: "EcoDigital Estratégia e Mídia Ltda",
+              cnpj: "34.567.890/0001-12",
+              service_type: "Gestão de Tráfego e Redes Sociais",
+              total_received: 950000.0,
+              percentage_of_candidate_budget: 30.45,
+              creation_date: "2021-03-15",
+              is_recently_created: false,
+              risk_level: "Normal"
+            },
+            {
+              id: "sup_1_3",
+              name: "Gráfica Verde Papéis Ecológicos Eireli",
+              cnpj: "41.987.654/0001-33",
+              service_type: "Impressão de Folhetos e Santinhos Reciclados",
+              total_received: 340000.0,
+              percentage_of_candidate_budget: 10.90,
+              creation_date: "2024-02-10",
+              is_recently_created: true,
+              risk_level: "Médio"
+            }
+          ],
+          anomalies: [],
+          promise_vs_spending_insight: "A candidata dedica 30% do seu plano ao Meio Ambiente e alocou 11.5% do orçamento em gráficas sustentáveis com papel reciclado."
+        },
+        {
+          candidate_id: "cand_2",
+          candidate_name: "Marcus Vinicius Ramos",
+          party_acronym: "PLR",
+          color: "#3B82F6",
+          total_revenue: 4850000.0,
+          total_expenses: 4720000.0,
+          spending_limit: 5000000.0,
+          budget_execution_percentage: 94.4,
+          revenue_breakdown: [
+            { source_type: "Fundo Eleitoral (FEFC)", amount: 3200000.0, percentage: 65.98, donor_count: 1 },
+            { source_type: "Grandes Doações Empresariais (PF)", amount: 1450000.0, percentage: 29.90, donor_count: 48 },
+            { source_type: "Recursos Próprios", amount: 200000.0, percentage: 4.12, donor_count: 1 }
+          ],
+          expense_breakdown: [
+            { category: "Produção de TV e Vídeos", amount: 2150000.0, percentage: 45.55 },
+            { category: "Marketing Digital & Tráfego", amount: 1200000.0, percentage: 25.42 },
+            { category: "Pesquisas de Opinião Pública", amount: 620000.0, percentage: 13.14 },
+            { category: "Veículos Blindados & Logística", amount: 450000.0, percentage: 9.53 },
+            { category: "Material Gráfico", amount: 300000.0, percentage: 6.36 }
+          ],
+          top_suppliers: [
+            {
+              id: "sup_2_1",
+              name: "Alpha Prime Produções e Comunicação",
+              cnpj: "48.765.432/0001-88",
+              service_type: "Produção Audiovisual e Estratégia de TV",
+              total_received: 2150000.0,
+              percentage_of_candidate_budget: 45.55,
+              creation_date: "2024-03-01",
+              is_recently_created: true,
+              risk_level: "Alto"
+            }
+          ],
+          anomalies: [],
+          promise_vs_spending_insight: "O plano defende 'Eficiência Fiscal e Redução de Custos', mas a campanha executou 94.4% do teto máximo de gastos permitido."
+        },
+        {
+          candidate_id: "cand_3",
+          candidate_name: "Clarice Monteiro",
+          party_acronym: "PTD",
+          color: "#EF4444",
+          total_revenue: 3950000.0,
+          total_expenses: 3780000.0,
+          spending_limit: 5000000.0,
+          budget_execution_percentage: 75.6,
+          revenue_breakdown: [
+            { source_type: "Fundo Eleitoral (FEFC)", amount: 3400000.0, percentage: 86.08, donor_count: 1 },
+            { source_type: "Doações de Militantes (PF)", amount: 510000.0, percentage: 12.91, donor_count: 2890 },
+            { source_type: "Recursos Próprios", amount: 40000.0, percentage: 1.01, donor_count: 1 }
+          ],
+          expense_breakdown: [
+            { category: "Militância de Rua e Campo", amount: 1650000.0, percentage: 43.65 },
+            { category: "Produção de TV e Vídeos", amount: 950000.0, percentage: 25.13 },
+            { category: "Material Gráfico e Banners", amount: 580000.0, percentage: 15.34 },
+            { category: "Comícios e Carros de Som", amount: 380000.0, percentage: 10.05 },
+            { category: "Assessoria Jurídica e Contábil", amount: 220000.0, percentage: 5.82 }
+          ],
+          top_suppliers: [
+            {
+              id: "sup_3_1",
+              name: "Cooperativa Popular de Comunicação",
+              cnpj: "38.444.555/0001-02",
+              service_type: "Mobilização de Rua e Produção de Jornais",
+              total_received: 1120000.0,
+              percentage_of_candidate_budget: 29.63,
+              creation_date: "2018-06-14",
+              is_recently_created: false,
+              risk_level: "Normal"
+            }
+          ],
+          anomalies: [],
+          promise_vs_spending_insight: "A candidata prioriza 'Trabalho e Renda Popular' no plano e refletiu isso na campanha destinando 43.6% do orçamento para pagamento de equipes locais."
+        }
+      ]
     };
   }
 }
