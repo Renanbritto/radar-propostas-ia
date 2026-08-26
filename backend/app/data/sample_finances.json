@@ -1,142 +1,479 @@
 {
-  "finances": [
+  "financials": [
     {
       "candidate_id": "cand_lula",
       "candidate_name": "Lula",
       "party_acronym": "PT",
-      "total_declared": 285000000.00,
-      "total_donations": 212000000.00,
-      "total_expenditures": 178000000.00,
-      "fund_sources": {
-        "fundo_eleitoral": 180000000.00,
-        "doacoes_pf": 18500000.00,
-        "recursos_proprios": 350000.00,
-        "fundo_partidario": 13150000.00
-      },
-      "top_expenses": [
-        { "category": "Propaganda na TV e Rádio", "amount": 62000000.00, "percentage": 34.83 },
-        { "category": "Publicidade Digital e Redes Sociais", "amount": 38000000.00, "percentage": 21.35 },
-        { "category": "Pessoal e Equipe de Campanha", "amount": 28000000.00, "percentage": 15.73 },
-        { "category": "Deslocamento e Logística", "amount": 22000000.00, "percentage": 12.36 },
-        { "category": "Material Gráfico e Eventos", "amount": 18000000.00, "percentage": 10.11 }
+      "color": "#EF4444",
+      "total_revenue": 285000000.0,
+      "total_expenses": 178000000.0,
+      "spending_limit": 300000000.0,
+      "budget_execution_percentage": 59.3,
+      "revenue_breakdown": [
+        {
+          "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)",
+          "amount": 250000000.0,
+          "percentage": 87.72,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Fundo Partidário",
+          "amount": 18000000.0,
+          "percentage": 6.32,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Doações de Pessoas Físicas (PIX / Financiamento Coletivo)",
+          "amount": 16500000.0,
+          "percentage": 5.79,
+          "donor_count": 84200
+        },
+        {
+          "source_type": "Recursos Próprios do Candidato",
+          "amount": 500000.0,
+          "percentage": 0.17,
+          "donor_count": 1
+        }
       ],
-      "cnpj_fornecedores": [
-        { "cnpj": "00.000.001/0001-01", "name": "Midiatech Comunicação Ltda", "amount": 32000000.00, "category": "Publicidade" },
-        { "cnpj": "00.000.002/0001-02", "name": "TransBrasil Logística S.A.", "amount": 14000000.00, "category": "Transporte" },
-        { "cnpj": "00.000.003/0001-03", "name": "GráficaPrint Ltda", "amount": 8500000.00, "category": "Material Gráfico" }
+      "expense_breakdown": [
+        {
+          "category": "Propaganda e Produção de Programas de Rádio e TV",
+          "amount": 62000000.0,
+          "percentage": 34.83
+        },
+        {
+          "category": "Impulsionamento de Conteúdo e Marketing Digital",
+          "amount": 38000000.0,
+          "percentage": 21.35
+        },
+        {
+          "category": "Equipe de Campanha, Coordenação e Pessoal",
+          "amount": 28000000.0,
+          "percentage": 15.73
+        },
+        {
+          "category": "Logística, Transporte Aéreo e Deslocamentos",
+          "amount": 22000000.0,
+          "percentage": 12.36
+        },
+        {
+          "category": "Produção de Eventos, Comícios e Material Gráfico",
+          "amount": 18000000.0,
+          "percentage": 10.11
+        },
+        {
+          "category": "Assessoria Jurídica e Contábil Eleitoral",
+          "amount": 10000000.0,
+          "percentage": 5.62
+        }
       ],
-      "anomalies": [],
-      "last_updated": "2026-08-26T00:00:00Z"
+      "top_suppliers": [
+        {
+          "id": "sup_lula_1",
+          "name": "Midiatech Estratégia e Comunicação Ltda",
+          "cnpj": "12.345.678/0001-90",
+          "service_type": "Produção de TV e Rádio",
+          "total_received": 32000000.0,
+          "percentage_of_candidate_budget": 17.98,
+          "creation_date": "2018-03-15",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Produtora atuante em campanhas majoritárias nacionais."
+        },
+        {
+          "id": "sup_lula_2",
+          "name": "Digital Vox Estratégia & Redes Ltda",
+          "cnpj": "98.765.432/0001-10",
+          "service_type": "Marketing e Gestão de Redes Sociais",
+          "total_received": 8900000.0,
+          "percentage_of_candidate_budget": 5.0,
+          "creation_date": "2024-01-15",
+          "is_recently_created": false,
+          "risk_level": "Média",
+          "notes": "Empresa com crescimento acelerado de contratos digitais no período pré-eleitoral."
+        },
+        {
+          "id": "sup_lula_3",
+          "name": "AeroBrasil Táxi Aéreo e Fretamento S.A.",
+          "cnpj": "11.222.333/0001-44",
+          "service_type": "Transporte e Logística Aérea",
+          "total_received": 14000000.0,
+          "percentage_of_candidate_budget": 7.87,
+          "creation_date": "2012-05-10",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Fretamento aeronáutico para deslocamentos interestaduais."
+        }
+      ],
+      "anomalies": [
+        {
+          "id": "anom_lula_1",
+          "candidate_id": "cand_lula",
+          "candidate_name": "Lula",
+          "party_acronym": "PT",
+          "anomaly_type": "Concentração em Agência de Comunicação",
+          "severity": "Média",
+          "description": "A empresa 'Midiatech Estratégia' concentra 17.98% de todos os desembolsos de campanha (R$ 32.000.000,00).",
+          "financial_impact": 32000000.0,
+          "audit_recommendation": "Conferência das notas fiscais e relatórios de subcontratação técnica em produtoras de vídeo."
+        }
+      ],
+      "promise_vs_spending_insight": "Gastos alinhados com a escala de uma campanha de reeleição nacional, com forte ênfase em comunicação televisiva e rádio aliada ao crescimento do tráfego digital."
     },
     {
       "candidate_id": "cand_flavio",
       "candidate_name": "Flavio Bolsonaro",
       "party_acronym": "PL",
-      "total_declared": 248000000.00,
-      "total_donations": 195000000.00,
-      "total_expenditures": 162000000.00,
-      "fund_sources": {
-        "fundo_eleitoral": 160000000.00,
-        "doacoes_pf": 22000000.00,
-        "recursos_proprios": 800000.00,
-        "fundo_partidario": 12200000.00
-      },
-      "top_expenses": [
-        { "category": "Publicidade Digital e Redes Sociais", "amount": 58000000.00, "percentage": 35.80 },
-        { "category": "Propaganda na TV e Rádio", "amount": 42000000.00, "percentage": 25.93 },
-        { "category": "Pessoal e Equipe de Campanha", "amount": 24000000.00, "percentage": 14.81 },
-        { "category": "Deslocamento e Logística", "amount": 20000000.00, "percentage": 12.35 },
-        { "category": "Eventos e Comícios", "amount": 12000000.00, "percentage": 7.41 }
+      "color": "#3B82F6",
+      "total_revenue": 248000000.0,
+      "total_expenses": 162000000.0,
+      "spending_limit": 300000000.0,
+      "budget_execution_percentage": 54.0,
+      "revenue_breakdown": [
+        {
+          "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)",
+          "amount": 210000000.0,
+          "percentage": 84.68,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Doações de Pessoas Físicas (Grandes Doadores & Agro)",
+          "amount": 22000000.0,
+          "percentage": 8.87,
+          "donor_count": 1420
+        },
+        {
+          "source_type": "Fundo Partidário",
+          "amount": 15000000.0,
+          "percentage": 6.05,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Recursos Próprios",
+          "amount": 1000000.0,
+          "percentage": 0.4,
+          "donor_count": 1
+        }
       ],
-      "cnpj_fornecedores": [
-        { "cnpj": "00.000.004/0001-04", "name": "Digital Patriots Media Ltda", "amount": 28000000.00, "category": "Publicidade Digital" },
-        { "cnpj": "00.000.005/0001-05", "name": "AeroTour Aviação Executiva", "amount": 11000000.00, "category": "Transporte Aéreo" },
-        { "cnpj": "00.000.006/0001-06", "name": "Segurança Patriota Ltda", "amount": 6500000.00, "category": "Segurança" }
+      "expense_breakdown": [
+        {
+          "category": "Impulsionamento de Conteúdo e Marketing Digital",
+          "amount": 58000000.0,
+          "percentage": 35.8
+        },
+        {
+          "category": "Propaganda e Programas de Rádio e TV",
+          "amount": 42000000.0,
+          "percentage": 25.93
+        },
+        {
+          "category": "Equipe de Campanha e Consultoria Estratégica",
+          "amount": 24000000.0,
+          "percentage": 14.81
+        },
+        {
+          "category": "Logística, Deslocamentos e Segurança",
+          "amount": 20000000.0,
+          "percentage": 12.35
+        },
+        {
+          "category": "Grandes Eventos, Motociatas e Comícios",
+          "amount": 12000000.0,
+          "percentage": 7.41
+        },
+        {
+          "category": "Serviços Jurídicos e Prestação de Contas",
+          "amount": 6000000.0,
+          "percentage": 3.7
+        }
       ],
-      "anomalies": [],
-      "last_updated": "2026-08-26T00:00:00Z"
+      "top_suppliers": [
+        {
+          "id": "sup_flavio_1",
+          "name": "Prime Time Produções & Mídia Digital Ltda",
+          "cnpj": "55.666.777/0001-88",
+          "service_type": "Marketing Digital e Gestão de Redes",
+          "total_received": 36200000.0,
+          "percentage_of_candidate_budget": 22.35,
+          "creation_date": "2026-02-14",
+          "is_recently_created": true,
+          "risk_level": "Alto",
+          "notes": "CNPJ registrado no mesmo ano eleitoral recebendo volume expressivo de recursos públicos do FEFC."
+        },
+        {
+          "id": "sup_flavio_2",
+          "name": "AeroTour Aviação Executiva S.A.",
+          "cnpj": "34.567.890/0001-12",
+          "service_type": "Transporte Aéreo e Fretamento",
+          "total_received": 11000000.0,
+          "percentage_of_candidate_budget": 6.79,
+          "creation_date": "2015-11-03",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Transporte aéreo para agenda nacional de viagens."
+        }
+      ],
+      "anomalies": [
+        {
+          "id": "anom_flavio_1",
+          "candidate_id": "cand_flavio",
+          "candidate_name": "Flavio Bolsonaro",
+          "party_acronym": "PL",
+          "anomaly_type": "Alta Concentração em Empresa Aberta no Ano Eleitoral",
+          "severity": "Alta",
+          "description": "O fornecedor 'Prime Time Produções' foi constituído em fevereiro de 2026 e recebeu R$ 36.200.000,00 da campanha presidencial.",
+          "financial_impact": 36200000.0,
+          "audit_recommendation": "Auditoria contábil detalhada e rastreamento das subcontratações em plataformas digitais e tráfego pago."
+        }
+      ],
+      "promise_vs_spending_insight": "Priorização declarada em redes sociais e tráfego pago (35.8%), refletindo estratégia de mobilização digital e eventos de rua."
     },
     {
       "candidate_id": "cand_renan",
       "candidate_name": "Renan Santos",
       "party_acronym": "MISSÃO",
-      "total_declared": 42000000.00,
-      "total_donations": 35000000.00,
-      "total_expenditures": 28000000.00,
-      "fund_sources": {
-        "fundo_eleitoral": 28000000.00,
-        "doacoes_pf": 4500000.00,
-        "recursos_proprios": 1200000.00,
-        "fundo_partidario": 1300000.00
-      },
-      "top_expenses": [
-        { "category": "Publicidade Digital e Redes Sociais", "amount": 12000000.00, "percentage": 42.86 },
-        { "category": "Deslocamento e Logística", "amount": 5500000.00, "percentage": 19.64 },
-        { "category": "Pessoal e Equipe de Campanha", "amount": 4200000.00, "percentage": 15.00 },
-        { "category": "Material Gráfico e Eventos", "amount": 3800000.00, "percentage": 13.57 },
-        { "category": "Propaganda na TV e Rádio", "amount": 2200000.00, "percentage": 7.86 }
+      "color": "#8B5CF6",
+      "total_revenue": 42000000.0,
+      "total_expenses": 28000000.0,
+      "spending_limit": 300000000.0,
+      "budget_execution_percentage": 9.33,
+      "revenue_breakdown": [
+        {
+          "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)",
+          "amount": 32000000.0,
+          "percentage": 76.19,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Doações de Pessoas Físicas (Militância & Financiamento Coletivo)",
+          "amount": 6500000.0,
+          "percentage": 15.48,
+          "donor_count": 31500
+        },
+        {
+          "source_type": "Fundo Partidário",
+          "amount": 2500000.0,
+          "percentage": 5.95,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Recursos Próprios",
+          "amount": 1000000.0,
+          "percentage": 2.38,
+          "donor_count": 1
+        }
       ],
-      "cnpj_fornecedores": [
-        { "cnpj": "00.000.007/0001-07", "name": "Missão Digital Marketing Ltda", "amount": 8000000.00, "category": "Marketing Digital" },
-        { "cnpj": "00.000.008/0001-08", "name": "Gráfica Popular Ltda", "amount": 2200000.00, "category": "Material Gráfico" }
+      "expense_breakdown": [
+        {
+          "category": "Produção de Conteúdo e Podcasts / Streaming",
+          "amount": 12000000.0,
+          "percentage": 42.86
+        },
+        {
+          "category": "Caravanas Nacionais e Logística Terrestre",
+          "amount": 5500000.0,
+          "percentage": 19.64
+        },
+        {
+          "category": "Pessoal, Formação de Lideranças e Núcleos",
+          "amount": 4200000.0,
+          "percentage": 15.0
+        },
+        {
+          "category": "Material Gráfico e Comunicação Visual",
+          "amount": 3800000.0,
+          "percentage": 13.57
+        },
+        {
+          "category": "Inserções e Mídia Regional",
+          "amount": 2500000.0,
+          "percentage": 8.93
+        }
+      ],
+      "top_suppliers": [
+        {
+          "id": "sup_renan_1",
+          "name": "Missão Criativa Produções Audiovisuais Ltda",
+          "cnpj": "45.678.901/0001-23",
+          "service_type": "Produção Audiovisual e Estúdios",
+          "total_received": 8000000.0,
+          "percentage_of_candidate_budget": 28.57,
+          "creation_date": "2023-04-12",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Produtora responsável por transmissões ao vivo e documentários de campanha."
+        }
       ],
       "anomalies": [],
-      "last_updated": "2026-08-26T00:00:00Z"
+      "promise_vs_spending_insight": "Campanha estruturada em torno de canais digitais e podcasts (42.8%), compensando menor tempo de TV tradicional."
     },
     {
       "candidate_id": "cand_caiado",
       "candidate_name": "Ronaldo Caiado",
       "party_acronym": "PSD",
-      "total_declared": 195000000.00,
-      "total_donations": 168000000.00,
-      "total_expenditures": 142000000.00,
-      "fund_sources": {
-        "fundo_eleitoral": 135000000.00,
-        "doacoes_pf": 16000000.00,
-        "recursos_proprios": 2000000.00,
-        "fundo_partidario": 15000000.00
-      },
-      "top_expenses": [
-        { "category": "Propaganda na TV e Rádio", "amount": 52000000.00, "percentage": 36.62 },
-        { "category": "Publicidade Digital e Redes Sociais", "amount": 32000000.00, "percentage": 22.54 },
-        { "category": "Pessoal e Equipe de Campanha", "amount": 22000000.00, "percentage": 15.49 },
-        { "category": "Deslocamento e Logística", "amount": 18000000.00, "percentage": 12.68 },
-        { "category": "Eventos e Comícios", "amount": 10000000.00, "percentage": 7.04 }
+      "color": "#F59E0B",
+      "total_revenue": 195000000.0,
+      "total_expenses": 142000000.0,
+      "spending_limit": 300000000.0,
+      "budget_execution_percentage": 47.33,
+      "revenue_breakdown": [
+        {
+          "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)",
+          "amount": 155000000.0,
+          "percentage": 79.49,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Doações de Pessoas Físicas (Setor Produtivo / Agronegócio)",
+          "amount": 22000000.0,
+          "percentage": 11.28,
+          "donor_count": 2850
+        },
+        {
+          "source_type": "Fundo Partidário",
+          "amount": 16000000.0,
+          "percentage": 8.21,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Recursos Próprios",
+          "amount": 2000000.0,
+          "percentage": 1.02,
+          "donor_count": 1
+        }
       ],
-      "cnpj_fornecedores": [
-        { "cnpj": "00.000.009/0001-09", "name": "Central de Mídia Brasília Ltda", "amount": 24000000.00, "category": "Publicidade" },
-        { "cnpj": "00.000.010/0001-10", "name": "Logística Nacional S.A.", "amount": 10000000.00, "category": "Transporte" },
-        { "cnpj": "00.000.011/0001-11", "name": "Pesquisa & Estratégia Ltda", "amount": 8000000.00, "category": "Consultoria" }
+      "expense_breakdown": [
+        {
+          "category": "Propaganda Eleitoral de TV e Rádio",
+          "amount": 52000000.0,
+          "percentage": 36.62
+        },
+        {
+          "category": "Estratégia Digital e Comunicação Regionalizada",
+          "amount": 32000000.0,
+          "percentage": 22.54
+        },
+        {
+          "category": "Coordenação Política e Equipe de Campo",
+          "amount": 22000000.0,
+          "percentage": 15.49
+        },
+        {
+          "category": "Logística e Deslocamentos Regionais",
+          "amount": 18000000.0,
+          "percentage": 12.68
+        },
+        {
+          "category": "Pesquisas de Opinião e Rastreamento Qualitativo",
+          "amount": 10000000.0,
+          "percentage": 7.04
+        },
+        {
+          "category": "Assessoria Jurídica e Contabilidade",
+          "amount": 8000000.0,
+          "percentage": 5.63
+        }
+      ],
+      "top_suppliers": [
+        {
+          "id": "sup_caiado_1",
+          "name": "Central Brasil Comunicação Estratégica S.A.",
+          "cnpj": "56.789.012/0001-34",
+          "service_type": "Produção de Rádio, TV e Mídia",
+          "total_received": 24000000.0,
+          "percentage_of_candidate_budget": 16.9,
+          "creation_date": "2016-07-22",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Agência especializada em comunicação institucional e campanhas majoritárias."
+        }
       ],
       "anomalies": [],
-      "last_updated": "2026-08-26T00:00:00Z"
+      "promise_vs_spending_insight": "Investimento equilibrado entre mídia convencional (36.6%) e digital (22.5%), com relevante orçamento em pesquisas qualitativas de opinião (7%)."
     },
     {
       "candidate_id": "cand_zema",
       "candidate_name": "Zema",
       "party_acronym": "NOVO",
-      "total_declared": 88000000.00,
-      "total_donations": 72000000.00,
-      "total_expenditures": 58000000.00,
-      "fund_sources": {
-        "fundo_eleitoral": 45000000.00,
-        "doacoes_pf": 14000000.00,
-        "recursos_proprios": 8000000.00,
-        "fundo_partidario": 5000000.00
-      },
-      "top_expenses": [
-        { "category": "Publicidade Digital e Redes Sociais", "amount": 22000000.00, "percentage": 37.93 },
-        { "category": "Propaganda na TV e Rádio", "amount": 14000000.00, "percentage": 24.14 },
-        { "category": "Pessoal e Equipe de Campanha", "amount": 8500000.00, "percentage": 14.66 },
-        { "category": "Deslocamento e Logística", "amount": 7000000.00, "percentage": 12.07 },
-        { "category": "Consultoria e Pesquisas", "amount": 4500000.00, "percentage": 7.76 }
+      "color": "#F97316",
+      "total_revenue": 88000000.0,
+      "total_expenses": 58000000.0,
+      "spending_limit": 300000000.0,
+      "budget_execution_percentage": 19.33,
+      "revenue_breakdown": [
+        {
+          "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)",
+          "amount": 55000000.0,
+          "percentage": 62.5,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Doações de Pessoas Físicas (Empresários & Doações Coletivas)",
+          "amount": 21000000.0,
+          "percentage": 23.86,
+          "donor_count": 8900
+        },
+        {
+          "source_type": "Recursos Próprios do Candidato",
+          "amount": 8000000.0,
+          "percentage": 9.09,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Fundo Partidário",
+          "amount": 4000000.0,
+          "percentage": 4.55,
+          "donor_count": 1
+        }
       ],
-      "cnpj_fornecedores": [
-        { "cnpj": "00.000.012/0001-12", "name": "Inovação Digital Brasil Ltda", "amount": 12000000.00, "category": "Marketing Digital" },
-        { "cnpj": "00.000.013/0001-13", "name": "Datafolha Pesquisas S.A.", "amount": 4500000.00, "category": "Pesquisa" }
+      "expense_breakdown": [
+        {
+          "category": "Comunicação Digital e Mídias Sociais com IA",
+          "amount": 22000000.0,
+          "percentage": 37.93
+        },
+        {
+          "category": "Inserções e Propaganda de TV e Rádio",
+          "amount": 14000000.0,
+          "percentage": 24.14
+        },
+        {
+          "category": "Equipe Enxuta de Coordenação e Consultoria",
+          "amount": 8500000.0,
+          "percentage": 14.66
+        },
+        {
+          "category": "Logística e Deslocamentos Rodoviários / Aéreos",
+          "amount": 7000000.0,
+          "percentage": 12.07
+        },
+        {
+          "category": "Pesquisas de Opinião e Auditoria Interna",
+          "amount": 4500000.0,
+          "percentage": 7.76
+        },
+        {
+          "category": "Serviços Jurídicos e Contábeis",
+          "amount": 2000000.0,
+          "percentage": 3.45
+        }
+      ],
+      "top_suppliers": [
+        {
+          "id": "sup_zema_1",
+          "name": "Eficiência Digital Marketing S.A.",
+          "cnpj": "67.890.123/0001-45",
+          "service_type": "Marketing de Performance Digital",
+          "total_received": 12000000.0,
+          "percentage_of_candidate_budget": 20.69,
+          "creation_date": "2019-10-18",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Agência com foco em otimização de métricas de conversão e alcance orgânico."
+        }
       ],
       "anomalies": [],
-      "last_updated": "2026-08-26T00:00:00Z"
+      "promise_vs_spending_insight": "Austeridade na execução orçamentária (19.3% do teto legal), com forte proporção de doações privadas (23.8%) e foco em marketing de performance."
     }
   ]
 }
