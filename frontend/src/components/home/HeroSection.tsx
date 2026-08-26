@@ -12,7 +12,7 @@ export function HeroSection() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-6 shadow-sm">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Inteligência Artificial Aplicada a Políticas Públicas</span>
+          <span>InteligÃªncia Artificial Aplicada a PolÃ­ticas PÃºblicas</span>
         </div>
 
         {/* Title */}
@@ -25,7 +25,7 @@ export function HeroSection() {
 
         {/* Subtitle */}
         <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
-          Acesse uma análise semântica e neutra das propostas oficiais de campanha registradas no TSE. Obtenha respostas fundamentadas com número de página e citações diretas.
+          Acesse uma anÃ¡lise semÃ¢ntica e neutra das propostas oficiais de campanha registradas no TSE. Obtenha respostas fundamentadas com nÃºmero de pÃ¡gina e citaÃ§Ãµes diretas.
         </p>
 
         {/* CTA Buttons */}
@@ -42,14 +42,14 @@ export function HeroSection() {
             className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white border border-white/[0.1] font-semibold text-xs sm:text-sm transition-all hover:scale-105"
           >
             <Bot className="w-4 h-4 text-sky-400" />
-            Perguntar à IA (Chat RAG)
+            Perguntar Ã  IA (Chat RAG)
           </Link>
           <Link
             href="/quiz"
             className="flex items-center gap-2 px-5 py-3 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 border border-indigo-500/30 font-semibold text-xs sm:text-sm transition-all hover:scale-105"
           >
             <Compass className="w-4 h-4" />
-            Bússola de Afinidade
+            BÃºssola de Afinidade
           </Link>
         </div>
 
@@ -57,19 +57,19 @@ export function HeroSection() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto text-left">
           <div className="liquid-glass-card rounded-xl p-4">
             <span className="text-xl font-bold text-sky-400 font-mono">100%</span>
-            <p className="text-[11px] text-slate-400 mt-0.5">Citações com Páginas Oficiais</p>
+            <p className="text-[11px] text-slate-400 mt-0.5">CitaÃ§Ãµes com PÃ¡ginas Oficiais</p>
           </div>
           <div className="liquid-glass-card rounded-xl p-4">
-            <span className="text-xl font-bold text-emerald-400 font-mono">418+</span>
+            <span className="text-xl font-bold text-emerald-400 font-mono">804+</span>
             <p className="text-[11px] text-slate-400 mt-0.5">Propostas Indexadas</p>
           </div>
           <div className="liquid-glass-card rounded-xl p-4">
             <span className="text-xl font-bold text-indigo-400 font-mono">8</span>
-            <p className="text-[11px] text-slate-400 mt-0.5">Eixos Temáticos Analisados</p>
+            <p className="text-[11px] text-slate-400 mt-0.5">Eixos TemÃ¡ticos Analisados</p>
           </div>
           <div className="liquid-glass-card rounded-xl p-4">
             <span className="text-xl font-bold text-teal-400 font-mono">Zero</span>
-            <p className="text-[11px] text-slate-400 mt-0.5">Alucinações / RAG Estrito</p>
+            <p className="text-[11px] text-slate-400 mt-0.5">AlucinaÃ§Ãµes / RAG Estrito</p>
           </div>
         </div>
       </div>
