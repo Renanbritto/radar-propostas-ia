@@ -1,0 +1,13 @@
+{
+  "name": "radar-propostas-ia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Radar de Propostas IA (RAG + NLP) - Monorepo",
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "start": "npm run start --prefix frontend",
+    "test:backend": "cd backend && .\\.venv\\Scripts\\python -m pytest tests -v"
+  }
+}
