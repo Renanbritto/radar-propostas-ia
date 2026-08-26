@@ -1,0 +1,226 @@
+{
+  "financials": [
+    {
+      "candidate_id": "cand_1",
+      "candidate_name": "Helena Silveira",
+      "party_acronym": "PIS",
+      "color": "#10B981",
+      "total_revenue": 3450000.0,
+      "total_expenses": 3120000.0,
+      "spending_limit": 5000000.0,
+      "budget_execution_percentage": 62.4,
+      "revenue_breakdown": [
+        { "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)", "amount": 2600000.0, "percentage": 75.36, "donor_count": 1 },
+        { "source_type": "Doações de Pessoas Físicas (Financiamento Coletivo)", "amount": 750000.0, "percentage": 21.74, "donor_count": 1420 },
+        { "source_type": "Recursos Próprios da Candidata", "amount": 100000.0, "percentage": 2.90, "donor_count": 1 }
+      ],
+      "expense_breakdown": [
+        { "category": "Marketing Digital & Mídias Sociais", "amount": 1150000.0, "percentage": 36.86 },
+        { "category": "Produção de Rádio, TV e Vídeos", "amount": 820000.0, "percentage": 26.28 },
+        { "category": "Militância de Rua & Equipe de Campo", "amount": 540000.0, "percentage": 17.31 },
+        { "category": "Material Gráfico Sustentável & Papel Reciclado", "amount": 360000.0, "percentage": 11.54 },
+        { "category": "Consultoria Jurídica & Contabilidade Eleitoral", "amount": 250000.0, "percentage": 8.01 }
+      ],
+      "top_suppliers": [
+        {
+          "id": "sup_1_1",
+          "name": "EcoDigital Estratégia e Mídia Ltda",
+          "cnpj": "34.567.890/0001-12",
+          "service_type": "Gestão de Tráfego e Redes Sociais",
+          "total_received": 950000.0,
+          "percentage_of_candidate_budget": 30.45,
+          "creation_date": "2021-03-15",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Empresa consolidada com histórico em campanhas anteriores."
+        },
+        {
+          "id": "sup_1_2",
+          "name": "Luz & Foco Audiovisual Criativo",
+          "cnpj": "28.123.456/0001-99",
+          "service_type": "Produção de Programa Eleitoral Gratuito (HGPE)",
+          "total_received": 780000.0,
+          "percentage_of_candidate_budget": 25.00,
+          "creation_date": "2019-08-20",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Estúdio audiovisual com registro regular na Ancine."
+        },
+        {
+          "id": "sup_1_3",
+          "name": "Gráfica Verde Papéis Ecológicos Eireli",
+          "cnpj": "41.987.654/0001-33",
+          "service_type": "Impressão de Santinhos e Folhetos Reciclados",
+          "total_received": 340000.0,
+          "percentage_of_candidate_budget": 10.90,
+          "creation_date": "2024-02-10",
+          "is_recently_created": true,
+          "risk_level": "Médio",
+          "notes": "Empresa constituída a menos de 6 meses do pleito eleitoral."
+        }
+      ],
+      "anomalies": [
+        {
+          "id": "anom_1",
+          "candidate_id": "cand_1",
+          "candidate_name": "Helena Silveira",
+          "party_acronym": "PIS",
+          "anomaly_type": "Fornecedor Recém-Criado",
+          "severity": "Média",
+          "description": "Contratação de R$ 340.000,00 da 'Gráfica Verde Papéis Ecológicos', aberta em fevereiro de 2024 (5 meses antes do início da campanha).",
+          "financial_impact": 340000.0,
+          "audit_recommendation": "Verificar capacidade operacional instalada e notas fiscais de compra de insumos gráficos."
+        }
+      ],
+      "promise_vs_spending_insight": "A candidata dedica 30% do seu plano ao Meio Ambiente e alocou 11.5% do orçamento em gráficas com certificação de papel reciclado, mantendo coerência orçamentária."
+    },
+    {
+      "candidate_id": "cand_2",
+      "candidate_name": "Marcus Vinicius Ramos",
+      "party_acronym": "PLR",
+      "color": "#3B82F6",
+      "total_revenue": 4850000.0,
+      "total_expenses": 4720000.0,
+      "spending_limit": 5000000.0,
+      "budget_execution_percentage": 94.4,
+      "revenue_breakdown": [
+        { "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)", "amount": 3200000.0, "percentage": 65.98, "donor_count": 1 },
+        { "source_type": "Doações de Grandes Empresários (Pessoas Físicas)", "amount": 1450000.0, "percentage": 29.90, "donor_count": 48 },
+        { "source_type": "Recursos Próprios do Candidato", "amount": 200000.0, "percentage": 4.12, "donor_count": 1 }
+      ],
+      "expense_breakdown": [
+        { "category": "Produção de Rádio, TV e Vídeos", "amount": 2150000.0, "percentage": 45.55 },
+        { "category": "Marketing Digital & Impulsionamento", "amount": 1200000.0, "percentage": 25.42 },
+        { "category": "Pesquisas Eleitorais de Opinião Pública", "amount": 620000.0, "percentage": 13.14 },
+        { "category": "Locação de Veículos Blindados & Logística", "amount": 450000.0, "percentage": 9.53 },
+        { "category": "Serviços Gráficos & Adesivos", "amount": 300000.0, "percentage": 6.36 }
+      ],
+      "top_suppliers": [
+        {
+          "id": "sup_2_1",
+          "name": "Alpha Prime Produções e Comunicação Ltda",
+          "cnpj": "48.765.432/0001-88",
+          "service_type": "Produção Audiovisual e Estratégia de TV",
+          "total_received": 2150000.0,
+          "percentage_of_candidate_budget": 45.55,
+          "creation_date": "2024-03-01",
+          "is_recently_created": true,
+          "risk_level": "Alto",
+          "notes": "CNPJ registrado 4 meses antes da eleição e concentrou 45.5% de todas as despesas da campanha."
+        },
+        {
+          "id": "sup_2_2",
+          "name": "Target Max Impulsionamento de Dados",
+          "cnpj": "31.222.333/0001-44",
+          "service_type": "Microtargeting e Anúncios em Redes",
+          "total_received": 1100000.0,
+          "percentage_of_candidate_budget": 23.31,
+          "creation_date": "2020-11-05",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Agência de tráfego com contratos regulares no mercado publicitário."
+        },
+        {
+          "id": "sup_2_3",
+          "name": "DataMetric Instituto de Pesquisa Eleitoral",
+          "cnpj": "19.888.777/0001-66",
+          "service_type": "Trackings Diários e Pesquisas Qualitativas",
+          "total_received": 620000.0,
+          "percentage_of_candidate_budget": 13.14,
+          "creation_date": "2017-04-12",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Empresa de pesquisas com registro regular no Conre."
+        }
+      ],
+      "anomalies": [
+        {
+          "id": "anom_2",
+          "candidate_id": "cand_2",
+          "candidate_name": "Marcus Vinicius Ramos",
+          "party_acronym": "PLR",
+          "anomaly_type": "Alta Concentração em Fornecedor Recém-Criado",
+          "severity": "Alta",
+          "description": "O fornecedor 'Alpha Prime Produções' foi constituído em março de 2024 e recebeu R$ 2.150.000,00 (45.5% de todo o orçamento da campanha).",
+          "financial_impact": 2150000.0,
+          "audit_recommendation": "Auditoria de vínculo societário com assessores de campanha e checagem de funcionários contratados pela empresa."
+        }
+      ],
+      "promise_vs_spending_insight": "O plano enfatiza 'Eficiência Fiscal e Redução de Custos', mas a campanha atingiu 94.4% do teto máximo de gastos permitido pela Justiça Eleitoral."
+    },
+    {
+      "candidate_id": "cand_3",
+      "candidate_name": "Clarice Monteiro",
+      "party_acronym": "PTD",
+      "color": "#EF4444",
+      "total_revenue": 3950000.0,
+      "total_expenses": 3780000.0,
+      "spending_limit": 5000000.0,
+      "budget_execution_percentage": 75.6,
+      "revenue_breakdown": [
+        { "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)", "amount": 3400000.0, "percentage": 86.08, "donor_count": 1 },
+        { "source_type": "Doações de Pessoas Físicas (Militantes e Sindicalistas)", "amount": 510000.0, "percentage": 12.91, "donor_count": 2890 },
+        { "source_type": "Recursos Próprios da Candidata", "amount": 40000.0, "percentage": 1.01, "donor_count": 1 }
+      ],
+      "expense_breakdown": [
+        { "category": "Militância de Rua & Equipes de Mobilização", "amount": 1650000.0, "percentage": 43.65 },
+        { "category": "Produção de TV, Rádio e Mini-Documentários", "amount": 950000.0, "percentage": 25.13 },
+        { "category": "Material Gráfico, Jornais e Banners", "amount": 580000.0, "percentage": 15.34 },
+        { "category": "Comícios, Carros de Som e Palcos", "amount": 380000.0, "percentage": 10.05 },
+        { "category": "Assessoria Jurídica Popular e Contabilidade", "amount": 220000.0, "percentage": 5.82 }
+      ],
+      "top_suppliers": [
+        {
+          "id": "sup_3_1",
+          "name": "Cooperativa Popular de Comunicação e Cultura",
+          "cnpj": "38.444.555/0001-02",
+          "service_type": "Mobilização de Rua e Produção de Jornais",
+          "total_received": 1120000.0,
+          "percentage_of_candidate_budget": 29.63,
+          "creation_date": "2018-06-14",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Cooperativa registrada com atuação contínua no setor cultural e comunitário."
+        },
+        {
+          "id": "sup_3_2",
+          "name": "Voz do Povo Produtora Audiovisual",
+          "cnpj": "27.555.666/0001-77",
+          "service_type": "Gravação de Programas Eleitorais e Podcasts",
+          "total_received": 910000.0,
+          "percentage_of_candidate_budget": 24.07,
+          "creation_date": "2020-01-22",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Produtora independente com portfólio documentado."
+        },
+        {
+          "id": "sup_3_3",
+          "name": "Gráfica e Editora Operária Ltda",
+          "cnpj": "14.333.222/0001-55",
+          "service_type": "Impressão de 500 mil exemplares do Plano de Governo",
+          "total_received": 550000.0,
+          "percentage_of_candidate_budget": 14.55,
+          "creation_date": "2012-09-30",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Empresa gráfica com parque industrial verificado."
+        }
+      ],
+      "anomalies": [
+        {
+          "id": "anom_3",
+          "candidate_id": "cand_3",
+          "candidate_name": "Clarice Monteiro",
+          "party_acronym": "PTD",
+          "anomaly_type": "Volume Elevado de Pagamento Direto de Pessoal",
+          "severity": "Informativa",
+          "description": "Despesas com mobilizadores de rua somam 43.6% do orçamento com mais de 350 recibos individuais emitidos.",
+          "financial_impact": 1650000.0,
+          "audit_recommendation": "Conferência por amostragem dos termos de prestação de serviços de cabos eleitorais e comprovantes bancários."
+        }
+      ],
+      "promise_vs_spending_insight": "A candidata prioriza 'Trabalho e Renda Popular' no plano e refletiu isso na campanha destinando 43.6% do orçamento para pagamento direto a equipes locais de mobilização."
+    }
+  ]
+}

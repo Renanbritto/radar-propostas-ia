@@ -103,3 +103,69 @@ export interface QuizResultResponse {
   user_ideological_profile: Record<string, number>;
   summary_analysis: string;
 }
+
+// ==========================================
+// INVESTIGAVOTO / FINANCIAL SCHEMAS
+// ==========================================
+export interface RevenueItem {
+  source_type: string;
+  amount: number;
+  percentage: number;
+  donor_count: number;
+}
+
+export interface ExpenseCategoryItem {
+  category: string;
+  amount: number;
+  percentage: number;
+}
+
+export interface SupplierItem {
+  id: string;
+  name: string;
+  cnpj: string;
+  service_type: string;
+  total_received: number;
+  percentage_of_candidate_budget: number;
+  creation_date: string;
+  is_recently_created: boolean;
+  risk_level: "Normal" | "Médio" | "Alto";
+  notes?: string;
+}
+
+export interface FinancialAnomaly {
+  id: string;
+  candidate_id: string;
+  candidate_name: string;
+  party_acronym: string;
+  anomaly_type: string;
+  severity: "Alta" | "Média" | "Informativa";
+  description: string;
+  financial_impact: number;
+  audit_recommendation: string;
+}
+
+export interface CandidateFinancials {
+  candidate_id: string;
+  candidate_name: string;
+  party_acronym: string;
+  color: string;
+  total_revenue: number;
+  total_expenses: number;
+  spending_limit: number;
+  budget_execution_percentage: number;
+  revenue_breakdown: RevenueItem[];
+  expense_breakdown: ExpenseCategoryItem[];
+  top_suppliers: SupplierItem[];
+  anomalies: FinancialAnomaly[];
+  promise_vs_spending_insight: string;
+}
+
+export interface FinanceOverviewResponse {
+  total_campaign_funds: number;
+  total_campaign_expenses: number;
+  total_anomalies_flagged: number;
+  transparency_index_score: number;
+  candidates_financials: CandidateFinancials[];
+  system_wide_anomalies: FinancialAnomaly[];
+}
