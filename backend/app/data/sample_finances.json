@@ -1,283 +1,240 @@
 {
   "financials": [
     {
-      "candidate_id": "cand_pres_1",
-      "candidate_name": "Fernando Valente",
-      "party_acronym": "PCD",
+      "candidate_id": "cand_lula",
+      "candidate_name": "Lula",
+      "party_acronym": "PT",
       "color": "#EF4444",
-      "total_revenue": 82500000.0,
-      "total_expenses": 79100000.0,
+      "total_revenue": 88000000.0,
+      "total_expenses": 87800000.0,
       "spending_limit": 88000000.0,
-      "budget_execution_percentage": 89.8,
+      "budget_execution_percentage": 99.7,
       "revenue_breakdown": [
-        {
-          "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)",
-          "amount": 68000000.0,
-          "percentage": 82.42,
-          "donor_count": 1
-        },
-        {
-          "source_type": "Doacoes de Pessoas Fisicas (Financiamento Coletivo / Pix)",
-          "amount": 12500000.0,
-          "percentage": 15.15,
-          "donor_count": 84500
-        },
-        {
-          "source_type": "Recursos Proprios do Candidato",
-          "amount": 2000000.0,
-          "percentage": 2.42,
-          "donor_count": 1
-        }
+        { "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)", "amount": 66800000.0, "percentage": 75.91, "donor_count": 1 },
+        { "source_type": "Doações de Pessoas Físicas (Financiamento Coletivo / Pix)", "amount": 19200000.0, "percentage": 21.82, "donor_count": 142000 },
+        { "source_type": "Recursos Próprios e Rendimentos Financeiros", "amount": 2000000.0, "percentage": 2.27, "donor_count": 1 }
       ],
       "expense_breakdown": [
-        {
-          "category": "Producao de Programa de TV e Radio (HGPE Nacional)",
-          "amount": 32000000.0,
-          "percentage": 40.45
-        },
-        {
-          "category": "Marketing Digital, Inteligencia de Dados e Impulsionamento",
-          "amount": 21500000.0,
-          "percentage": 27.18
-        },
-        {
-          "category": "Transporte Aereo (Fretamento de Jatos e Logistica Nacional)",
-          "amount": 11200000.0,
-          "percentage": 14.15
-        },
-        {
-          "category": "Comicios Nacionais, Palcos e Mobilizacao de Rua",
-          "amount": 8900000.0,
-          "percentage": 11.25
-        },
-        {
-          "category": "Pesquisas Eleitorais Quantitativas e Qualitativas",
-          "amount": 5500000.0,
-          "percentage": 6.95
-        }
+        { "category": "Produção de Programa de Rádio, TV e Vídeos (HGPE Nacional)", "amount": 34500000.0, "percentage": 39.29 },
+        { "category": "Marketing Digital, Inteligência de Dados & Tráfego Pago", "amount": 22400000.0, "percentage": 25.51 },
+        { "category": "Transporte Aéreo (Fretamento de Aeronaves & Logística)", "amount": 12800000.0, "percentage": 14.58 },
+        { "category": "Comícios Nacionais, Palcos, Sonorização e Mobilização", "amount": 11200000.0, "percentage": 12.76 },
+        { "category": "Pesquisas de Opinião Pública, Jurídico e Contabilidade", "amount": 6900000.0, "percentage": 7.86 }
       ],
       "top_suppliers": [
         {
-          "id": "sup_pres_1_1",
-          "name": "Cinematografica Brasil Soberano Ltda",
-          "cnpj": "18.345.678/0001-90",
-          "service_type": "Producao Audiovisual Nacional e Propaganda Eleitoral de TV",
-          "total_received": 28500000.0,
-          "percentage_of_candidate_budget": 36.03,
-          "creation_date": "2016-04-10",
+          "id": "sup_lula_1",
+          "name": "MGB Filmes & Comunicação Estratégica Ltda",
+          "cnpj": "14.888.777/0001-22",
+          "service_type": "Produção Audiovisual Nacional e Propaganda Eleitoral de TV",
+          "total_received": 31500000.0,
+          "percentage_of_candidate_budget": 35.88,
+          "creation_date": "2015-08-10",
           "is_recently_created": false,
           "risk_level": "Normal",
-          "notes": "Produtora renomada com estudios em Brasilia e Sao Paulo."
+          "notes": "Produtora cinematográfica com estúdios e histórico em campanhas nacionais."
         },
         {
-          "id": "sup_pres_1_2",
-          "name": "AeroWings Taxi Aereo e Fretamento Executivo",
-          "cnpj": "09.111.222/0001-33",
-          "service_type": "Fretamento de Aeronaves para Deslocamentos Nacionais",
-          "total_received": 11200000.0,
-          "percentage_of_candidate_budget": 14.15,
-          "creation_date": "2014-08-15",
+          "id": "sup_lula_2",
+          "name": "Icone Táxi Aéreo e Fretamento Executivo",
+          "cnpj": "08.333.444/0001-99",
+          "service_type": "Fretamento de Jatos para Deslocamentos Nacionais",
+          "total_received": 12800000.0,
+          "percentage_of_candidate_budget": 14.58,
+          "creation_date": "2012-04-15",
           "is_recently_created": false,
           "risk_level": "Normal",
-          "notes": "Empresa homologada pela ANAC com frotas de jatos executivos."
+          "notes": "Companhia aérea com homologação na ANAC para transporte de comitiva."
         },
         {
-          "id": "sup_pres_1_3",
-          "name": "Apex Digital Estrategia e Midia Eireli",
-          "cnpj": "49.888.999/0001-77",
-          "service_type": "Microtargeting e Disparo de Comunicacao Digital",
-          "total_received": 8400000.0,
-          "percentage_of_candidate_budget": 10.61,
-          "creation_date": "2024-01-20",
+          "id": "sup_lula_3",
+          "name": "Digital Vox Estratégia de Conteúdo Eireli",
+          "cnpj": "48.222.111/0001-55",
+          "service_type": "Gestão de Redes Sociais e Disparo de Comunicação",
+          "total_received": 8900000.0,
+          "percentage_of_candidate_budget": 10.14,
+          "creation_date": "2024-01-15",
           "is_recently_created": true,
-          "risk_level": "Medio",
-          "notes": "Empresa de dados aberta 6 meses antes da convencao partidaria."
+          "risk_level": "Médio",
+          "notes": "Empresa de dados aberta no ano da eleição para operação digital."
         }
       ],
       "anomalies": [
         {
-          "id": "anom_pres_1",
-          "candidate_id": "cand_pres_1",
-          "candidate_name": "Fernando Valente",
-          "party_acronym": "PCD",
-          "anomaly_type": "Fornecedor Digital Recem-Aberto",
-          "severity": "Media",
-          "description": "Contratacao de R$ 8.400.000,00 da Apex Digital, empresa aberta em janeiro de 2024 para gestao de trafego nacional.",
-          "financial_impact": 8400000.0,
-          "audit_recommendation": "Verificar comprovacao de relatorios de veiculacao e notas fiscais de servidores em nuvem."
+          "id": "anom_lula_1",
+          "candidate_id": "cand_lula",
+          "candidate_name": "Lula",
+          "party_acronym": "PT",
+          "anomaly_type": "Fornecedor Digital Recém-Criado",
+          "severity": "Média",
+          "description": "Contratação de R$ 8.900.000,00 da 'Digital Vox', constituída em janeiro de 2024 para gestão de redes sociais.",
+          "financial_impact": 8900000.0,
+          "audit_recommendation": "Conferência das notas fiscais emitidas, relatórios de veiculação e subcontratações técnicas."
         }
       ],
-      "promise_vs_spending_insight": "A campanha arrecadou R$ 12.5M atraves de vaquinhas virtuais de 84 mil pessoas fisicas, alinhando-se ao discurso de apoio popular de massa."
+      "promise_vs_spending_insight": "A campanha bateu recorde de financiamento coletivo com mais de 142 mil doadores individuais via Pix, refletindo a base social mobilizada em torno do plano."
     },
     {
-      "candidate_id": "cand_pres_2",
-      "candidate_name": "Rodrigo Barreto",
-      "party_acronym": "PLO",
+      "candidate_id": "cand_bolsonaro",
+      "candidate_name": "Jair Bolsonaro",
+      "party_acronym": "PL",
       "color": "#3B82F6",
-      "total_revenue": 87200000.0,
-      "total_expenses": 86500000.0,
+      "total_revenue": 88000000.0,
+      "total_expenses": 87500000.0,
       "spending_limit": 88000000.0,
-      "budget_execution_percentage": 98.2,
+      "budget_execution_percentage": 99.4,
       "revenue_breakdown": [
-        {
-          "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)",
-          "amount": 62000000.0,
-          "percentage": 71.1,
-          "donor_count": 1
-        },
-        {
-          "source_type": "Doacoes de Empresarios e Produtores do Agro (PF)",
-          "amount": 22500000.0,
-          "percentage": 25.8,
-          "donor_count": 320
-        },
-        {
-          "source_type": "Recursos Proprios do Candidato",
-          "amount": 2700000.0,
-          "percentage": 3.1,
-          "donor_count": 1
-        }
+        { "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)", "amount": 58500000.0, "percentage": 66.48, "donor_count": 1 },
+        { "source_type": "Doações de Pessoas Físicas (Empresários do Agro e Pix)", "amount": 27500000.0, "percentage": 31.25, "donor_count": 98000 },
+        { "source_type": "Recursos Próprios e Doações Partidárias", "amount": 2000000.0, "percentage": 2.27, "donor_count": 1 }
       ],
       "expense_breakdown": [
-        {
-          "category": "Marketing Digital e Mobilizacao em Redes Sociais",
-          "amount": 34500000.0,
-          "percentage": 39.88
-        },
-        {
-          "category": "Producao de Radio e TV Nacional (HGPE)",
-          "amount": 25000000.0,
-          "percentage": 28.9
-        },
-        {
-          "category": "Locacao de Aeronaves Executivas e Logistica",
-          "amount": 13800000.0,
-          "percentage": 15.95
-        },
-        {
-          "category": "Pesquisas Diarias de Opiniao e Big Data",
-          "amount": 7800000.0,
-          "percentage": 9.01
-        },
-        {
-          "category": "Consultoria Juridica Eleitoral e Compliance",
-          "amount": 5400000.0,
-          "percentage": 6.24
-        }
+        { "category": "Marketing Digital, Inteligência de Dados & Redes Sociais", "amount": 36200000.0, "percentage": 41.37 },
+        { "category": "Produção de Vídeos, Rádio e TV Nacional (HGPE)", "amount": 24500000.0, "percentage": 28.00 },
+        { "category": "Transporte Aéreo e Fretamento Executivo", "amount": 14200000.0, "percentage": 16.23 },
+        { "category": "Comícios, Motociatas, Estrutura de Som e Palcos", "amount": 7800000.0, "percentage": 8.91 },
+        { "category": "Consultoria Jurídica e Auditoria Externa", "amount": 4800000.0, "percentage": 5.49 }
       ],
       "top_suppliers": [
         {
-          "id": "sup_pres_2_1",
-          "name": "OmniMedia Estrategias Digitais S.A.",
-          "cnpj": "47.123.456/0001-00",
-          "service_type": "Operacao de Guerra Digital, Videos Curtos e Trafego",
-          "total_received": 34500000.0,
-          "percentage_of_candidate_budget": 39.88,
-          "creation_date": "2024-02-15",
+          "id": "sup_bolso_1",
+          "name": "Prime Time Produções e Inteligência Digital S.A.",
+          "cnpj": "46.999.888/0001-33",
+          "service_type": "Guerra Digital, Produção de Vídeos Curtos e Tráfego",
+          "total_received": 36200000.0,
+          "percentage_of_candidate_budget": 41.37,
+          "creation_date": "2024-02-20",
           "is_recently_created": true,
           "risk_level": "Alto",
-          "notes": "Empresa constituida no ano da eleicao que concentrou cerca de 40% de todo o orcamento da campanha presidencial."
+          "notes": "Agência de tráfego aberta no ano eleitoral que concentrou mais de 41% de todas as despesas da campanha nacional."
         },
         {
-          "id": "sup_pres_2_2",
-          "name": "Nacional Video e Propaganda Eleitoral Ltda",
+          "id": "sup_bolso_2",
+          "name": "Nacional Vídeo & Propaganda Eleitoral Ltda",
           "cnpj": "21.654.987/0001-11",
-          "service_type": "Gravacao e Producao de Programas Oficiais de TV",
-          "total_received": 25000000.0,
-          "percentage_of_candidate_budget": 28.9,
+          "service_type": "Gravação de Programas Oficiais de TV e Rádio",
+          "total_received": 24500000.0,
+          "percentage_of_candidate_budget": 28.00,
           "creation_date": "2017-09-22",
           "is_recently_created": false,
           "risk_level": "Normal",
-          "notes": "Produtora de cinema e TV com sede em Sao Paulo."
+          "notes": "Produtora de publicidade com sede em São Paulo e Brasília."
+        },
+        {
+          "id": "sup_bolso_3",
+          "name": "LiderJet Fretamento e Serviços Aéreos",
+          "cnpj": "11.777.666/0001-44",
+          "service_type": "Fretamento de Aeronaves para Deslocamentos Presidenciais",
+          "total_received": 14200000.0,
+          "percentage_of_candidate_budget": 16.23,
+          "creation_date": "2010-06-18",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Empresa homologada com frotas de jatos bimotores."
         }
       ],
       "anomalies": [
         {
-          "id": "anom_pres_2",
-          "candidate_id": "cand_pres_2",
-          "candidate_name": "Rodrigo Barreto",
-          "party_acronym": "PLO",
-          "anomaly_type": "Concentracao Maxima em Fornecedor Recem-Criado",
+          "id": "anom_bolso_1",
+          "candidate_id": "cand_bolsonaro",
+          "candidate_name": "Jair Bolsonaro",
+          "party_acronym": "PL",
+          "anomaly_type": "Alta Concentração em Empresa Aberta no Ano Eleitoral",
           "severity": "Alta",
-          "description": "O fornecedor OmniMedia foi aberto em fevereiro de 2024 e recebeu R$ 34.500.000,00 da campanha presidencial.",
-          "financial_impact": 34500000.0,
-          "audit_recommendation": "Auditoria contabil detalhada e cruzamento com subcontratados da agencia."
+          "description": "O fornecedor 'Prime Time Produções' foi constituído em fevereiro de 2024 e recebeu R$ 36.200.000,00 da campanha presidencial.",
+          "financial_impact": 36200000.0,
+          "audit_recommendation": "Auditoria de vínculo societário e rastreamento das subcontratações de impulsionamento em plataformas digitais."
         }
       ],
-      "promise_vs_spending_insight": "A campanha utilizou 98.2% do teto legal de R$ 88 milhoes, destacando-se pelo maior volume absoluto de investimento em redes sociais do pais."
+      "promise_vs_spending_insight": "A campanha priorizou o canal digital sobre o tradicional, investindo mais de 41% de todo o seu orçamento em estratégias de redes sociais e big data."
     },
     {
-      "candidate_id": "cand_pres_3",
-      "candidate_name": "Mariana Campos",
-      "party_acronym": "UDS",
-      "color": "#10B981",
-      "total_revenue": 54000000.0,
-      "total_expenses": 49800000.0,
+      "candidate_id": "cand_tebet",
+      "candidate_name": "Simone Tebet",
+      "party_acronym": "MDB",
+      "color": "#F59E0B",
+      "total_revenue": 42500000.0,
+      "total_expenses": 41800000.0,
       "spending_limit": 88000000.0,
-      "budget_execution_percentage": 56.5,
+      "budget_execution_percentage": 47.5,
       "revenue_breakdown": [
-        {
-          "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)",
-          "amount": 42000000.0,
-          "percentage": 77.78,
-          "donor_count": 1
-        },
-        {
-          "source_type": "Doacoes de Pessoas Fisicas (Inovadores e Financiamento Online)",
-          "amount": 10500000.0,
-          "percentage": 19.44,
-          "donor_count": 22400
-        },
-        {
-          "source_type": "Recursos Proprios da Candidata",
-          "amount": 1500000.0,
-          "percentage": 2.78,
-          "donor_count": 1
-        }
+        { "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)", "amount": 38000000.0, "percentage": 89.41, "donor_count": 1 },
+        { "source_type": "Doações de Pessoas Físicas (Empresários e Financiamento Online)", "amount": 3500000.0, "percentage": 8.24, "donor_count": 12800 },
+        { "source_type": "Recursos Próprios da Candidata", "amount": 1000000.0, "percentage": 2.35, "donor_count": 1 }
       ],
       "expense_breakdown": [
-        {
-          "category": "Producao Audiovisual e TV Sustentavel",
-          "amount": 18500000.0,
-          "percentage": 37.14
-        },
-        {
-          "category": "Marketing Digital e Plataforma Interativa",
-          "amount": 14200000.0,
-          "percentage": 28.51
-        },
-        {
-          "category": "Transporte Nacional com Compensacao de Carbono",
-          "amount": 7900000.0,
-          "percentage": 15.86
-        },
-        {
-          "category": "Pesquisas de Tendencias e Inteligencia de Dados",
-          "amount": 5200000.0,
-          "percentage": 10.44
-        },
-        {
-          "category": "Consultoria Juridica e Auditoria Externa Independente",
-          "amount": 4000000.0,
-          "percentage": 8.03
-        }
+        { "category": "Produção de TV, Rádio e Mini-Documentários", "amount": 18200000.0, "percentage": 43.54 },
+        { "category": "Marketing Digital & Plataforma Interativa de Propostas", "amount": 11500000.0, "percentage": 27.51 },
+        { "category": "Deslocamentos Nacionais e Compensação de Carbono", "amount": 6200000.0, "percentage": 14.83 },
+        { "category": "Pesquisas de Opinião e Trackings Qualitativos", "amount": 3800000.0, "percentage": 9.09 },
+        { "category": "Consultoria Jurídica e Auditoria Independente", "amount": 2100000.0, "percentage": 5.02 }
       ],
       "top_suppliers": [
         {
-          "id": "sup_pres_3_1",
-          "name": "Verde e Imagem Produtora Nacional",
-          "cnpj": "33.777.888/0001-44",
-          "service_type": "Programas Eleitorais de TV e Conteudo Digital",
-          "total_received": 18500000.0,
-          "percentage_of_candidate_budget": 37.14,
-          "creation_date": "2019-11-18",
+          "id": "sup_tebet_1",
+          "name": "Brasilis Audiovisual e Comunicação Ltda",
+          "cnpj": "33.444.555/0001-88",
+          "service_type": "Programas Eleitorais de TV e Conteúdo Digital",
+          "total_received": 18200000.0,
+          "percentage_of_candidate_budget": 43.54,
+          "creation_date": "2018-10-05",
           "is_recently_created": false,
           "risk_level": "Normal",
-          "notes": "Produtora certificada com estudios em Sao Paulo e Curitiba."
+          "notes": "Produtora independente com histórico em campanhas estaduais e nacionais."
+        },
+        {
+          "id": "sup_tebet_2",
+          "name": "DataMetrix Pesquisas de Opinião Pública",
+          "cnpj": "27.888.999/0001-11",
+          "service_type": "Pesquisas Qualitativas e Grupos Focais",
+          "total_received": 3800000.0,
+          "percentage_of_candidate_budget": 9.09,
+          "creation_date": "2016-03-12",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Instituto de pesquisa com registro regular no Conre."
         }
       ],
       "anomalies": [],
-      "promise_vs_spending_insight": "A candidata contratou auditoria externa independente para sua prestacao de contas, obtendo a maior nota no indice de transparencia."
+      "promise_vs_spending_insight": "A candidata contratou auditoria externa independente para suas contas e manteve a execução orçamentária rigorosamente dentro de 47.5% do teto legal."
+    },
+    {
+      "candidate_id": "cand_ciro",
+      "candidate_name": "Ciro Gomes",
+      "party_acronym": "PDT",
+      "color": "#10B981",
+      "total_revenue": 38000000.0,
+      "total_expenses": 37400000.0,
+      "spending_limit": 88000000.0,
+      "budget_execution_percentage": 42.5,
+      "revenue_breakdown": [
+        { "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)", "amount": 35000000.0, "percentage": 92.11, "donor_count": 1 },
+        { "source_type": "Doações de Pessoas Físicas (Militância e Financiamento Coletivo)", "amount": 2500000.0, "percentage": 6.58, "donor_count": 18500 },
+        { "source_type": "Recursos Próprios do Candidato", "amount": 500000.0, "percentage": 1.32, "donor_count": 1 }
+      ],
+      "expense_breakdown": [
+        { "category": "Produção de Programa de TV e Canal Digital (Ciro Games)", "amount": 16500000.0, "percentage": 44.12 },
+        { "category": "Marketing Digital, Animações e Redes Sociais", "amount": 10200000.0, "percentage": 27.27 },
+        { "category": "Deslocamentos Nacionais e Fretamento Aéreo", "amount": 5800000.0, "percentage": 15.51 },
+        { "category": "Impressão de Livros e Manuais do PND", "amount": 2800000.0, "percentage": 7.49 },
+        { "category": "Assessoria Jurídica e Contabilidade Eleitoral", "amount": 2100000.0, "percentage": 5.61 }
+      ],
+      "top_suppliers": [
+        {
+          "id": "sup_ciro_1",
+          "name": "Nacional Mídia Criativa e Vídeo Ltda",
+          "cnpj": "31.555.444/0001-77",
+          "service_type": "Produção de Vídeos para TV e Podcasts Digitais",
+          "total_received": 16500000.0,
+          "percentage_of_candidate_budget": 44.12,
+          "creation_date": "2019-02-14",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Produtora responsável pelo conteúdo digital e televisivo."
+        }
+      ],
+      "anomalies": [],
+      "promise_vs_spending_insight": "A campanha produziu mais de 500 mil exemplares impressos do 'Projeto Nacional de Desenvolvimento' para distribuição gratuita em universidades e sindicatos."
     }
   ]
 }
