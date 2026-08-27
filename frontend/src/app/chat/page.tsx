@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { ChatMessage, Candidate, Topic } from "@/types";
-import { askRAGChat, fetchCandidates, fetchTopics } from "@/lib/api";
+import { useState, useRef, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { ChatMessage, Candidate } from "@/types";
+import { askRAGChat, fetchCandidates } from "@/lib/api";
 import { CitationBadge } from "@/components/ui/CitationBadge";
 import { Bot, User, Send, Sparkles, BookOpen, HelpCircle, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -14,7 +15,10 @@ const INITIAL_SUGGESTIONS = [
   "Quais os planos para segurança pública e controle de armas?"
 ];
 
-export default function ChatPage() {
+function ChatContent() {
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("q") || "";
+
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "msg_welcome",
@@ -28,6 +32,7 @@ export default function ChatPage() {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [selectedCandidate, setSelectedCandidate] = useState<string>("all");
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const autoSentRef = useRef(false);
 
   useEffect(() => {
     fetchCandidates().then(setCandidates);
@@ -36,6 +41,13 @@ export default function ChatPage() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    if (initialQuery && !autoSentRef.current) {
+      autoSentRef.current = true;
+      handleSend(initialQuery);
+    }
+  }, [initialQuery]);
 
   async function handleSend(textToSend?: string) {
     const query = textToSend || input;
@@ -232,5 +244,17 @@ export default function ChatPage() {
         </button>
       </form>
     </div>
+  );
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense fallback={
+      <div className="py-12 text-center text-slate-400 text-xs font-mono">
+        Carregando terminal de chat...
+      </div>
+    }>
+      <ChatContent />
+    </Suspense>
   );
 }

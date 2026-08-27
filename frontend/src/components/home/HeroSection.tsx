@@ -1,75 +1,113 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Bot, Compass, GitCompare, Sparkles, ShieldCheck, Activity, Terminal } from "lucide-react";
+import { Bot, Compass, GitCompare, ArrowRight, Search, Sparkles } from "lucide-react";
 
 export function HeroSection() {
-  return (
-    <section className="relative overflow-hidden pt-12 pb-16 radar-grid-bg rounded-3xl border border-white/[0.06] mt-4">
-      {/* Glow background effects (Emerald & Cyan Sonar) */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[320px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none animate-sonar" />
-      <div className="absolute top-1/4 left-1/3 w-[350px] h-[250px] bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
+  const [query, setQuery] = useState("");
+  const router = useRouter();
 
-      <div className="max-w-5xl mx-auto px-4 text-center relative z-10 space-y-6">
-        {/* Status Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-mono shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-          <span>CENTRAL DE AUDITORIA ELEITORAL • PRESIDÊNCIA 2026</span>
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    if (!query.trim()) {
+      router.push("/chat");
+    } else {
+      router.push(`/chat?q=${encodeURIComponent(query.trim())}`);
+    }
+  }
+
+  return (
+    <section className="relative pt-12 pb-12 text-center">
+      {/* Subtle Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto space-y-6 relative z-10">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span>Eleições Presidenciais 2026 • IA & RAG Auditável</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
-          Auditoria & Comparação de <br className="hidden sm:block" />
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
+          Compare Planos de Governo e <br className="hidden sm:block" />
           <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-            Planos de Governo com IA e RAG
+            Gastos de Campanha com IA
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          Análise semântica e neutra dos programas de governo oficiais registrados no TSE. Obtenha respostas com citações auditáveis, número exato de página e análise forense de gastos de campanha.
+        <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          Análise neutra dos programas de governo e prestação de contas do TSE, com respostas fundamentadas em citações oficiais com número de página.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+        {/* Interactive Search / Prompt Input */}
+        <form onSubmit={handleSearch} className="max-w-xl mx-auto pt-2">
+          <div className="relative flex items-center">
+            <Search className="w-4 h-4 text-slate-400 absolute left-4 pointer-events-none" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Pergunte sobre qualquer proposta (ex: SUS, Imposto de Renda, Segurança)..."
+              className="w-full pl-11 pr-28 py-3.5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.06] focus:bg-[#0C1019] border border-white/[0.1] focus:border-emerald-500/50 text-white text-xs sm:text-sm placeholder-slate-400 outline-none transition-all shadow-lg shadow-black/40"
+            />
+            <button
+              type="submit"
+              className="absolute right-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition-all"
+            >
+              <span>Consultar</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </form>
+
+        {/* Quick Shortcut Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
           <Link
             href="/comparador"
-            className="flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition-all hover:scale-105"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/[0.06] text-xs font-medium transition-colors"
           >
-            <GitCompare className="w-4 h-4" />
-            Comparar Propostas por Tema
-          </Link>
-          <Link
-            href="/chat"
-            className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-white border border-white/[0.1] font-semibold text-xs sm:text-sm transition-all hover:scale-105"
-          >
-            <Bot className="w-4 h-4 text-cyan-400" />
-            Chat RAG com Citações
+            <GitCompare className="w-3.5 h-3.5 text-emerald-400" />
+            Comparador Lado a Lado
           </Link>
           <Link
             href="/quiz"
-            className="flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold text-xs sm:text-sm transition-all hover:scale-105"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/[0.06] text-xs font-medium transition-colors"
           >
-            <Compass className="w-4 h-4" />
-            Bússola de Afinidade
+            <Compass className="w-3.5 h-3.5 text-cyan-400" />
+            Quiz de Afinidade
+          </Link>
+          <Link
+            href="/financiamento"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/[0.06] text-xs font-medium transition-colors"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            InvestigaVoto (Finanças)
           </Link>
         </div>
 
-        {/* Intelligence Stats Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto text-left pt-6">
-          <div className="obsidian-card rounded-2xl p-4 border-l-2 border-emerald-500">
-            <span className="text-xl font-bold text-emerald-400 font-mono">100%</span>
-            <p className="text-[11px] text-slate-400 mt-0.5 font-medium">Citações com Página Oficial</p>
-          </div>
-          <div className="obsidian-card rounded-2xl p-4 border-l-2 border-cyan-500">
-            <span className="text-xl font-bold text-cyan-400 font-mono">804+</span>
-            <p className="text-[11px] text-slate-400 mt-0.5 font-medium">Propostas Indexadas no RAG</p>
-          </div>
-          <div className="obsidian-card rounded-2xl p-4 border-l-2 border-indigo-500">
-            <span className="text-xl font-bold text-indigo-400 font-mono">8 Eixos</span>
-            <p className="text-[11px] text-slate-400 mt-0.5 font-medium">Temas Estratégicos Nacionais</p>
-          </div>
-          <div className="obsidian-card rounded-2xl p-4 border-l-2 border-amber-500">
-            <span className="text-xl font-bold text-amber-400 font-mono">R$ 858M</span>
-            <p className="text-[11px] text-slate-400 mt-0.5 font-medium">Gastos TSE Monitorados</p>
+        {/* Clean Minimal Stats Strip */}
+        <div className="pt-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 px-6 rounded-2xl bg-white/[0.02] border border-white/[0.04] text-center">
+            <div>
+              <span className="text-base font-bold text-white font-mono">100%</span>
+              <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Auditável</p>
+            </div>
+            <div className="sm:border-l border-white/[0.06]">
+              <span className="text-base font-bold text-emerald-400 font-mono">804+</span>
+              <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Propostas</p>
+            </div>
+            <div className="border-t sm:border-t-0 sm:border-l border-white/[0.06] pt-2 sm:pt-0">
+              <span className="text-base font-bold text-cyan-400 font-mono">8 Eixos</span>
+              <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Temas</p>
+            </div>
+            <div className="border-t sm:border-t-0 sm:border-l border-white/[0.06] pt-2 sm:pt-0">
+              <span className="text-base font-bold text-amber-400 font-mono">R$ 858M</span>
+              <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Gastos TSE</p>
+            </div>
           </div>
         </div>
       </div>
