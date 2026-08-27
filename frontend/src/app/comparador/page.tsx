@@ -62,29 +62,29 @@ function ComparadorContent() {
   }
 
   return (
-    <div className="py-8 space-y-8">
+    <div className="py-6 sm:py-8 space-y-6 sm:space-y-8">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold mb-2">
           <GitCompare className="w-3.5 h-3.5" />
           <span>MATRIZ TEMÁTICA CRUZADA</span>
         </div>
-        <h1 className="text-3xl font-extrabold text-white tracking-tight">
-          Comparador Lado a Lado de Propostas
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Comparador de Propostas
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
-          Contraste as diretrizes oficiais dos candidatos por eixo temático, identificando convergências, divergências e citações com número de página oficial do TSE.
+          Contraste as diretrizes oficiais dos candidatos com identificação de convergências, divergências e citações auditáveis.
         </p>
       </div>
 
       {/* Selectors Bar */}
-      <div className="obsidian-card rounded-2xl p-6 space-y-6">
+      <div className="obsidian-card rounded-2xl p-4 sm:p-6 space-y-5">
         {/* 1. Escolha de Candidatos */}
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono block mb-3">
+          <label className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono block mb-2.5">
             1. Selecione os Candidatos para Comparar:
           </label>
-          <div className="flex flex-wrap gap-2.5">
+          <div className="flex flex-wrap gap-2">
             {candidates.map((cand) => {
               const isSelected = selectedCandIds.includes(cand.id);
               return (
@@ -92,7 +92,7 @@ function ComparadorContent() {
                   key={cand.id}
                   onClick={() => toggleCandidate(cand.id)}
                   className={cn(
-                    "flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border transition-all duration-200",
+                    "flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium border transition-all duration-200",
                     isSelected
                       ? "bg-emerald-500/20 text-white border-emerald-500/40 shadow-sm"
                       : "bg-white/[0.02] text-slate-400 border-white/[0.06] hover:border-white/[0.15] hover:text-slate-200"
@@ -114,10 +114,10 @@ function ComparadorContent() {
 
         {/* 2. Escolha do Tema */}
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono block mb-3">
+          <label className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono block mb-2.5">
             2. Selecione o Eixo Temático:
           </label>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {topics.map((t) => {
               const isSelected = selectedTopicId === t.id;
               return (
@@ -141,36 +141,36 @@ function ComparadorContent() {
 
       {/* Comparison Results */}
       {loading ? (
-        <div className="obsidian-card rounded-2xl p-12 text-center">
-          <Sparkles className="w-8 h-8 text-emerald-400 animate-spin mx-auto mb-3" />
+        <div className="obsidian-card rounded-2xl p-10 text-center">
+          <Sparkles className="w-7 h-7 text-emerald-400 animate-spin mx-auto mb-3" />
           <p className="text-xs text-slate-300 font-medium">Analisando propostas nos planos de governo oficiais...</p>
         </div>
       ) : comparison ? (
         <div className="space-y-6">
           {/* Executive Summary Card */}
-          <div className="obsidian-card rounded-2xl p-6 border-l-4 border-emerald-500">
+          <div className="obsidian-card rounded-2xl p-5 sm:p-6 border-l-4 border-emerald-500">
             <div className="flex items-center gap-2 mb-2">
               <Sparkles className="w-4 h-4 text-emerald-400" />
-              <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wide">Síntese Comparativa da IA</h3>
+              <h3 className="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">Síntese Comparativa da IA</h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
               {comparison.comparative_summary}
             </p>
           </div>
 
-          {/* Side by Side Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Side by Side Grid (Responsive 1 col mobile, 2 tablet, 3 desktop) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {comparison.candidate_details.map((cand) => (
               <div
                 key={cand.candidate_id}
-                className="obsidian-card rounded-2xl p-6 flex flex-col justify-between border-t-4"
+                className="obsidian-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between border-t-4"
                 style={{ borderTopColor: cand.color }}
               >
                 <div>
                   {/* Candidate Header */}
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <h4 className="font-bold text-base text-white">{cand.candidate_name}</h4>
+                      <h4 className="font-bold text-sm sm:text-base text-white">{cand.candidate_name}</h4>
                       <span className="text-xs text-slate-400 font-mono">{cand.party_acronym}</span>
                     </div>
                   </div>
@@ -188,7 +188,7 @@ function ComparadorContent() {
                   </div>
 
                   {/* Key Proposals */}
-                  <div className="space-y-3 mb-6">
+                  <div className="space-y-2.5 mb-5">
                     <h5 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-mono">
                       Propostas Registradas:
                     </h5>
@@ -201,9 +201,9 @@ function ComparadorContent() {
                 </div>
 
                 {/* Citations Footer */}
-                <div className="pt-4 border-t border-white/[0.06]">
+                <div className="pt-3.5 border-t border-white/[0.06]">
                   <span className="text-[10px] text-slate-400 block mb-2 font-mono uppercase">Citações Documentais:</span>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {cand.quotes_with_citations.map((citation, i) => (
                       <CitationBadge key={i} citation={citation} />
                     ))}
@@ -214,14 +214,14 @@ function ComparadorContent() {
           </div>
 
           {/* Divergences & Convergences */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Divergence */}
-            <div className="obsidian-card rounded-2xl p-6 border-l-4 border-amber-500">
-              <div className="flex items-center gap-2 mb-4">
+            <div className="obsidian-card rounded-2xl p-5 sm:p-6 border-l-4 border-amber-500">
+              <div className="flex items-center gap-2 mb-3 sm:mb-4">
                 <AlertTriangle className="w-4 h-4 text-amber-400" />
-                <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wide">Principais Divergências</h4>
+                <h4 className="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">Principais Divergências</h4>
               </div>
-              <ul className="space-y-2.5">
+              <ul className="space-y-2">
                 {comparison.divergence_points.map((pt, i) => (
                   <li key={i} className="text-xs text-slate-300 flex items-start gap-2">
                     <span className="text-amber-400 font-bold">•</span>
@@ -232,12 +232,12 @@ function ComparadorContent() {
             </div>
 
             {/* Convergence */}
-            <div className="obsidian-card rounded-2xl p-6 border-l-4 border-emerald-500">
-              <div className="flex items-center gap-2 mb-4">
+            <div className="obsidian-card rounded-2xl p-5 sm:p-6 border-l-4 border-emerald-500">
+              <div className="flex items-center gap-2 mb-3 sm:mb-4">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wide">Pontos de Convergência</h4>
+                <h4 className="text-xs sm:text-sm font-bold text-white font-mono uppercase tracking-wide">Pontos de Convergência</h4>
               </div>
-              <ul className="space-y-2.5">
+              <ul className="space-y-2">
                 {comparison.convergence_points.map((pt, i) => (
                   <li key={i} className="text-xs text-slate-300 flex items-start gap-2">
                     <span className="text-emerald-400 font-bold">•</span>
