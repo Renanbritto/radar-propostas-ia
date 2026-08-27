@@ -23,9 +23,12 @@ class Settings(BaseSettings):
     ]
     
     # LLM Settings
-    LLM_PROVIDER: str = "gemini"
+    LLM_PROVIDER: str = "auto"  # 'groq', 'gemini', 'openai', 'auto'
+    GROQ_API_KEY: str = ""
     GEMINI_API_KEY: str = ""
     OPENAI_API_KEY: str = ""
+    
+    GROQ_MODEL: str = "llama-3.3-70b-versatile"
     GEMINI_MODEL: str = "gemini-1.5-flash"
     OPENAI_MODEL: str = "gpt-4o-mini"
     
