@@ -135,6 +135,31 @@ const FALLBACK_CANDIDATES: Candidate[] = [
       "Corte de 30% dos cargos comissionados e eliminação de privilégios do funcionalismo",
       "Governo 100% digital com inteligência artificial para atendimento ao cidadão"
     ]
+  },
+  {
+    id: "cand_cury",
+    name: "Augusto Jorge Cury",
+    ballot_name: "Augusto Cury",
+    ballot_number: 44,
+    party: "Partido Renovação Democrática",
+    party_acronym: "PRD",
+    coalition: "Coligação Brasil Humano e Inteligente (PRD / Avante / DC)",
+    role: "Presidente da República",
+    color: "#06B6D4",
+    summary: "Plano de governo humanista focado em Saúde Mental no SUS, revolução socioemocional nas escolas públicas, formação de pensadores críticos, gestão da emoção, combate à dependência digital e liderança compassiva na administração pública.",
+    total_pages: 64,
+    total_proposals: 154,
+    plan_pdf_url: "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/BR/BR/20322002026",
+    theme_distribution: {
+      saude: 42, educacao: 45, economia: 24, seguranca: 20,
+      meio_ambiente: 18, tecnologia: 22, social: 35, infraestrutura: 20
+    },
+    key_highlights: [
+      "Criação do Programa Nacional de Saúde Mental e Inteligência Emocional integrado ao SUS",
+      "Inclusão de Gestão da Emoção e habilidades socioemocionais no currículo da Educação Básica",
+      "Acolhimento psicológico contínuo e prevenção ao burnout para 100% dos policiais e professores",
+      "Incentivos fiscais (Selo Empresa Humanizada) para companhias que promovem bem-estar no trabalho"
+    ]
   }
 ];
 

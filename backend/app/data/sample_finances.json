@@ -474,6 +474,85 @@
       ],
       "anomalies": [],
       "promise_vs_spending_insight": "Austeridade na execução orçamentária (19.3% do teto legal), com forte proporção de doações privadas (23.8%) e foco em marketing de performance."
+    },
+    {
+      "candidate_id": "cand_cury",
+      "candidate_name": "Augusto Cury",
+      "party_acronym": "PRD",
+      "color": "#06B6D4",
+      "total_revenue": 38000000.0,
+      "total_expenses": 24500000.0,
+      "spending_limit": 300000000.0,
+      "budget_execution_percentage": 8.17,
+      "revenue_breakdown": [
+        {
+          "source_type": "Fundo Especial de Financiamento de Campanha (FEFC)",
+          "amount": 26000000.0,
+          "percentage": 68.42,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Doações de Pessoas Físicas (Sociedade Civil & Leitores)",
+          "amount": 9500000.0,
+          "percentage": 25.0,
+          "donor_count": 48200
+        },
+        {
+          "source_type": "Fundo Partidário",
+          "amount": 1500000.0,
+          "percentage": 3.95,
+          "donor_count": 1
+        },
+        {
+          "source_type": "Recursos Próprios do Candidato",
+          "amount": 1000000.0,
+          "percentage": 2.63,
+          "donor_count": 1
+        }
+      ],
+      "expense_breakdown": [
+        {
+          "category": "Produção e Divulgação Digital de Palestras e Vídeos",
+          "amount": 10500000.0,
+          "percentage": 42.86
+        },
+        {
+          "category": "Eventos Cívicos Comunitários e Fóruns de Saúde Mental",
+          "amount": 5200000.0,
+          "percentage": 21.22
+        },
+        {
+          "category": "Equipe de Coordenação Pedagógica e Programática",
+          "amount": 3800000.0,
+          "percentage": 15.51
+        },
+        {
+          "category": "Deslocamentos e Logística Terrestre",
+          "amount": 3000000.0,
+          "percentage": 12.24
+        },
+        {
+          "category": "Material Impresso Informativo e Cartilhas",
+          "amount": 2000000.0,
+          "percentage": 8.16
+        }
+      ],
+      "top_suppliers": [
+        {
+          "id": "sup_cury_1",
+          "name": "Mente Saudável Produções & Eventos Educacionais Ltda",
+          "cnpj": "78.901.234/0001-56",
+          "service_type": "Produção Audiovisual e Fóruns Educativos",
+          "total_received": 7500000.0,
+          "percentage_of_candidate_budget": 30.61,
+          "creation_date": "2020-05-14",
+          "is_recently_created": false,
+          "risk_level": "Normal",
+          "notes": "Produtora responsável por gravações de debates e cartilhas digitais."
+        }
+      ],
+      "anomalies": [],
+      "promise_vs_spending_insight": "Execução austera focada em eventos educativos, palestras comunitárias e cartilhas informativas de saúde mental (42.8%), com 25% de arrecadação vinda de microdoadores."
     }
   ]
 }

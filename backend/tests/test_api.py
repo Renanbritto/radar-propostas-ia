@@ -30,6 +30,7 @@ def test_get_candidates():
     assert any(c["ballot_name"] == "Renan Santos" for c in candidates)
     assert any(c["ballot_name"] == "Ronaldo Caiado" for c in candidates)
     assert any(c["ballot_name"] == "Zema" for c in candidates)
+    assert any(c["ballot_name"] == "Augusto Cury" for c in candidates)
 
 def test_get_topics():
     response = client.get("/api/v1/candidates/topics")

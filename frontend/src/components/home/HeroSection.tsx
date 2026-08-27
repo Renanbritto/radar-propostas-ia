@@ -32,10 +32,7 @@ export function HeroSection() {
 
         {/* Title */}
         <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.18] sm:leading-[1.15] px-2">
-          Compare Planos de Governo e <br className="hidden sm:block" />
-          <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-            Gastos de Campanha com IA
-          </span>
+          Compare Planos de Governo e<br className="hidden sm:block" /> Gastos de Campanha
         </h1>
 
         {/* Subtitle */}
