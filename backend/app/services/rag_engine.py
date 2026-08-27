@@ -8,17 +8,17 @@ from app.core.logging import logger
 
 class RAGEngine:
     """
-    Motor RAG Inteligente com Detecção de Intenções Cívicas e Citações Auditáveis.
-    Combina classificação de intenções, LLM em tempo real (Groq/Gemini/OpenAI) e
-    síntese semântica estruturada com citações exatas de página do TSE.
+    Motor RAG Inteligente de Alta Precisão (Google Gemini + Vector Store TSE).
+    Capaz de responder qualquer pergunta sobre a plataforma, eleições 2026,
+    candidatos e propostas com fundamentação em citações documentais oficiais.
     """
 
     GREETING_PATTERNS = [
         r"\b(oi|ola|bom dia|boa tarde|boa noite|opa|fala|e ai|tudo bem|tudo bom|como vai|hey|hello|saudacoes)\b"
     ]
     
-    WHO_ARE_YOU_PATTERNS = [
-        r"\b(quem e voce|o que voce faz|quem e vc|como funciona|o que e o radar|qual sua funcao|me explique)\b"
+    SITE_PURPOSE_PATTERNS = [
+        r"\b(para que serve|pra que serve|o que e esse site|o que e este site|qual a funcao|qual o objetivo|como funciona|o que faz esse site|o que voce faz|quem e voce|para que esse site serve)\b"
     ]
 
     CANDIDATES_LIST_PATTERNS = [
@@ -31,13 +31,13 @@ class RAGEngine:
         for p in cls.GREETING_PATTERNS:
             if re.search(p, norm):
                 return "GREETING"
-        for p in cls.WHO_ARE_YOU_PATTERNS:
+        for p in cls.SITE_PURPOSE_PATTERNS:
             if re.search(p, norm):
-                return "WHO_ARE_YOU"
+                return "SITE_PURPOSE"
         for p in cls.CANDIDATES_LIST_PATTERNS:
             if re.search(p, norm):
                 return "CANDIDATES_LIST"
-        return "PROPOSAL_SEARCH"
+        return "GENERAL_OR_PROPOSAL"
 
     @staticmethod
     def _create_citations(ranked_chunks: List[tuple[ProposalChunk, float]]) -> List[Citation]:
@@ -60,15 +60,47 @@ class RAGEngine:
 
     @classmethod
     async def generate_response(cls, request: ChatRequest) -> ChatResponse:
-        intent = cls._detect_intent(request.query)
+        query_text = request.query.strip()
+        intent = cls._detect_intent(query_text)
 
-        # 1. Tratar Saudações
+        # 1. Buscar Chunks Relevantes no Índice Vetorial
+        ranked_chunks = vector_store.search(
+            query=query_text,
+            top_k=5,
+            candidate_id=request.candidate_id,
+            topic_id=request.topic_id
+        )
+
+        citations = cls._create_citations(ranked_chunks) if ranked_chunks else []
+        searched_candidates = list(set([c.candidate_name for c in citations])) if citations else (
+            [request.candidate_id] if request.candidate_id else ["Todos"]
+        )
+
+        # 2. Se o Gemini (LLM) estiver disponível, delegar a geração para ele (Máxima Inteligência)
+        if LLMClient.is_configured():
+            chunk_texts = [
+                f"[{c.candidate_name} ({c.party_acronym}) - Página {c.page_number} - {c.topic_name}]: {c.text}"
+                for c in [chunk for chunk, _ in ranked_chunks]
+            ]
+            try:
+                llm_answer = await LLMClient.generate(query_text, chunk_texts)
+                if llm_answer:
+                    return ChatResponse(
+                        answer=llm_answer,
+                        citations=citations if intent != "GREETING" and intent != "SITE_PURPOSE" else [],
+                        suggested_followups=cls._generate_followups(ranked_chunks),
+                        searched_candidates=searched_candidates
+                    )
+            except Exception as e:
+                logger.error(f"Erro ao gerar resposta com LLM: {e}")
+
+        # 3. Fallbacks Locais Estruturados (se LLM offline ou sem chave)
         if intent == "GREETING":
             answer = (
                 "Olá! Seja muito bem-vindo ao **Radar de Propostas IA** 🇧🇷\n\n"
-                "Sou seu assistente de inteligência cívica e auditoria para a **Eleição Presidencial de 2026**. "
+                "Sou seu assistente cívico oficial de auditoria para a **Eleição Presidencial de 2026**. "
                 "Posso comparar planos de governo, esclarecer propostas por área temática e consultar a prestação de contas dos candidatos no TSE.\n\n"
-                "**Como posso te ajudar agora?** Você pode perguntar sobre Saúde, Economia, Educação, Segurança, Meio Ambiente ou pedir um comparativo entre candidatos!"
+                "**Como posso te ajudar agora?** Você pode perguntar sobre Saúde, Economia, Educação, Segurança, Saúde Mental ou pedir um comparativo entre candidatos!"
             )
             return ChatResponse(
                 answer=answer,
@@ -82,29 +114,28 @@ class RAGEngine:
                 searched_candidates=["Todos"]
             )
 
-        # 2. Tratar 'Quem é você / Como funciona'
-        if intent == "WHO_ARE_YOU":
+        if intent == "SITE_PURPOSE":
             answer = (
-                "O **Radar de Propostas IA** é uma plataforma neutra de auditoria cívica baseada em **RAG (Retrieval-Augmented Generation)**.\n\n"
-                "🔍 **O que me diferencia:**\n"
-                "- **Zero Alucinações:** Todas as respostas são extraídas diretamente dos PDFs oficiais protocolados no TSE (DivulgaCandContas).\n"
-                "- **Citações Auditáveis:** Cada argumento vem acompanhado do **número exato da página** no plano de governo para você mesmo checar.\n"
-                "- **InvestigaVoto:** Cruzamos as promessas de campanha com as despesas e doações declaradas à Justiça Eleitoral.\n\n"
-                "Experimente me fazer uma pergunta sobre qualquer política pública!"
+                "O **Radar de Propostas IA + InvestigaVoto** é uma plataforma neutra de auditoria cívica e transparência eleitoral para as **Eleições Presidenciais de 2026**.\n\n"
+                "🏛️ **O que você pode fazer aqui:**\n"
+                "1. ⚖️ **Comparador Lado a Lado:** Analise o posicionamento dos 6 presidenciáveis em 8 eixos temáticos (Saúde, Educação, Economia, Segurança, etc.).\n"
+                "2. 💬 **Chat RAG com IA:** Faça perguntas livres sobre qualquer proposta e receba respostas fundamentadas com o **número exato da página** no PDF oficial do TSE.\n"
+                "3. 🧭 **Bússola Programática (Quiz):** Descubra com qual candidato suas ideias têm maior afinidade.\n"
+                "4. 💰 **InvestigaVoto:** Audite gastos de campanha, fornecedores contratados e doações declaradas à Justiça Eleitoral.\n\n"
+                "💡 Experimente perguntar algo como: *'O que o Lula propõe para o SUS?'* ou *'Quais estatais o Flávio Bolsonaro quer privatizar?'*!"
             )
             return ChatResponse(
                 answer=answer,
                 citations=[],
                 suggested_followups=[
-                    "Quais as propostas para segurança pública e controle de armas?",
-                    "O que o Augusto Cury propõe para a educação socioemocional?",
-                    "Como o Lula pretende financiar o Novo PAC?",
-                    "Quais estatais o Flávio Bolsonaro quer privatizar?"
+                    "Quais são os 6 candidatos presidenciais cadastrados?",
+                    "O que o Augusto Cury propõe para a saúde mental?",
+                    "Comparar Lula e Flávio Bolsonaro na economia",
+                    "Qual o modelo de gestão proposto por Caiado e Zema?"
                 ],
                 searched_candidates=["Todos"]
             )
 
-        # 3. Tratar Lista de Candidatos
         if intent == "CANDIDATES_LIST":
             answer = (
                 "Atualmente, o **Radar de Propostas** monitora **6 candidaturas presidenciais oficiais para 2026**:\n\n"
@@ -128,61 +159,33 @@ class RAGEngine:
                 searched_candidates=["Todos"]
             )
 
-        # 4. Busca Semântica RAG (Retrieve)
-        ranked_chunks = vector_store.search(
-            query=request.query,
-            top_k=5,
-            candidate_id=request.candidate_id,
-            topic_id=request.topic_id
-        )
-
-        citations = cls._create_citations(ranked_chunks)
-        searched_candidates = list(set([c.candidate_name for c in citations])) if citations else (
-            [request.candidate_id] if request.candidate_id else ["Todos"]
-        )
-
-        # 5. Tentativa com LLM (Se API Key configurada)
-        if LLMClient.is_configured():
-            chunk_texts = [
-                f"[{c.candidate_name} ({c.party_acronym}) - Pág. {c.page_number} - {c.topic_name}]: {c.text}"
-                for c in [chunk for chunk, _ in ranked_chunks]
-            ]
-            llm_answer = await LLMClient.generate(request.query, chunk_texts)
-            if llm_answer:
-                return ChatResponse(
-                    answer=llm_answer,
-                    citations=citations,
-                    suggested_followups=cls._generate_followups(ranked_chunks),
-                    searched_candidates=searched_candidates
-                )
-
-        # 6. Fallback Estruturado e Inteligente (Zero-Dependency High Intelligence)
-        if not ranked_chunks:
-            answer = (
-                f"Não encontrei propostas com correspondência direta para o termo **'{request.query}'** nos documentos cadastrados.\n\n"
-                "💡 **Sugestões para refinar sua busca:**\n"
-                "- Tente termos temáticos amplos: *Saúde*, *SUS*, *Impostos*, *Economia*, *Segurança*, *Educação*, *Saúde Mental* ou *Meio Ambiente*.\n"
-                "- Ou pergunte sobre um candidato específico, por exemplo: *'O que o Augusto Cury propõe para a educação?'* ou *'Quais os planos de Zema para o funcionalismo?'*."
-            )
+        # Fallback RAG se houver chunks
+        if ranked_chunks:
+            answer = cls._synthesize_grounded_answer(query_text, ranked_chunks)
+            followups = cls._generate_followups(ranked_chunks)
             return ChatResponse(
                 answer=answer,
-                citations=[],
-                suggested_followups=[
-                    "Quais são as propostas para a saúde e SUS?",
-                    "Como os candidatos pretendem gerar empregos?",
-                    "Quais os planos para educação e valorização de professores?",
-                    "O que dizem sobre segurança pública e combate ao crime?"
-                ],
+                citations=citations,
+                suggested_followups=followups,
                 searched_candidates=searched_candidates
             )
 
-        answer = cls._synthesize_grounded_answer(request.query, ranked_chunks)
-        followups = cls._generate_followups(ranked_chunks)
-
+        # Se nada for encontrado no fallback local
+        answer = (
+            f"Não encontrei propostas com correspondência direta para **'{query_text}'** nos documentos cadastrados.\n\n"
+            "💡 **Dicas de consulta:**\n"
+            "- Tente pesquisar por temas: *Saúde*, *SUS*, *Impostos*, *Economia*, *Segurança*, *Educação*, *Saúde Mental* ou *Meio Ambiente*.\n"
+            "- Ou pergunte sobre um candidato específico, como: *'O que o Augusto Cury propõe para a educação?'* ou *'Quais os planos de Zema para o funcionalismo?'*."
+        )
         return ChatResponse(
             answer=answer,
-            citations=citations,
-            suggested_followups=followups,
+            citations=[],
+            suggested_followups=[
+                "Quais são as propostas para a saúde e SUS?",
+                "Como os candidatos pretendem gerar empregos?",
+                "Quais os planos para educação e valorização de professores?",
+                "O que dizem sobre segurança pública e combate ao crime?"
+            ],
             searched_candidates=searched_candidates
         )
 
